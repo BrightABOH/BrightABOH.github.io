@@ -10,7 +10,7 @@ description: >
 email: bright.s.e.aboh@aims-senegal.org
 author: Bright Aboh
 avatar: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/bright_portrait.jpg?raw=true"
-profile: One sentence introducing yourself.
+profile: Hi. I am Bright Aboh; a data scientist, a climate change researcher and a music lover.
 #twitter_username: @iamabohB
 #github_username:  BrightABOH
 profile_links:
@@ -30,7 +30,7 @@ excerpt_separator: <!--more-->
 header:
   links:             # Links on the header. Link to in-site page with a slash as prefix
     About: /about/
-    Category: /category/
+    Publications: https://dl.acm.org/doi/10.1145/3378393.3402268
     Donate: https://laobubu.net/donate.html
 
 permalink: /archivers/:title
