@@ -30,7 +30,7 @@ excerpt_separator: <!--more-->
 header:
   links:             # Links on the header. Link to in-site page with a slash as prefix
     About: /about/
-    Publications: https://dl.acm.org/doi/10.1145/3378393.3402268
+    Publications:/https://dl.acm.org/doi/10.1145/3378393.3402268/
     Donate: https://laobubu.net/donate.html
 
 permalink: /archivers/:title
