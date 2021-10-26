@@ -4,7 +4,7 @@ url: "http://brightaboh.github.io"    # the protocol and hostname of your site, 
 baseurl: "" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
 #timezone: Asia/Chongqing
 description: >
-  Hello! Welcome to my website, I hope you find something interesting here.
+  Hello! This is Bright Aboh's personal website.
 
 # Your information
 email: bright.s.e.aboh@aims-senegal.org
@@ -16,8 +16,8 @@ profile: Hi. I am Bright Aboh; a data scientist, a climate change researcher and
 profile_links:
   Email: "mailto:bright.s.e.aboh@aims-senegal.org"
   GitHub: "https://github.com/BrightABOH"
-  CV : "../Documents/Resume.pdf"
   Linkedin: "https://www.linkedin.com/in/bright-aboh-b85932ba/"
+  CV : "../Documents/Resume.pdf"
   # You can add more profile links above, or edit _includes/sidebar.html 
 
 # Comment Service (Disqus or 多说)
