@@ -4,7 +4,7 @@ url: "http://brightaboh.github.io"    # the protocol and hostname of your site, 
 baseurl: "" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
 #timezone: Asia/Chongqing
 description: >
-  One or more sentences introducing this blog.
+  Hello! Welcome to my website, I hope you find something interesting here.
 
 # Your information
 email: bright.s.e.aboh@aims-senegal.org
@@ -22,7 +22,7 @@ profile_links:
 
 # Comment Service (Disqus or 多说)
 #  choose one and un-comment the line to active it
-#disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
+disqus_shortname: brightaboh   # get one: https://disqus.com/admin/signup/
 #duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 
 excerpt_separator: <!--more-->
@@ -30,8 +30,8 @@ excerpt_separator: <!--more-->
 header:
   links:             # Links on the header. Link to in-site page with a slash as prefix
     About: /about/
-    Publications: /https://dl.acm.org/doi/10.1145/3378393.3402268/
-    Donate: https://laobubu.net/donate.html
+    Publications: /publications/
+    #Donate: https://laobubu.net/donate.html
 
 permalink: /archivers/:title
 plugins:
