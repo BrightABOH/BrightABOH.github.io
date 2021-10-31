@@ -16,6 +16,6 @@ Launched in 2014, Sentinel 1 is equipped with a constellation of two polar-orbit
 
 Tools
 
-Python 3.9 use used as the main programming language to process and extract the dataset. Google Earth Engine platform through its Python API is used for accessing satellite images and for further analysis. 
+Python 3.9 is used as the main programming language to process and extract the dataset. Google Earth Engine platform through its Python API is used for accessing satellite images and for further analysis. 
 Kindly follow through with the concluding part.
 
