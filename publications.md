@@ -12,4 +12,4 @@ List of publications.
 
 <br>
 #### 2021
-- Bright Aboh(2021) "Vegemon: A land cover monitoring app built and deployed to help measure metrics like NDVI, NDWI etc"[[Link: https://vegemon.herokuapp.com/voila/render/notebooks/vegAPP1.ipynb]](https://vegemon.herokuapp.com/voila/render/notebooks/vegAPP1.ipynb)
+- Bright Aboh(2021) "Vegemon: A land cover monitoring app built and deployed to help measure metrics like NDVI, NDWI etc"[[APP Link: https://vegemon.herokuapp.com/voila/render/notebooks/vegAPP1.ipynb]]
