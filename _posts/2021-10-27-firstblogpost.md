@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title: "Data Science and remote sensing: Water detection Part 1"
 date: 2021-10-31 22:01:18
 categories: website blog jekyll github
 permalink: /posts/Data-Science-and-remote-sensing
-
 ---
 
 Having worked in the intersection of this space(data science and remote sensing) for a while, I wish to bring to the limelight the amazing benefits shrouded in the unison of these two fields. I am writting series of blog posts focusing on the intersections of these feilds, real world applications, tutorials etc.
