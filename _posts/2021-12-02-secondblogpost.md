@@ -12,5 +12,5 @@ Welcome back! This is the continuation of the previous blog on 'Detection of wat
 Next we load (import) all the necesary python modules into our jupyter notebook
 ![Dependent modules](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/modules.png?raw=true)
 
-The next is to define the Region Of Interest(ROI),i.e the area we want to collect satellite images over. To define your own ROI, you can use this [tool](http://geojson.io/#map=2/20.0/0.0). In case, you have your own shapefiles, here is the good please to upload them. As seen from the 
+The next is to define the Region Of Interest(ROI),i.e the area we want to collect satellite images over. To define your own ROI, you can use this [tool](http://geojson.io/#map=2/20.0/0.0). In case, you have your own shapefiles, here is the good please to upload them. As seen from the block codes below,there are few things worth noting; 1) convertion of geojson files into coordinate system that is understood by GEE, 2) specifing the satellite images to use for our analysis 3) filtering this satellite images based on filters such as date, transmitter polarization. We use the Synthetic Aperture Rader images (such as Sentinel 1)  as it has some advantages over optical satellite images.
 ![Location](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/geojson.png?raw=true)
