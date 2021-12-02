@@ -13,4 +13,4 @@ Next we load (import) all the necesary python modules into our jupyter notebook
 ![Dependent modules](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/modules.png?raw=true)
 
 The next is to define the Region Of Interest(ROI),i.e the area we want to collect satellite images over. To define your own ROI, you can use this [tool](http://geojson.io/#map=2/20.0/0.0). In case, you have your own shapefiles, here is the good please to upload them. As seen from the 
-![Dependent modules](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/modules.png?raw=true)
+![Location](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/geojson.png?raw=true)
