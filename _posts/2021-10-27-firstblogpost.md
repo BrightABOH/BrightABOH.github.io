@@ -3,7 +3,8 @@
 layout: post
 title: "Data Science and remote sensing: Water detection Part 1"
 date: 2021-10-31 22:01:18
-permalink: /posts/Data Science and remote sensing"
+categories: website blog jekyll github
+permalink: /posts/Data-Science-and-remote-sensing"
 
 ---
 
