@@ -13,7 +13,7 @@ Now that we have a firm understanding of what remote sensing and data science ar
 Data Description
 Launched in 2014, Sentinel 1 is equipped with a constellation of two polar-orbiting satellites, operating all day and all night irrespective of the weather to provide a large amount of data suitable for environmental and security monitoring globally.  The Radar imaging technology onboard the SAR Sentinel 1 allows data acquisitions even in very hazy regions due to its ability to penetrate clouds.
 
-###Tools
+*Tools*
 
 Python 3.9 is used as the main programming language to process and extract the dataset. Google Earth Engine platform through its Python API is used for accessing satellite images and for further analysis. 
 Kindly follow through with the concluding part.
