@@ -7,4 +7,4 @@ permalink: /posts/Data-Science-and-remote-sensing-2
 image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/RGB_water.png?raw=true"
 ---
 
-Welcome back! This is the continuation of the previous blog on 'Detection of water' using satellite images. Read [here](https://brightaboh.github.io/posts/Data-Science-and-remote-sensing) if you haven't done so already.
+Welcome back! This is the continuation of the previous blog on 'Detection of water' using satellite images. Read [here](https://brightaboh.github.io/posts/Data-Science-and-remote-sensing) if you haven't done so already. As indicated in the previous blog, one will need Google Earth Engine(GEE) account in order to follow through the rest of this tutorial. Register for a free GEE account [from](https://earthengine.google.com) 
