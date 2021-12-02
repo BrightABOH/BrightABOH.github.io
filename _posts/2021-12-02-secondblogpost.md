@@ -10,4 +10,6 @@ image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/
 Welcome back! This is the continuation of the previous blog on 'Detection of water' using satellite images. Read [here](https://brightaboh.github.io/posts/Data-Science-and-remote-sensing) if you haven't done so already. As indicated in the previous blog, one will need Google Earth Engine(GEE) account in order to follow through the rest of this tutorial. Register for a free GEE account [here](https://earthengine.google.com) 
 
 Next we load (import) all the necesary python modules into our jupyter notebook
-![lung cancer causes](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/modules.png?raw=true)
+![Dependent modules](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/modules.png?raw=true)
+
+The next is to define the Region Of Interest(ROI),i.e the area we want to collect satellite images over. To define your own ROI, you can use this [tool](http://geojson.io/#map=2/20.0/0.0). In case, you have your own shapefiles, here is the good please to upload them. As
