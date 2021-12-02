@@ -17,3 +17,4 @@ The next is to define the Region Of Interest(ROI),i.e the area we want to collec
 We look at the first image available in the entire collection (121). To do that we create a map of our ROI, display as a layer the first image 
 The following block of codes creates a map using geemap of our ROI, then display the first image from the Sentinel 1 collection.
 ![First map](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/water_map.png)
+The output of the above codes is shown bellow
