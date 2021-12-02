@@ -18,3 +18,4 @@ We look at the first image available in the entire collection (121). To do that 
 The following block of codes creates a map using geemap of our ROI, then display the first image from the Sentinel 1 collection.
 ![First map](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/water_map.png)
 The output of the above codes is shown bellow
+![First image](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/firstimage.png)
