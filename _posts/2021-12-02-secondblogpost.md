@@ -19,3 +19,5 @@ The following block of codes creates a map using geemap of our ROI, then display
 ![Firstmap](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/water_map.png?raw=true)
 The output of the above codes is shown bellow
 ![Firstimage](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/firstimage.png?raw=true)
+
+A major challenge working with SAR images is the speckle noise effect appparent in these images   
