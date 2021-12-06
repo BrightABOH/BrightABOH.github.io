@@ -24,3 +24,4 @@ A major challenge working with SAR images is the speckle noise effect appparent 
 The implementation of the speckle filtering is shown below;
 ![Filtermean](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/speckle.png)
 Next we compare the original image to the one obtained from after the filtering
+![Raw](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/speckle.png)
