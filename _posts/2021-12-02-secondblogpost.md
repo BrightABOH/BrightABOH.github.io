@@ -24,5 +24,7 @@ A major challenge working with SAR images is the speckle noise effect apparent i
 Other approaches that could be used include the median filter, the Lee filter, refined Lee filter etc.
 The implementation of the speckle filtering is shown below;
 ![Filtermean](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/speckle.png?raw=true)
-Next, we compare the original image to the one obtained after the filtering
+Next, we look at the images obtained before the speckle noise reduction and after the noise reduction
 ![Raw](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/smoothedvrsoriginal.png?raw=true)
+
+
