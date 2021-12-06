@@ -28,5 +28,5 @@ Next, we look at the images obtained before the speckle noise reduction and afte
 ![Raw](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/smoothedvrsoriginal.png?raw=true)
 *RGB Composite*
 The images of our ROI so far has been boring, this because our eyes are naturally made to see colors. We combine the two(2) polarizatoins (VV and VH)of Sentinel 1 satellite to produce a more appealing view of our location. This color combination; Red, Green and Blue(RGB) which varies from satellite to satellite in terms of band combination is known us the RGB composite. 
-
+![rgbcode](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/rgbcode.png?raw=true)
 
