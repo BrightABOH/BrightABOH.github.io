@@ -21,5 +21,5 @@ The output of the above codes is shown bellow
 ![Firstimage](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/firstimage.png?raw=true)
 
 A major challenge working with SAR images is the speckle noise effect appparent in these images which degrades in the quality of the images. Evident in the SAR image obtained  are very bright tiny dots when you zoomed into the water body for example in this tutorial. Due to the very bright colors that are associated with objects such land, SAR images turn to suffer from misclassifications when this speckle noise is not treated. To remove the speckle noise from our images and make them ready for classification, we implemented the mean focal filter. This looks at the pixel from the entire image collection and takes the mean. Other approaches that could be used includes the median filter, the Lee filter, refined Lee filter etc.
-The implementation of the mean filter is shown below
-![Filtermean](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/firstimage.png?raw=true)
+The implementation of the speckle filtering is shown below
+![Filtermean](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/speckle.png)
