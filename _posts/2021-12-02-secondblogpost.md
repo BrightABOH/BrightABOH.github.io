@@ -12,7 +12,7 @@ Welcome back! This is the continuation of the previous blog on 'Detection of wat
 Next we load (import) all the necesary python modules into our jupyter notebook
 ![Dependent modules](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/modules.png?raw=true)
 
-The next is to define the Region Of Interest(ROI),i.e the area we want to collect satellite images over. To define your own ROI, you can use this [tool](http://geojson.io/#map=2/20.0/0.0). In case, you have your own shapefiles, here is the good place to upload them. As seen from the block codes below,there are few things worth noting; 1) convertion of geojson files into coordinate system that is understood by GEE, 2) specifing the satellite images to use for our analysis 3) filtering this satellite images based on filters such as date, transmitter polarization. We use the Synthetic Aperture Rader images (such as Sentinel 1)  as it has some advantages over optical satellite images. Observing from the out in the cell, we can see that there are 121 images available for our ROI given the necessary filter
+The next step is to define the Region Of Interest(ROI),i.e the area we want to collect satellite images over. To define your own ROI, you can use this [tool](http://geojson.io/#map=2/20.0/0.0). In case, you have your own shapefiles, here is the good place to upload them. As seen from the block codes below,there are few things worth noting; 1) convertion of geojson files into coordinate system that is understood by GEE, 2) specifing the satellite images to use for our analysis 3) filtering this satellite images based on filters such as date, transmitter polarization. We use the Synthetic Aperture Rader images (such as Sentinel 1)  as it has some advantages over optical satellite images. Observing from the out in the cell, we can see that there are 121 images available for our ROI given the necessary filter
 ![Location](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/geojson.png?raw=true)
 We look at the first image available in the entire collection (121). To do that we create a map of our ROI, display as a layer the first image 
 The following block of codes creates a map using geemap of our ROI, then display the first image from the Sentinel 1 collection.
@@ -26,7 +26,7 @@ The implementation of the speckle filtering is shown below;
 ![Filtermean](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/speckle.png?raw=true)
 Next, we look at the images obtained before the speckle noise reduction and after the noise reduction
 ![Raw](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/smoothedvrsoriginal.png?raw=true)
-*RGB Composite*
+**RGB Composite**
 The images of our ROI so far has been boring, this because our eyes are naturally made to see colors. We combine the two(2) polarizatoins (VV and VH)of Sentinel 1 satellite to produce a more appealing view of our location. This color combination; Red, Green and Blue(RGB) which varies from satellite to satellite in terms of band combination is known us the RGB composite. 
 ![rgbcode](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/rgbcode.png?raw=true)
 
