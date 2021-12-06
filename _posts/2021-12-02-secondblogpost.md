@@ -20,9 +20,9 @@ The following block of codes creates a map using geemap of our ROI, then display
 The output of the above codes is shown bellow
 ![Firstimage](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/firstimage.png?raw=true)
 
-A major challenge working with SAR images is the speckle noise effect appparent in these images which degrades in the quality of the images. Evident in the SAR image obtained  are very bright tiny dots when you zoomed into the water body for example in this tutorial. Due to the very bright colors that are associated with objects such land, SAR images turn to suffer from misclassifications when this speckle noise is not treated. To remove the speckle noise from our images and make them ready for classification, we implemented the mean focal filter. This looks at the pixel from the entire image collection and takes the  neighboring pixels and takes the mean. We then map this focal mean process across all images in the entire image collection.
-Other approaches that could be used includes the median filter, the Lee filter, refined Lee filter etc.
+A major challenge working with SAR images is the speckle noise effect apparent in these images which degrades in the quality of the images. Evident in the SAR image obtained are very bright tiny dots when you zoomed into the water body for example in this tutorial. Due to the very bright colors that are associated with objects such as land, SAR images turn to suffer from misclassifications when this speckle-noise is not treated. To remove the speckle noise from our images and make them ready for classification, we implemented the mean focal filter. This looks at the pixel from the entire image collection and takes the  neighboring pixels and takes the mean. We then map this focal mean process across all images in the entire image collection.
+Other approaches that could be used include the median filter, the Lee filter, refined Lee filter etc.
 The implementation of the speckle filtering is shown below;
 ![Filtermean](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/speckle.png?raw=true)
-Next we compare the original image to the one obtained after the filtering
+Next, we compare the original image to the one obtained after the filtering
 ![Raw](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/smoothedvrsoriginal.png?raw=true)
