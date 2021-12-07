@@ -35,6 +35,7 @@ The images of our ROI so far has been boring, this because our eyes are naturall
 We have the RGB color composite over our ROI interest; now we are happy!
 
 **Water area classification**
+
 The satellite signal( Sentinel 1 in our case) hits and scatters from the earth surface. The amount of signal scattering from the surface (backscatter) is dependent in part on the type and texture of the surface, with smooth surface scattering less. Flat surfaces like water scatter very little; as a result, the stand out as dark spots against relatively very high scattering from land surfaces.
 To classify the water pixels in our ROI, we use a threshold approach. Since water bodies gives a very low scattering value, it gives darking pixels which are
 easily distinguishable from the land pixel; which appears very bright. The approach involves picking a threshold of backscatter value os used, all pixels below this threshold is classify as water. For this tutorial, we use -20 as our threshold backscatter value to this estimate water area. Feel free to adjust this threshold and see how your classification changes for your location. It is important to note that the value used here is simply based on heuristics and as such, a more optimal thresholds can be determined through a more robust mathematical or statistical techniques. The goal of this tutorial is to demonstrate how the backscatting value of Sentinel 1 could be used to detect various ground objeects such as water.
