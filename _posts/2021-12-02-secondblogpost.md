@@ -35,4 +35,5 @@ The images of our ROI so far has been boring, this because our eyes are naturall
 We have the RGB color composite over our ROI interest; now we are happy!
 
 **Water area classification**
+The satellite signal( Sentinel 1 in our case) hits and scatters from the earth surface. The amount of signal scattering from the surface (backscatter) is dependent in part on the type and texture of the surface, with smooth surface scattering less. Flat surfaces like water scatter very little; as a result, the stand out as dark spots against relatively very high scattering from land surfaces.
 
