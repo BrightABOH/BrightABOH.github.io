@@ -43,3 +43,4 @@ easily distinguishable from the land pixel; which appears very bright. The appro
 Next, we show the time series of water pixels in our region of interest. We create a chart that shows a spatial sum reducer across the image collection. This sum reducer 'sums' all pixels corresponding to water in the region at each time step. We step the scale to 10m (the resolution of Sentinel 1) in order to reduce the missclassification error, however this may result in taking a longer computation time. Again, try changing this scale from the native resolution to say 100m and compare the computation time and the classification!
 ![classify](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/classify.png?raw=true)
 
+![classify_output](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/classify_out.png?raw=true)
