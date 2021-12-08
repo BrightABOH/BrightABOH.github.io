@@ -50,3 +50,4 @@ Your chart should look like this if you follow through this tutorial!
 Finally, we show the water classification on the map!
 ![water](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/water.png?raw=true)
 ![waterclassified](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/waterclassified.png?raw=true)
+Don't forget to give me an upvote and comment when you this useful, cheers!!! 
