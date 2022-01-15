@@ -29,14 +29,14 @@ The implementation of the speckle filtering is shown below;
 Next, we look at the images obtained before the speckle noise reduction and after the noise reduction
 ![Raw](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/smoothedvrsoriginal.png?raw=true)
 
-**RGB Composite**
+## RGB Composite
 
 The images of our ROI so far has been boring, this because our eyes are naturally made to see colors. We combine the two(2) polarizatoins (VV and VH) of Sentinel 1 satellite to produce a more appealing view of our location. This color combination; Red, Green and Blue(RGB) which varies from satellite to satellite in terms of band combination is known as the RGB composite. 
 ![rgbcode](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/rgbcode.png?raw=true)
 ![rgb](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/RGB_water.png?raw=true)
 We have the RGB color composite over our ROI; now we are happy!
 
-**Water area classification**
+## Water area classification
 
 
 Satellite signal( Sentinel 1 in our case) hits and scatters from the earth surface. The amount of signal scattering from the surface (backscatter) is dependent in part on the type and texture of the surface, with smooth surface scattering less. Flat surfaces like water scatter very little; as a result, the stand out as dark spots against relatively very high scattering from land surfaces.
@@ -45,7 +45,7 @@ To classify the water pixels in our ROI, we use a threshold approach. Since wate
 easily distinguishable from the land pixel; which appears very bright. The approach involves picking a threshold of backscatter value, all pixels below this threshold is classify as water. For this tutorial, we use -20 as our threshold backscatter value to estimate water area. Feel free to adjust this threshold and see how your classification changes for your location. It is important to note that the value used here is simply based on heuristics and as such, a more optimal thresholds can be determined through a more robust mathematical or statistical techniques. The goal of this tutorial is to demonstrate how the backscatting value of Sentinel 1 could be used to detect various ground objeects such as water.
 
 
-**Time series of water pixels**
+## Time series of water pixels
 
 Next, we show the time series of water pixels in our region of interest. We create a chart that shows a spatial sum reducer across the image collection. This sum reducer 'sums' all pixels corresponding to water in the region at each time step. We set the scale to 10m (the resolution of Sentinel 1) in order to reduce the missclassification error, however this may result in taking a longer computation time. Again, try changing this scale from the native resolution to say 100m and compare the computation time and the classification!
 ![classify](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/classify.png?raw=true)
