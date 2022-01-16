@@ -7,6 +7,7 @@ permalink: /posts/Data-Science-and-remote-sensing-3
 image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol1.png?raw=true"
 ---
 
+
 ## Goal
 
 ## Introduction 
@@ -24,4 +25,4 @@ Mathematically;
 
 When the AAI is positive, it indicates the presence of UV-absorbing aerosols like dust and smoke. This index is useful for tracking the evolution of episodic aerosol plumes from dust outbreaks(such as harmattan), volcanic ash, etc.
 
-
+Interested readers should contact the official documentation 
