@@ -11,6 +11,9 @@ image: https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/a
 ## Goal
 
 ## Introduction 
+Harmattan is  a north eastern (wind direction is mainly north east) trade dry and dusty winds that blows from the south of the Sahara towards the Gulf of Guinea.  These trade winds are considered to be seasonal as they blow from November till March . 
+With such dry winds, the relative humidity usually hovers around <10% , temperatures usually fluctuates a lot during this period with cold night temperatures ranging from 9-20 Celsius. During the day however, temperatures could go as high as 30-39 Celsius depending on the location ! 
+
 ### Harmattan haze
 ### Formation of harmattan haze and/or dust storm
 ### Effects of harmattan
