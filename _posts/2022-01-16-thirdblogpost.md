@@ -11,6 +11,8 @@ image: https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/a
 ## Goal
 
 ## Introduction 
+** Harmattan haze
+** Formation of harmattan haze and/or dust storm
 
 ## Data description
 
