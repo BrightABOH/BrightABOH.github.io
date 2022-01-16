@@ -18,7 +18,7 @@ In this tutorial, we will use the Sentinel -5Precursor Near Real Time (NRTI ) Ul
 The AAI is defined as the difference between the ratio of measured reflectance at 340 and 380 nm and the ratio of simulated reflectances at these wavelength-dependent changes in Rayleigh scattering. 
 
 
-Mathematically; AAI = <img src="https://latex.codecogs.com/svg.image?AAI&space;=&space;-100.\left&space;[&space;log_{10}\left&space;(&space;\frac{l_{340}}{l_{380}}&space;\right&space;)meas&space;-log_{10}\left&space;(&space;\frac{l_{340}}{l_{380}}&space;\right&space;)simu\right&space;]" title="AAI = -100.\left [ log_{10}\left ( \frac{l_{340}}{l_{380}} \right )meas -log_{10}\left ( \frac{l_{340}}{l_{380}} \right )simu\right ]" />
+Mathematically; <img src="https://latex.codecogs.com/svg.image?AAI&space;=&space;-100.\left&space;[&space;log_{10}\left&space;(&space;\frac{l_{340}}{l_{380}}&space;\right&space;)meas&space;-log_{10}\left&space;(&space;\frac{l_{340}}{l_{380}}&space;\right&space;)simu\right&space;]" title="AAI = -100.\left [ log_{10}\left ( \frac{l_{340}}{l_{380}} \right )meas -log_{10}\left ( \frac{l_{340}}{l_{380}} \right )simu\right ]" />
 
 When the AAI is positive, it indicates the presence of UV-absorbing aerosols like dust and smoke. This index is useful for tracking the evolution of episodic aerosol plumes from dust outbreaks(such as harmattan), volcanic ash, etc.
 
