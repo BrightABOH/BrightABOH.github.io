@@ -20,7 +20,7 @@ The AAI is defined as the difference between the ratio of measured reflectance a
 
 Mathematically; 
 
-<img src="https://latex.codecogs.com/svg.image?AAI&space;=&space;-100.\left&space;[&space;log_{10}\left&space;(&space;\frac{l_{340}}{l_{380}}&space;\right&space;)meas&space;-log_{10}\left&space;(&space;\frac{l_{340}}{l_{380}}&space;\right&space;)simu\right&space;]" title="AAI = -100.\left [ log_{10}\left ( \frac{l_{340}}{l_{380}} \right )meas -log_{10}\left ( \frac{l_{340}}{l_{380}} \right )simu\right ]" />
+<img src="https://latex.codecogs.com/svg.image?AAI&space;=&space;-100.\left&space;[&space;log_{10}\left&space;(&space;\frac{l_{354}}{l_{388}}&space;\right&space;)meas&space;-log_{10}\left&space;(&space;\frac{l_{354}}{l_{388}}&space;\right&space;)simu\right&space;]" title="AAI = -100.\left [ log_{10}\left ( \frac{l_{354}}{l_{388}} \right )meas -log_{10}\left ( \frac{l_{354}}{l_{388}} \right )simu\right ]" />
 
 When the AAI is positive, it indicates the presence of UV-absorbing aerosols like dust and smoke. This index is useful for tracking the evolution of episodic aerosol plumes from dust outbreaks(such as harmattan), volcanic ash, etc.
 
