@@ -13,7 +13,7 @@ image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/
 
 ## Data description
 
-In this tutorial, we will use the Sentinel -5Precursor Near Real Time (NRTI ) UltraViolet Aerosol Index (UVAI) also known as the Aerosol Absorbing Index(AAI). The Sentinel-5Precursor is  part of the sentinel’s earth observation satellite mission launched by the European Space Agency collect remotely sensed atmospheric data mostly on air pollution
+In this tutorial, we will use the Sentinel -5Precursor Near Real Time (NRTI) UltraViolet Aerosol Index (UVAI) also known as the Aerosol Absorbing Index(AAI). The Sentinel-5Precursor is  part of the sentinel’s earth observation satellite mission launched by the European Space Agency collect remotely sensed atmospheric data mostly on air pollution
 
 The AAI is defined as the difference between the ratio of measured reflectance at 340 and 380 nm and the ratio of simulated reflectances at these wavelength depending on the changes in Rayleigh wavelength scattering. 
 
