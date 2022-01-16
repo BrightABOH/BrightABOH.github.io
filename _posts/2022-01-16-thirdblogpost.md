@@ -8,7 +8,7 @@ image: https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/a
 ---
 
 
-## Goal
+
 
 ## Introduction 
 Harmattan is  a north eastern (wind direction is mainly north east) trade dry and dusty winds that blows from the south of the Sahara towards the Gulf of Guinea.  These trade winds are considered to be seasonal as they blow from November till March . 
@@ -44,3 +44,7 @@ Mathematically;
 When the AAI is positive, it indicates the presence of UV-absorbing aerosols like dust and smoke. This index is useful for tracking the evolution of episodic aerosol plumes from dust outbreaks (such as harmattan), volcanic ash, etc.
 
 For further reading, interested readers should contact the official documentation [here](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_AER_AI) 
+## Goal
+ In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin)
+
+
