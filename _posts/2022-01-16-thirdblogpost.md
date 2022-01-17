@@ -48,13 +48,31 @@ For further reading, interested readers should contact the official documentatio
  In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin).
 ## 4. La crème de la crème
 ```python
-from netCDF4 import Dataset  # to work with NetCDF files
+f#This notebook is implemented using google earth engine,account authentication and initialization will be required!
+
+import ee
+ 
+# Trigger the authentication flow.
+ee.Authenticate()
+ 
+# Initialize the library.
+ee.Initialize()
+
+#Import the neccesary packages
+import pandas as pd
+import altair as alt
+import ipygee as ui
 import numpy as np
-import matplotlib.pyplot as plt  # to generate plots
-from mpl_toolkits.basemap import Basemap  # plot on map projections
-from os.path import expanduser
-home = expanduser("~")  # Get users home directory
-import os  # operating system interface
+import folium
+import math
+
+import geemap
+import json
+import os
+import requests
+from geemap import geojson_to_ee, ee_to_geojson
+import geemap.chart as chart
+from ipyleaflet import GeoJSON
 ```
 
 
