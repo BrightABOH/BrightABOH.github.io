@@ -86,7 +86,9 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 .select('absorbing_aerosol_index')\
 .filterBounds(AF_region)\
 #Save the images separately based on the filter date
-.filterDate('2021-09-01','2021-09-30')
+.filterDate('2021-07-01','2021-07-30')
+#.filterDate('2021-08-01','2021-08-30')
+#.filterDate('2021-09-01','2021-09-30')
 #.filterDate('2021-10-01','2021-10-31')
 #.filterDate('2021-11-01','2021-11-30')
 #.filterDate('2021-12-01','2021-12-31')
