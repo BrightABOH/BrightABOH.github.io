@@ -45,6 +45,16 @@ When the AAI is positive, it indicates the presence of UV-absorbing aerosols lik
 
 For further reading, interested readers should contact the official documentation [here](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_AER_AI) 
 ## 3. Goal
- In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin)
+ In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin).
+## 4. La creme
+```python
+from netCDF4 import Dataset  # to work with NetCDF files
+import numpy as np
+import matplotlib.pyplot as plt  # to generate plots
+from mpl_toolkits.basemap import Basemap  # plot on map projections
+from os.path import expanduser
+home = expanduser("~")  # Get users home directory
+import os  # operating system interface
+```
 
 
