@@ -22,6 +22,7 @@ When wind blows over the open desert area, it carries with it a lot of dust part
 During the harmattan season, there is a lot of dust in the atmosphere in many west African countries causing haze in the atmosphere among other effects. So which countries in Africa are mostly affected by this harmattan? These countries include; Niger,Nigeria Chad, Ghana, Burkina Faso, Benin, Mali Ivory Coast, Togo and Cameroon.
 ### 1.3 Effects of harmattan
 Strong and  persistent harmattan can destroy crops due to the large dust layer on these leaves and lack of rainfall causing some famers to experience crop failures. 
+![Lip](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/lips.jpeg?raw=true)
 
 
 
