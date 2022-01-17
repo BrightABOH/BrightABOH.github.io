@@ -117,6 +117,6 @@ def func_cyl(image):
   
  ```
  
- ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/animate1.gif?raw=true)
+ ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/animate1.mp4?raw=true)
 
  
