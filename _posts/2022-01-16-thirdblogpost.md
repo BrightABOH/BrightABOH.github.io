@@ -62,16 +62,11 @@ ee.Initialize()
 import pandas as pd
 import altair as alt
 import ipygee as ui
-import numpy as np
-import folium
-import math
-
 import geemap
 import json
 import os
 import requests
 from geemap import geojson_to_ee, ee_to_geojson
-import geemap.chart as chart
 from ipyleaflet import GeoJSON
 ```
 
