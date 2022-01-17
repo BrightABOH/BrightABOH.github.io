@@ -22,9 +22,6 @@ When wind blows over the open desert area, it carries with it a lot of dust part
 During the harmattan season, there is a lot of dust in the atmosphere in many west African countries causing haze in the atmosphere among other effects. So which countries in Africa are mostly affected by this harmattan? These countries include; Niger,Nigeria Chad, Ghana, Burkina Faso, Benin, Mali Ivory Coast, Togo and Cameroon.
 ### 1.3 Effects of harmattan
 Strong and  persistent harmattan can destroy crops due to the large dust layer on these leaves and lack of rainfall causing some famers to experience crop failures. 
-![Lip](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/lips.jpeg?raw=true)
-
-
 
 The high amount of dust in the atmosphere limits visibility greatly in some West African countries. As a results, the aviation industry suffers some great loses as some have their flights  cancel or interrupted each year due to harmattan. 
 Among the numerous effects of harmattan, public health implications of harmattan cannot be overemphasized. Some of the health concerns usually associated with this period are irritating eyes and lips, cracked lips. More serious concerns such as meningitis(Sahel meningitis), asthma and other respiratory problems are often associated with the harmattan season. Since the sizes of the particles are very small, they are easily absorbed into the respiratory truck and the lungs sometimes thereby causing very serious cardiovascular and other health disorders. For the purpose of further understanding these particles, they are further grouped based on their sizes with PM 2.5 (Particulate matter with diameter less than 2.5 micrometers) and PM 10 (Particulate matter with diameter less than 10 micrometers) generally considered fine inhalable particles and inhalable particles respectively. The above image provides some insight on the particles!
@@ -51,6 +48,7 @@ For further reading, interested readers should contact the official documentatio
 ## 3. Goal
  In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin).
 ## 4. La crème de la crème
+
 To start with, we import the necessary modules and packages!
 ```python
 import ee
@@ -114,12 +112,29 @@ band_viz = {
   'palette': ["#000000", "#0000FF", "#800080", "#00FFFF", "4C9A2A", "#FFFF00", "#FF0000"]
 }
 
-# Now map this visualization over the collection
+# Now map the visualization parameters over the collection
 def func_cyl(image):
     return image.visualize(band_viz) \
   .map(func_cyl)
   
  ```
+ 
+ 
+```python 
+ Map = geemap.Map()
+ legend_dict = {"-1": "#000000", "-0.5":"#0000FF", 
+               "0" :"#800080", "0.5": "#00FFFF",
+               "1":"4C9A2A", "1.5": "#FFFF00",
+               "2": "#FF0000"}
+clippedImage = dustImage.clip(africaBorder) 
+Map.centerObject(ghanaBorder,6)
+Map.addLayer(clippedImage, band_viz, 'Clipped Image');
+Map.add_basemap('HYBRID')
+
+Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
+Map.addLayerControl()
+ ```
+ 
  
  ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/animate1.mp4?raw=true)
 - title: What is GitHub?
