@@ -98,7 +98,7 @@ def func_onv(img):
     return img.clip(africaBorder)
 
 dust_test = dust.map(func_onv)
-no2Image = dust.mean()
+dustImage = dust.mean()
 
 val_max = 2.0
 val_min = -1
