@@ -61,4 +61,15 @@ import os
 import requests
 ```
 
-
+```python
+AF_region = ee.Geometry.Polygon(
+  [[[-18.698368046353494, 38.1446395611524],
+    [-18.698368046353494, -36.16300755581617],
+    [52.229366328646506, -36.16300755581617],
+    [52.229366328646506, 38.1446395611524]]],
+  None, False)
+  
+mask = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017')
+africaBorder = mask.filter(ee.Filter.eq('wld_rgn', 'Africa'));
+ghanaBorder = mask.filter(ee.Filter.eq('country_na', 'Ghana'))
+```
