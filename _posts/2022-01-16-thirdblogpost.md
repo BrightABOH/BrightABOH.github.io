@@ -94,12 +94,13 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 
 
 ```python
+# A function to clip the image collection to the area of interest
 def func_onv(img):
     return img.clip(africaBorder)
 
 dust_test = dust.map(func_onv)
-dustImage = dust.mean()
-
+dustImage = dust.mean()# find the mean image(to be added to the map)
+#Define the visualization parameter
 val_max = 2.0
 val_min = -1
 band_viz = {
@@ -109,7 +110,7 @@ band_viz = {
   'palette': ["#000000", "#0000FF", "#800080", "#00FFFF", "4C9A2A", "#FFFF00", "#FF0000"]
 }
 
-
+# Now map this visualization over the collection
 def func_cyl(image):
     return image.visualize(band_viz) \
   .map(func_cyl)
