@@ -123,14 +123,14 @@ def func_cyl(image):
  
  
 ```python 
- Map = geemap.Map()
+ Map = geemap.Map()# Define an empty
  legend_dict = {"-1": "#000000", "-0.5":"#0000FF", 
                "0" :"#800080", "0.5": "#00FFFF",
                "1":"4C9A2A", "1.5": "#FFFF00",
-               "2": "#FF0000"}
+               "2": "#FF0000"} #Map legend
 clippedImage = dustImage.clip(africaBorder) 
-Map.centerObject(ghanaBorder,6)
-Map.addLayer(clippedImage, band_viz, 'Clipped Image');
+Map.centerObject(africaBorder,6)
+Map.addLayer(clippedImage, band_viz, 'Clipped Image'); # Add image to the map
 Map.add_basemap('HYBRID')
 
 Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
