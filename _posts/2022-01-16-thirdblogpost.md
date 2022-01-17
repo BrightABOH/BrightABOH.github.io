@@ -61,6 +61,7 @@ import os
 import requests
 ```
 
+Next be define the our area of interest. 
 ```python
 AF_region = ee.Geometry.Polygon(
   [[[-18.698368046353494, 38.1446395611524],
