@@ -95,6 +95,7 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 #.filterDate('2021-01-01','2022-01-15')
 
 ```
+Save the image collections locally. Next use the images to create an animation using this online [tool](https://gifmaker.me)
 
 
 ```python
@@ -121,7 +122,7 @@ def func_cyl(image):
   
  ```
  
- 
+Display the mean image on the map 
 ```python 
  Map = geemap.Map()# Define an empty
  legend_dict = {"-1": "#000000", "-0.5":"#0000FF", 
