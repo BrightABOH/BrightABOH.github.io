@@ -91,3 +91,27 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 #.filterDate('2021-01-01','2022-01-15')
 
 ```
+
+
+```python
+def func_onv(img):
+    return img.clip(africaBorder)
+
+dust_test = dust.map(func_onv)
+no2Image = dust.mean()
+
+val_max = 2.0
+val_min = -1
+band_viz = {
+  'min': val_min,
+  'max': val_max,
+  'opacity': 0.55,
+  'palette': ["#000000", "#0000FF", "#800080", "#00FFFF", "4C9A2A", "#FFFF00", "#FF0000"]
+}
+
+
+def func_cyl(image):
+    return image.visualize(band_viz) \
+  .map(func_cyl)
+  
+ ```
