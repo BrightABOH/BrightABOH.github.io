@@ -24,7 +24,7 @@ During the harmattan season, there is a lot of dust in the atmosphere in many we
 Strong and  persistent harmattan can destroy crops due to the large dust layer on these leaves and lack of rainfall causing some famers to experience crop failures. 
 
 The high amount of dust in the atmosphere limits visibility greatly in some West African countries. As a results, the aviation industry suffers some great loses as some have their flights  cancel or interrupted each year due to harmattan. 
-![Effect](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/effect.jpeg?raw=true)
+![Effect](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/effect.png?raw=true)
 
 
 Among the numerous effects of harmattan, public health implications of harmattan cannot be overemphasized. Some of the health concerns usually associated with this period are irritating eyes and lips, cracked lips. More serious concerns such as meningitis(Sahel meningitis), asthma and other respiratory problems are often associated with the harmattan season. Since the sizes of the particles are very small, they are easily absorbed into the respiratory truck and the lungs sometimes thereby causing very serious cardiovascular and other health disorders. For the purpose of further understanding these particles, they are further grouped based on their sizes with PM 2.5 (Particulate matter with diameter less than 2.5 micrometers) and PM 10 (Particulate matter with diameter less than 10 micrometers) generally considered fine inhalable particles and inhalable particles respectively. The above image provides some insight on the particles!
