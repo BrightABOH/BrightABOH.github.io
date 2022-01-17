@@ -54,15 +54,10 @@ ee.Authenticate()
 # Initialize the library.
 ee.Initialize()
 #Import the neccesary packages
-import pandas as pd
-import altair as alt
-import ipygee as ui
 import geemap
 import json
 import os
 import requests
-from geemap import geojson_to_ee, ee_to_geojson
-from ipyleaflet import GeoJSON
 ```
 
 
