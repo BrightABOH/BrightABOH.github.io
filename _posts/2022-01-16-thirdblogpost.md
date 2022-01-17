@@ -47,6 +47,7 @@ For further reading, interested readers should contact the official documentatio
 ## 3. Goal
  In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin).
 ## 4. La crème de la crème
+To start with, we import the necessary modules and packages 
 ```python
 import ee
 # Trigger the authentication flow.
