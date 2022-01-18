@@ -149,7 +149,7 @@ Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
 Map.addLayerControl()
  ```
  
- So how do the countries affected by harmattan look at the time of writting(January 15) this post? From the figure below, we observe a huge aerosol(dust) hovering over these countries barely 2.5 months into harmattan. The left image taken one month into harmattan shows movement of dust from sahara towards the affected countries. In the right image however(January 1-15), we observe progression of the dust into affected countries. The legend indicates the presence and severity of this dust. Positive values from 0.5(colored in cyan) indicates presence of dust and 2(colored in red) indicates the worse case senerio(presence) of the dust
+ So how do the countries affected by harmattan look at the time of writting(January 15) this post? From the figure below, we observe a huge aerosol(dust) hovering over these countries barely 2.5 months into harmattan. The left image taken one month into harmattan shows movement of dust from sahara towards the affected countries. In the right image however (January 1-15), we observe progression of the dust into affected countries. The legend indicates the presence and severity of this dust. Positive values from 0.5(colored in cyan) indicates presence of dust and 2 (colored in red) indicates the worse case senerio (presence) of the dust
  
  ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol5.png?raw=true)
-
+Next, we observe when this dust reaches the shores of Ghana from space. 
