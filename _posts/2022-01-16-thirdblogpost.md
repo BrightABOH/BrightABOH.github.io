@@ -49,7 +49,7 @@ When the AAI is positive, it indicates the presence of UV-absorbing aerosols lik
 
 For further reading, interested readers should contact the official documentation [here](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_AER_AI) 
 ## 3. Goal
- In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin).
+ In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin). We used python programming language and Google Earth Engine as data source and computational platform
 ## 4. La crème de la crème
 
 To start with, we import the necessary modules and packages!
@@ -148,7 +148,7 @@ Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
 Map.addLayerControl()
  ```
  
- So how do the countries affected by harmattan look at the time of writting(January 15) this post? From the figure below, we observe a huge aerosol(dust) hovering over these countries barely 2.5 months into harmattan. 
+ So how do the countries affected by harmattan look at the time of writting(January 15) this post? From the figure below, we observe a huge aerosol(dust) hovering over these countries barely 2.5 months into harmattan. The left image taken one month into harmattan shows movement of dust from sahara towards the affected countries. In the right image however(January 1-15), we observe progression of the dust into affected countries. The legend indicates the presence and severity of this dust. 1 indicates presence of dust and 2 indicates the worse case senerio(presence) of the dust
  
  ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol5.png?raw=true)
 
