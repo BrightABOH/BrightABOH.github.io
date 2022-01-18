@@ -150,5 +150,5 @@ Map.addLayerControl()
  
  So how do the countries affected by harmattan look at the time of writting(January 15) this post?
  
- ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol3.png?raw=true)
+ ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol4.png?raw=true)
 
