@@ -100,6 +100,13 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 ```
 Save the image collections locally. Next use the images to create an animation using this online [tool](https://gifmaker.me)
 
+```python
+out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
+filename = os.path.join(out_dir, 'dust_collection.tif')
+geemap.ee_export_image_collection(dust, out_dir=out_dir)
+```
+
+
 
 ```python
 # A function to clip the image collection to the area of interest
@@ -141,6 +148,7 @@ Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
 Map.addLayerControl()
  ```
  
+ So how do the countries affected by harmattan look at the time of writting(January 15) this post?
  
  ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol3.png?raw=true)
 
