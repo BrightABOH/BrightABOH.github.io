@@ -148,7 +148,7 @@ Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
 Map.addLayerControl()
  ```
  
- So how do the countries affected by harmattan look at the time of writting(January 15) this post?
+ So how do the countries affected by harmattan look at the time of writting(January 15) this post? From the figure below, we observe a huge aerosol(dust) hovering over these countries barely 2.5 months into harmattan. 
  
  ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol4.png?raw=true)
 
