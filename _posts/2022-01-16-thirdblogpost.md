@@ -201,6 +201,8 @@ Monitoring the movement of dust from the begining of harmattan season (first ima
 We are going to travel back in time, to see how the country looks like in terms of dust composition. To do this, we collect satellite images a month before the season. 
 
 ![October](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/oct.png?raw=true)
+Clearly, we record negative values for aerosol absorbing index(AAI). From all the satellite images available for the month on October, we observe negative aerosol absorbing index as such we conclude the absence of harmattan associated dust prior to the harmattan season.
+
 
 
 
