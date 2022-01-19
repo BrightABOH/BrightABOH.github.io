@@ -153,4 +153,47 @@ Map.addLayerControl()
  So how do the countries affected by harmattan look at the time of writting(January 15) this post? From the figure below, we observe a huge aerosol(dust) hovering over these countries barely 2.5 months into harmattan. The left image taken one month into harmattan shows movement of dust from sahara towards the affected countries. In the right image however (January 1-15), we observe progression of the dust into affected countries. The legend indicates the presence and severity of this dust. Positive values from 0.5(colored in cyan) indicates presence of dust and 2 (colored in red) indicates the worse case senerio (presence) of the dust
  
  ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol6.png?raw=true)
-Next, we observe when this dust reaches the shores of Ghana from space. 
+Next, we observe when this dust reaches the shores of Ghana from space. We use the same approaches as before, but we set the boundaries to our country of interest; Ghana. Holding all the other parts constant as before, and changing only the boundary code, we have ;
+
+
+```python
+# A function to clip the image collection to the area of interest
+def func_onv(img):
+    return img.clip(ghanaBorder)
+
+dust_test = dust.map(func_onv)
+dustImage = dust.mean()# find the mean image(to be added to the map)
+#Define the visualization parameter
+val_max = 2.0
+val_min = -1
+band_viz = {
+  'min': val_min,
+  'max': val_max,
+  'opacity': 0.55,
+  'palette': ["#000000", "#0000FF", "#800080", "#00FFFF", "4C9A2A", "#FFFF00", "#FF0000"]
+}
+
+# Now map the visualization parameters over the collection
+def func_cyl(image):
+    return image.visualize(band_viz) \
+  .map(func_cyl)
+  
+ ```
+ 
+Display the mean image on the map 
+```python 
+ Map = geemap.Map()# Define an empty
+ legend_dict = {"-1": "#000000", "-0.5":"#0000FF", 
+               "0" :"#800080", "0.5": "#00FFFF",
+               "1":"4C9A2A", "1.5": "#FFFF00",
+               "2": "#FF0000"} #Map legend
+clippedImage = dustImage.clip(ghanaBorder) 
+Map.centerObject(ghanaBorder,6)
+Map.addLayer(clippedImage, band_viz, 'Clipped Image'); # Add image to the map
+Map.add_basemap('HYBRID')
+
+Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
+Map.addLayerControl()
+ ```
+ 
+ 
