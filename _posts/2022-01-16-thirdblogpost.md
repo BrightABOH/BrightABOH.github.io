@@ -197,4 +197,4 @@ Map.addLayerControl()
  ```
  
  
-[Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol7.png?raw=true)
+![Ghana dust](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol7.png?raw=true)
