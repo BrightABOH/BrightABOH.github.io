@@ -200,7 +200,7 @@ Monitoring the movement of dust from the begining of harmattan season (first ima
 ![Ghana dust](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol7.png?raw=true)
 We are going to travel back in time, to see how the country looks like in terms of dust composition. To do this, we collect satellite images a month before the season. 
 
-![October](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/october.png?raw=true)
+![October](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/oct.png?raw=true)
 
 
 
