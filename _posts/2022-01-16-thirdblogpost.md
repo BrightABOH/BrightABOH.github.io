@@ -196,7 +196,7 @@ Map.add_legend(legend_title= "Aerosol index",legend_dict=legend_dict)
 Map.addLayerControl()
  ```
  
-Monitoring the movement of dust from the begining of harmattan season (first image) to the current date (third image) we see that the amount of dust associaeted with harmattan is very minimal with exception of the northern sector at the begining of the season. As we progress barely a month into the harmattan, we observe a larger amount of dust over the either country (second image). 
+Monitoring the movement of dust from the begining of harmattan season (first image) to the current date (third image) we see that the amount of dust associaeted with harmattan is very minimal with exception of the northern sector at the begining of the season. As we progress barely a month into the harmattan, we observe a larger amount of dust over the entire country (second image). 
 ![Ghana dust](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol7.png?raw=true)
 
 
