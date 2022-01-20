@@ -49,8 +49,10 @@ Mathematically;
 When the AAI value is positive, it indicates the presence of UV-absorbing aerosols like dust and smoke. This index is useful for tracking the evolution of episodic aerosol plumes from dust outbreaks (such as harmattan), volcanic ash, etc.
 
 For further reading, interested readers should contact the official documentation [here](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_AER_AI) 
+
 ## 3. Goal
  In this tutorial, we will monitor the progression of the trade winds responsible for the dust storms experienced during  harmattan period with the help of  satellite images.  In particular, we will monitor when these dust reaches Ghana from the Sahara desert (dust origin). We used python programming language and Google Earth Engine as data source and computational platform
+ 
 ## 4. La crème de la crème
 
 To start with, we import the necessary modules and packages!
@@ -197,8 +199,9 @@ Map.addLayerControl()
  ```
  
 Monitoring the movement of dust from the begining of harmattan season (first image) to the current date (third image) we see that the amount of dust associaeted with harmattan is very minimal with exception of the northern sector at the begining of the season. As we progress barely a month into the harmattan, we observe a larger amount of dust over the entire country (second image). Finaly, the last image gives an idea of the intensity of harmattan in the country(especially around the middle sector) . 
+
 ![Ghana dust](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol7.png?raw=true)
-We are going to travel back in time, to see how the country looks like in terms of dust composition. To do this, we collect satellite images a month before the season. 
+We are going to travel back in time, to see how the country looks like in terms of dust composition before harmattan. To do this, we collect satellite images a month before the season. 
 
 ![October](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/oct.png?raw=true)
 
