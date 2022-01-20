@@ -204,8 +204,8 @@ We are going to travel back in time, to see how the country looks like in terms 
 
 Clearly, we record negative values for aerosol absorbing index(AAI). From all the satellite images available for the month of October, we observe negative aerosol absorbing index as such we conclude the absence of harmattan associated dust prior to the harmattan season. 
 
-Disclaimer
-We note that the use of satellite images alone such as AAI is not adequate to disaggregate dust into various particulate mattar(PM 2.5 and PM 10), as a result,  readers and researchers interested in indepth analysis of particulate matter need to augment their data source with ground based sensors such as The Real-time, Affordable, Multi-Pollutant (RAMP).
+**Important info**
+We acknowledge that the use of satellite images alone such as AAI is not adequate to disaggregate dust into various particulate mattar (PM 2.5 and PM 10), as a result,  readers and researchers interested in indepth analysis of particulate matter need to augment their data source with ground based sensors such as The Real-time, Affordable, Multi-Pollutant (RAMP).
 
 
 
