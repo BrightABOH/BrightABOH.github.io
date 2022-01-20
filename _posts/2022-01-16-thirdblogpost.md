@@ -207,7 +207,7 @@ Clearly, we record negative values for aerosol absorbing index(AAI). From all th
 **Important info**
 
 
-We acknowledge that the use of satellite images alone such as AAI is not adequate to disaggregate dust into various particulate mattar (PM 2.5 and PM 10), as a result,  readers and researchers interested in indepth analysis of particulate matter need to augment their data source with ground based sensors such as The Real-time, Affordable, Multi-Pollutant (RAMP).
+We acknowledge that the use of satellite images alone such as AAI is not adequate to disaggregate dust into various particulate mattar (PM 2.5 and PM 10), as a result,  readers and researchers interested in indepth analysis involving particulate matter need to augment their data source with ground based sensors such as The Real-time, Affordable, Multi-Pollutant (RAMP).
 
 Thank you for reading. Feel free to comment or ask any question you have. 
 
