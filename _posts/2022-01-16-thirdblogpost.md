@@ -103,6 +103,8 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 ```
 Save the image collections locally. Next use the images to create an animation using this online [tool](https://gifmaker.me)
 
+![animation](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/dustanimation.gif?raw=true)
+
 ```python
 #Save the image collection locally
 out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
