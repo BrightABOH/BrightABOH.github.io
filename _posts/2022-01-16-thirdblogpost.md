@@ -92,8 +92,7 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 .select('absorbing_aerosol_index')\
 .filterBounds(AF_region)\
 #Save the images separately based on the filter date
-.filterDate('2021-07-01','2021-07-30')
-#.filterDate('2021-08-01','2021-08-30')
+.filterDate('2021-08-01','2021-08-30')
 #.filterDate('2021-09-01','2021-09-30')
 #.filterDate('2021-10-01','2021-10-31')
 #.filterDate('2021-11-01','2021-11-30')
@@ -103,6 +102,7 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 ```
 Save the image collections locally. Next use the images to create an animation using this online [tool](https://gifmaker.me)
 
+The resulting animation shows dust movement from August to January. 
 ![animation](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/dustanimation.gif?raw=true)
 
 ```python
