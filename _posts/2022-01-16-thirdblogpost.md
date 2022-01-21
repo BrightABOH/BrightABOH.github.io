@@ -83,7 +83,7 @@ africaBorder = mask.filter(ee.Filter.eq('wld_rgn', 'Africa'));
 ghanaBorder = mask.filter(ee.Filter.eq('country_na', 'Ghana'))
 ```
 
-Start the image collection and filter them based on the area of interest and dates. The idea is to create an animation with the images so as to observe the dust movement. To achieve this, we start our image collection some few months before the begining of harmattan specifically in September. 
+Start the image collection and filter them based on the area of interest and dates. The idea is to create an animation with the images so as to observe the dust movement. To achieve this, we start our image collection some few months before the begining of harmattan specifically in August 
 
 
 ```python
