@@ -102,7 +102,7 @@ dust = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_AER_AI') \
 ```
 Save the image collections locally. Next use the images to create an animation using this online [tool](https://gifmaker.me)
 
-The resulting animation shows dust movement from August to January. 
+The resulting animation shows dust movement from August to January in the sahara region 
 ![animation](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/dustanimation.gif?raw=true)
 
 ```python
