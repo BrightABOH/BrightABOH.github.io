@@ -13,7 +13,7 @@ A recent project to develop a deep learning model to predict and estimate cropla
 In this blog post, I will share with you how to identify cloudy pixels and replace them with alternative satellite images.
 Sentinel 2 has become such an indispensable choice when working on agriculture and other land  applications due to the following reasons and more: 
 
-\textbf{High Spatial Resolution} 
+*High Spatial Resolution
 Sentinel-2 provides high-resolution imagery, with spatial resolutions ranging from 10 meters to 60 meters, depending on the spectral band. This level of detail allows for the identification and monitoring of small-scale features such as individual fields, crops, and land cover types.
 
 Multi-Spectral Bands
