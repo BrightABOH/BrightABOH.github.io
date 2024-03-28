@@ -203,21 +203,6 @@ def download_sentinel_images(api, shapefile_path, start_date, end_date, output_f
 
     gdf['area_m2'] = gdf['geometry'].area
 
-    # Sum the areas to get the total area of the shapefile
-    total_area_shapefile_m2 = gdf['area_m2'].sum()
-    # Convert total area to hectares
-    total_area_shapefile_hectares = total_area_shapefile_m2 / 10000
-
-    # Convert total area to square kilometers
-    total_area_shapefile_square_km = total_area_shapefile_hectares / 100
-    # Print the total area in square kilometers
-    #print(f"Total area of the shapefile: {total_area_shapefile_square_km:.2f} square kilometers")
-
-
-    # Print the total area
-    #print(f"Total area of the shapefile: {total_area_shapefile_m2:.2f} square meters")
-    #print(f"Total area of the shapefile: {total_area_shapefile_hectares:.2f} square meters")
-
     # Calculate the bounding box of the union of all geometries in the shapefile
     shapefile_union = unary_union(gdf['geometry'])
     bbox = BBox(bbox=shape(shapefile_union).bounds, crs=CRS(common_crs))
