@@ -54,11 +54,16 @@ image_size = (512, 512)
 mean = [0.485, 0.456, 0.406]
 std = [0.229, 0.224, 0.225]
 ```
-Set up Sentinel Hub API
+Set up Sentinel Hub API including the bands to download
 ```
+#Sentinel 2 bands to be downloaded
 bands = ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "SCL", "B11", "B12","SCL"]
+
+#Sentinel 1 bands to be downloaded
 bands_s1 = ['VV', 'VH']
+#Landsat 8,9 bands to be downloaded
 l_band = ["B02", "B03", "B04","B05"]
+
 api = SentinelAPI(config.sh_client_id, config.sh_client_secret, 'https://scihub.copernicus.eu/dhus')
 evalscript = """
 //VERSION=3
@@ -88,7 +93,7 @@ function setup() {
         ]
     };
 }
-
+# Define any vegetation indices you are interested in
 function evaluatePixel(samples, scenes, inputMetadata, customData, outputMetadata) {
     ndvi = (samples.B08 - samples.B04) / (samples.B08 + samples.B04);
     
