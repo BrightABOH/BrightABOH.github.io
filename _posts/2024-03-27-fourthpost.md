@@ -183,5 +183,236 @@ function evaluatePixel(samples, scenes, inputMetadata, customData, outputMetadat
     };
 }
 ```
+Define python function to download the satellite images which makes a call to the Sentinel Hub APIs defined above
 
+```
+# Function to download Sentinel-2 images using sentinelhub
+def download_sentinel_images(api, shapefile_path, start_date, end_date, output_folder):
+    # Load the shapefile into a GeoDataFrame
+    gdf = gpd.read_file(shapefile_path)
+    gdf = gdf.set_geometry('geometry')
+
+    # Set the common CRS for both the shapefile and tiles
+    common_crs = 'EPSG:32736'
+    # Read the shapefile into a GeoDataFrame
+    gdf = gpd.read_file(shapefile_path)
+
+    # Calculate the area of each polygon in square meters
+    target_crs = 'EPSG:32736'
+    gdf = gdf.to_crs(target_crs)
+
+    gdf['area_m2'] = gdf['geometry'].area
+
+    # Sum the areas to get the total area of the shapefile
+    total_area_shapefile_m2 = gdf['area_m2'].sum()
+    # Convert total area to hectares
+    total_area_shapefile_hectares = total_area_shapefile_m2 / 10000
+
+    # Convert total area to square kilometers
+    total_area_shapefile_square_km = total_area_shapefile_hectares / 100
+    # Print the total area in square kilometers
+    #print(f"Total area of the shapefile: {total_area_shapefile_square_km:.2f} square kilometers")
+
+
+    # Print the total area
+    #print(f"Total area of the shapefile: {total_area_shapefile_m2:.2f} square meters")
+    #print(f"Total area of the shapefile: {total_area_shapefile_hectares:.2f} square meters")
+
+    # Calculate the bounding box of the union of all geometries in the shapefile
+    shapefile_union = unary_union(gdf['geometry'])
+    bbox = BBox(bbox=shape(shapefile_union).bounds, crs=CRS(common_crs))
+
+    # Iterate over polygons
+    for idx, row in gdf.iterrows():
+        polygon = row['geometry']
+
+
+        request = SentinelHubRequest(
+            data_folder=os.path.join(output_folder, 'sentinel2'),
+            evalscript=evalscript,
+            input_data=[
+                SentinelHubRequest.input_data(
+                    data_collection=DataCollection.SENTINEL2_L2A,
+                    time_interval=(start_date, end_date),
+                    mosaicking_order='mostRecent',
+                    maxcc=0.25
+                )
+            ],
+            responses=[
+                SentinelHubRequest.output_response('RGB', MimeType.TIFF),
+                SentinelHubRequest.output_response('SCL', MimeType.TIFF)
+            ],
+            bbox=bbox,
+            size=image_size,
+            config=config
+        )
+
+        try:
+            request.save_data()
+
+
+            print(f"Data saved successfully for polygon {idx}!")
+        except Exception as e:
+            print(f"Error saving data for polygon {idx}: {e}")
+    return total_area_shapefile_hectares
+
+
+
+def download_sentinel1_images(api, shapefile_path, start_date, end_date, output_folder):
+    # Load the shapefile into a GeoDataFrame
+    gdf = gpd.read_file(shapefile_path)
+    gdf = gdf.set_geometry('geometry')
+
+    # Set the common CRS for both the shapefile and tiles
+    common_crs = 'EPSG:32736'
+    # Read the shapefile into a GeoDataFrame
+    gdf = gpd.read_file(shapefile_path)
+
+    # Calculate the area of each polygon in square meters
+    target_crs = 'EPSG:32736'
+    gdf = gdf.to_crs(target_crs)
+
+    gdf['area_m2'] = gdf['geometry'].area
+    # Check and print CRS of shapefile and raster data
+
+
+
+    # Sum the areas to get the total area of the shapefile
+    total_area_shapefile_m2 = gdf['area_m2'].sum()
+    # Convert total area to hectares
+    total_area_shapefile_hectares = total_area_shapefile_m2 / 10000
+
+    # Convert total area to square kilometers
+    total_area_shapefile_square_km = total_area_shapefile_hectares / 100
+    # Print the total area in square kilometers
+    #print(f"Total area of the shapefile: {total_area_shapefile_square_km:.2f} square kilometers")
+
+    # Print the total area
+    #print(f"Total area of the shapefile: {total_area_shapefile_m2:.2f} square meters")
+    #print(f"Total area of the shapefile: {total_area_shapefile_hectares:.2f} square meters")
+
+    # Iterate over polygons
+    for idx, row in gdf.iterrows():
+        polygon = row['geometry']
+
+        # Calculate the bounding box of the current polygon
+        bbox = BBox(bbox=shape(polygon).bounds, crs=CRS(common_crs))
+
+        request = SentinelHubRequest(
+            data_folder=os.path.join(output_folder, 'sentinel1'),
+            evalscript=evalscript_s1,
+            input_data=[
+                SentinelHubRequest.input_data(
+                    data_collection=DataCollection.SENTINEL1_IW_DES,
+                    time_interval=(start_date, end_date),
+                    mosaicking_order='mostRecent',
+                    maxcc=0.25
+                )
+            ],
+            responses=[
+                SentinelHubRequest.output_response('VV', MimeType.TIFF),
+                SentinelHubRequest.output_response('VH', MimeType.TIFF),
+                SentinelHubRequest.output_response('RGB', MimeType.TIFF),
+            ],
+            bbox=bbox,  # Use the bounding box of the current polygon
+            size=image_size,
+            config=config
+        )
+
+        try:
+            request.save_data()
+            print(f"Data saved successfully for polygon {idx}!")
+        except Exception as e:
+            print(f"Error saving data for polygon {idx}: {e}")
+
+    return total_area_shapefile_hectares
+
+def download_landsat_images(api, shapefile_path, start_date, end_date, output_folder):
+    # Load the shapefile into a GeoDataFrame
+    gdf = gpd.read_file(shapefile_path)
+    gdf = gdf.set_geometry('geometry')
+
+
+    # Set the common CRS for both the shapefile and tiles
+    common_crs = 'EPSG:32736'
+    # Read the shapefile into a GeoDataFrame
+    gdf = gpd.read_file(shapefile_path)
+
+    # Calculate the area of each polygon in square meters
+    target_crs = 'EPSG:32736'
+    gdf = gdf.to_crs(target_crs)
+
+    gdf['area_m2'] = gdf['geometry'].area
+
+    # Sum the areas to get the total area of the shapefile
+    total_area_shapefile_m2 = gdf['area_m2'].sum()
+    # Convert total area to hectares
+    total_area_shapefile_hectares = total_area_shapefile_m2 / 10000
+
+    # Convert total area to square kilometers
+    total_area_shapefile_square_km = total_area_shapefile_hectares / 1000
+    print("projection information")
+    # Print the total area in square kilometers
+    print(f"Total area of the shapefile: {total_area_shapefile_square_km:.2f} square kilometers")
+
+
+
+    # Print the total area
+    #print(f"Total area of the shapefile: {total_area_shapefile_m2:.2f} square meters")
+    #print(f"Total area of the shapefile: {total_area_shapefile_hectares:.2f} square hectares")
+
+    # Calculate the bounding box of the union of all geometries in the shapefile
+    shapefile_union = unary_union(gdf['geometry'])
+    bbox = BBox(bbox=shape(shapefile_union).bounds, crs=CRS(common_crs))
+
+    # Iterate over polygons
+    for idx, row in gdf.iterrows():
+        polygon = row['geometry']
+
+
+        request = SentinelHubRequest(
+            data_folder=os.path.join(output_folder, 'landsat'),
+            evalscript=evalscript_l8,
+            input_data=[
+                SentinelHubRequest.input_data(
+                    data_collection=DataCollection.LANDSAT_OT_L1,
+                    time_interval=(start_date, end_date),
+                    mosaicking_order='mostRecent',
+                    maxcc=0.25
+
+                )
+            ],
+            responses=[
+                SentinelHubRequest.output_response('rgb', MimeType.TIFF),
+                SentinelHubRequest.output_response('ndvi', MimeType.TIFF)
+            ],
+            bbox=bbox,
+            size=image_size,
+            config=config
+        )
+
+        try:
+            request.save_data()
+
+
+            print(f"Data saved successfully for polygon {idx}!")
+        except Exception as e:
+            print(f"Error saving data for polygon {idx}: {e}")
+    return total_area_shapefile_hectares
+    #def shapefile_wihtout_water():
+      #  Land_without_water = total_area_shapefile_square_km - total_water_area
+      #  return Land_without_water
+
+def extract_tar(tar_path, extract_path):
+    with tarfile.open(tar_path, 'r') as tar:
+        tar.extractall(extract_path)
+
+def remove_file(file_path):
+    try:
+        os.remove(file_path)
+        print(f"File removed: {file_path}")
+    except OSError as e:
+        print(f"Error removing file {file_path}: {e}")
+
+```
 ## Pixel replacement
