@@ -321,13 +321,5 @@ def download_landsat_images(api, shapefile_path, start_date, end_date, output_fo
 def extract_tar(tar_path, extract_path):
     with tarfile.open(tar_path, 'r') as tar:
         tar.extractall(extract_path)
-
-def remove_file(file_path):
-    try:
-        os.remove(file_path)
-        print(f"File removed: {file_path}")
-    except OSError as e:
-        print(f"Error removing file {file_path}: {e}")
-
 ```
 ## Pixel replacement
