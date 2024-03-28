@@ -20,7 +20,16 @@ Despite the advantages of using Sentinel 2, this optical imagery suffers  in are
 ## Image acquisition 
 For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel 2 and Landsat 8 and(or) 9. To register for Sentinelhub, head over [here](https://www.sentinel-hub.com), and create a client ID and client secret for your account.  
 
-<<engine='python', engine.path='python3'>>=
-@
+```
+from sentinelsat import SentinelAPI
+from datetime import date
+
+from shapely.ops import unary_union
+
+import rasterio
+import geopandas as gpd
+from shapely.geometry import shape
+from sentinelhub import BBox, CRS, DataCollection, SentinelHubRequest, MimeType, SHConfig
+```
 
 ## Pixel replacement
