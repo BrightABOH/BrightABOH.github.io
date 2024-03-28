@@ -20,7 +20,7 @@ Despite the advantages of using Sentinel 2, this optical imagery suffers  in are
 ## Image acquisition 
 For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel 2 and Landsat 8 and(or) 9. To register for Sentinelhub, head over [here](https://www.sentinel-hub.com), and create a client ID and client secret for your account.  
 
-Now, the code environment, import the necessary modules
+Now, the code environment, import the necessary modules. 
 ```
 from sentinelsat import SentinelAPI
 from datetime import date
@@ -38,6 +38,145 @@ Set your Sentinel Hub credentials
 config = SHConfig()
 config.sh_client_id = 'Add your Sentinel Hub instance ID'
 config.sh_client_secret = 'Add your Sentinel Hub client secret'
+```
+Next, we set the date range for which the images will be downloaded, and the location over which the image will be downloaded
+```
+Set the path to your shapefile
+shapefile_path = "/path/to/shapefile.shp/"
+
+#Set the date range for the Sentinel-2 image search
+start_date = date(2024, 1, 1)
+
+end_date = date(2024, 3, 30)
+#image size to be downloaded
+image_size = (512, 512)
+# Define the mean and standard deviation values for normalization
+mean = [0.485, 0.456, 0.406]
+std = [0.229, 0.224, 0.225]
+```
+Set up Sentinel Hub API
+```
+bands = ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "SCL", "B11", "B12","SCL"]
+bands_s1 = ['VV', 'VH']
+l_band = ["B02", "B03", "B04","B05"]
+api = SentinelAPI(config.sh_client_id, config.sh_client_secret, 'https://scihub.copernicus.eu/dhus')
+evalscript = """
+//VERSION=3
+function setup() {
+    return {
+        input: ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B11", "B12","SCL"],
+        output: [
+            { id: "B01", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B02", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B03", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B04", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B05", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B06", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B07", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B08", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B8A", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B09", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B11", bands: 1, sampleType: SampleType.AUTO },
+            { id: "B12", bands: 1, sampleType: SampleType.AUTO },
+            { id: "RGB", bands: 3, sampleType: SampleType.AUTO },
+            { id: "RGBN", bands: 4, sampleType: SampleType.AUTO },
+            { id: "TCI", bands: 3, sampleType: SampleType.AUTO },
+            { id: "NDVI", bands: 1, sampleType: SampleType.FLOAT32 },  // NDVI band
+            { id: "SAVI", bands: 3, sampleType: SampleType.FLOAT32 },
+            { id: "SCL", bands: 3, sampleType: SampleType.FLOAT32 },  
+           
+        ]
+    };
+}
+
+function evaluatePixel(samples, scenes, inputMetadata, customData, outputMetadata) {
+    ndvi = (samples.B08 - samples.B04) / (samples.B08 + samples.B04);
+    
+    // Calculate SAVI
+    L = 0.5;  // Soil brightness correction factor (adjust as needed)
+    savi = ((samples.B08 - samples.B04) / (samples.B08 + samples.B04 + L)) * (1 + L);
+
+    return {
+        B01: [samples.B01],
+        B02: [samples.B02],
+        B03: [samples.B03],
+        B04: [samples.B04],
+        B05: [samples.B05],
+        B06: [samples.B06],
+        B07: [samples.B07],
+        B08: [samples.B08],
+        B8A: [samples.B8A],
+        B09: [samples.B09],
+        B11: [samples.B11],
+        B12: [samples.B12],
+        RGB: [2.5*samples.B04, 2.5*samples.B03, 2.5*samples.B02],
+        RGBN: [samples.B04, samples.B03, samples.B02, samples.B08],
+        TCI: [3*samples.B04, 3*samples.B03, 3*samples.B02],
+        NDVI: [ndvi],  
+        SAVI: [savi],
+        SCL: [samples.SCL],
+    };
+}
+"""
+api = SentinelAPI(config.sh_client_id, config.sh_client_secret, 'https://scihub.copernicus.eu/dhus')
+evalscript_s1 = """
+//VERSION=3
+function setup() {
+    return {
+        input: ["VV", "VH"],
+        output: [
+            { id: "VV", bands: 1, sampleType: SampleType.AUTO },
+            { id: "VH", bands: 1, sampleType: SampleType.AUTO },
+            { id: "RGB", bands: 3, sampleType: SampleType.AUTO }
+            
+        ],
+        visualization: {
+            bands: ["VV", "VH"],
+            min: [-25,-25], // Adjust these values based on your data distribution
+            max: [5,5], // Adjust these values based on your data distribution
+        }
+    };
+}
+
+function evaluatePixel(samples, scenes, inputMetadata, customData, outputMetadata) {
+    // Adjust the coefficients for a natural color representation
+    ratio = samples.VH-samples.VV
+    rgb_ratio = samples.VH+ samples.VV+ratio
+    red = samples.VH;
+    green = samples.VV;
+    blue = rgb_ratio;
+    return {
+        VH: [red],
+        VV: [green],
+        RGB: [red, green, blue] 
+    };
+}
+"""
+
+api = SentinelAPI(config.sh_client_id, config.sh_client_secret, 'https://scihub.copernicus.eu/dhus')
+evalscript_l8 = """
+//VERSION=3
+function setup() {
+    return {
+        input: ["B02", "B03", "B04","B05"], // Bands for true color and NIR
+        output: [
+            { id: "rgb", bands: 3,  sampleType: SampleType.AUTO}, // True color RGB
+            { id: "ndvi", bands: 3,  sampleType: SampleType.AUTO} // NDVI
+        ]
+        
+    };
+}
+
+function evaluatePixel(samples, scenes, inputMetadata, customData, outputMetadata) {
+    // Calculate NDVI
+        ndvi = (samples.B05 - samples.B04) / (samples.B05 + samples.B04);
+
+    // Return true color RGB and NDVI values
+    return {
+        rgb: [2.5*samples.B04, 2.5*samples.B03, 2.5*samples.B02], // True color RGB
+        ndvi: [ndvi] // NDVI
+    };
+}
 ```
 
 ## Pixel replacement
