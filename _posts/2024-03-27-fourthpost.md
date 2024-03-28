@@ -30,6 +30,12 @@ import rasterio
 import geopandas as gpd
 from shapely.geometry import shape
 from sentinelhub import BBox, CRS, DataCollection, SentinelHubRequest, MimeType, SHConfig
+
+
+# Set your Sentinel Hub credentials
+config = SHConfig()
+config.sh_client_id = 'Add your Sentinel Hub instance ID'
+config.sh_client_secret = 'Add your Sentinel Hub client secret'
 ```
 
 ## Pixel replacement
