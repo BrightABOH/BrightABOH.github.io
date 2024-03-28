@@ -18,6 +18,6 @@ Despite the advantages of using Sentinel 2, this optical imagery suffers  in are
 
 
 ## Image acquisition 
-For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel 2 and Landsat 8 and(or) 9. To register for Sentinelhub, use this [https://www.sentinel-hub.com](here)
+For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel 2 and Landsat 8 and(or) 9. To register for Sentinelhub, use this (https://www.sentinel-hub.com)[here]
 
 ## Pixel replacement
