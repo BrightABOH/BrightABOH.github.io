@@ -39,13 +39,14 @@ config = SHConfig()
 config.sh_client_id = 'Add your Sentinel Hub instance ID'
 config.sh_client_secret = 'Add your Sentinel Hub client secret'
 ```
-Next, we set the date range for which the images will be downloaded, and the location over which the image will be downloaded
+Next, we set the date range for which the images will be downloaded, and the location over which the image will be downloaded. We set the cloud_cover to 0.25. In general, this value ensures we retain only images having with cloud cover less than or equal to 0.25 
 ```
 Set the path to your shapefile
 shapefile_path = "/path/to/shapefile.shp/"
 
 #Set the date range for the Sentinel-2 image search
 start_date = date(2024, 1, 1)
+max_cloud_cover = 0.25
 
 end_date = date(2024, 3, 30)
 #image size to be downloaded
@@ -383,7 +384,11 @@ def create_patches_from_single_image(image_path, patch_size=512):
     return num_patches_total
 
 ```
-
+Executing the above blocks of  code will give us the most recent Sentinel 2 image on the left and the Landsat 8 image on the left.
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/landast.jpg?raw=true)
+
+## Goal
+Having the two images, we are ready to 
+As a reminder, we are using Sentinel 2 image as a base due to its advantages over Landsat 8 previously described. The next step is to identify or flag all the cloudy pixels 
 
 ## Pixel replacement
