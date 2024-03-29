@@ -549,8 +549,6 @@ def clip_and_save_image(image_path, shapefile_path, output_folder, output_filena
         with rasterio.open(output_path, "w", **out_meta) as dest:
             dest.write(clipped_image)
 
-    print(f"Clipped image saved to: {output_path}")
-
 
 # Open the Sentinel-2 image
 with rasterio.open('/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_image/sentinel2/ad3a4dae56ed17f66fea0b29577c5423/response/RGB.tif') as src:
@@ -619,12 +617,8 @@ with rasterio.open('/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_i
             with rasterio.open(output_path, 'w', driver='GTiff', height=src.height, width=src.width, count=3, dtype=rgb_replaced.dtype, crs=crs, transform=transform) as dst:
                 dst.write(rgb_replaced)
 
-            print(f"Reconstructed image saved at: {output_path}")
-
         # Save the clipped image with the name of the shapefile
         clip_and_save_image(output_path,shapefile_path, output_folder, f"{os.path.splitext(os.path.basename(shapefile_path))[0]}_clipped.tiff")
 
-        total_water_area = water_pixel_areas(scl_clip, m2_to_hectares)
-        print(f"Total area covered by water: {total_water_area:.2f} square kilometers")
 
 ```
