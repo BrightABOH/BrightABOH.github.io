@@ -384,6 +384,6 @@ def create_patches_from_single_image(image_path, patch_size=512):
 
 ```
 
-![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/landsat.jpeg?raw=true)
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/landsat.jpg?raw=true)
 
 ## Pixel replacement
