@@ -599,3 +599,7 @@ with rasterio.open('path/to/sentinel2/RGB.tif') as src:
 
 ```
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sentinel2landsat.jpg?raw=true)
+
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/replace2.png?raw=true)
+
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/example2.png?raw=true)
