@@ -485,7 +485,146 @@ As seen below, we are able to flag the clouds and their shadows. The red colors 
 
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/clody.jpg?raw=true)
 
-Next, we will replace these pixels(cloudy and shadow pixels) in the sentinel 2 image with near-clear pixels from the Landsat 8 image.
+Next, we will replace these pixels(cloudy and shadow pixels) in the sentinel 2 image with near-clear pixels from the Landsat 8 image. 
 
 
 ## Pixel replacement
+```
+import rasterio
+import numpy as np
+import matplotlib.pyplot as plt
+from rasterio.plot import show
+import os
+import fiona
+import geopandas as gpd
+from rasterio import mask
+from sentinelhub import CRS
+
+# Set the output folder for downloaded images
+output_folder = "downloaded_images"
+
+    # Create output folder if it doesn't exist
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+
+# Function to create colored RGB image with clouds and shadows replaced by Sentinel2  band
+
+def replace_clouds_and_shadow_with_landsat8(rgb, l8, cloud_mask):
+    colored_rgb = rgb.copy()
+
+
+     # Replace cloud pixels in Sentinel 2 RGB with corresponding values from Landsat 8
+    colored_rgb[:, cloud_mask] = l8[:, cloud_mask]
+    colored_rgb[:, shadow_mask] = l8[:, shadow_mask]
+   
+
+
+#Save and clip the constructed image to original shapefile
+def clip_and_save_image(image_path, shapefile_path, output_folder, output_filename):
+    # Read the Sentinel-2 image
+    with rasterio.open(image_path) as src:
+        # Read the shapefile
+        gdf = gpd.read_file(shapefile_path)
+        gdf = gdf.set_geometry('geometry')
+
+        # Convert the GeoDataFrame to the same CRS as the Sentinel-2 image
+        gdf = gdf.to_crs(src.crs)
+
+        # Use the bounds of the GeoDataFrame as the bounding box for clipping
+        bbox = gdf.geometry.total_bounds
+
+        # Perform the clipping
+        clipped_image, transform = mask.mask(src, gdf.geometry, crop=True)
+
+        # Update metadata for the clipped image
+        out_meta = src.meta
+        out_meta.update({"driver": "GTiff",
+                         "height": clipped_image.shape[1],
+                         "width": clipped_image.shape[2],
+                         "transform": transform})
+
+        # Save the clipped image
+        output_path = os.path.join(output_folder, output_filename)
+        with rasterio.open(output_path, "w", **out_meta) as dest:
+            dest.write(clipped_image)
+
+    print(f"Clipped image saved to: {output_path}")
+
+
+# Open the Sentinel-2 image
+with rasterio.open('/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_image/sentinel2/ad3a4dae56ed17f66fea0b29577c5423/response/RGB.tif') as src:
+    # Read the RGB bands
+    rgb = src.read([1,2,3], masked=True)
+    show(rgb)
+
+    # Open the Landsat 8 image
+    with rasterio.open('/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_image/landsat/758a36b5202c8e68195319eda01d39b6/response/rgb.tif') as l8_src:
+        # Read the Landsat 7 rgb band
+        l8_rgb = l8_src.read([1,2,3], masked=True)
+        show(l8_rgb)
+
+        # Open the Sentinel-2 SCL band
+        with rasterio.open("/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_image/sentinel2/ad3a4dae56ed17f66fea0b29577c5423/response/SCL.tif") as scl_src:
+
+            gdf = gpd.read_file(shapefile_path)
+            gdf = gdf.set_geometry('geometry')
+
+        # Convert the GeoDataFrame to the same CRS as the Sentinel-2 image
+            gdf = gdf.to_crs(src.crs)
+
+
+                # Read the SCL band
+            scl_band = scl_src.read(1, masked=True)
+            scl_clip, transform = mask.mask(scl_src, gdf.geometry, crop=True)
+
+                # Update the metadata of the clipped image
+            scl_meta = scl_src.meta.copy()
+            scl_meta.update({
+                    "driver": "GTiff",
+                    "height": scl_clip.shape[1],
+                    "width": scl_clip.shape[2],
+                    "transform": transform
+            })
+
+    #return scl_clip, scl_meta
+
+            # Define thresholds for cloud and shadow pixels in SCL band
+            cloud_threshold = [8,9]
+            shadow_threshold = [3]
+
+
+            # Create a cloud and shadow mask
+            cloud_mask = np.isin(scl_band, cloud_threshold)
+            shadow_mask = np.isin(scl_band, shadow_threshold)
+            # Apply the replace_clouds_with_sentinel1 function
+            rgb_replaced = replace_clouds_and_shadow_with_sentinel1(rgb, l8_rgb,cloud_mask)
+
+            # Visualize the original and modified RGB images
+            fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+            axes[0].imshow(np.moveaxis(rgb.data, 0, -1))
+            axes[0].set_title('Original RGB Image with cloud covers')
+            axes[1].imshow(np.moveaxis(rgb_replaced.data, 0, -1))
+            axes[1].set_title('RGB Image with Clouds Replaced by Landsat 8 pixels')
+            plt.show()
+            # Save the composite image with CRS
+            output_path = 'downloaded_images/reconstructed_rgb.tif'
+
+            # Define CRS information (change EPSG code according to your needs)
+
+            # Copy georeferencing information from the original Sentinel-2 image
+            transform = src.transform
+            crs = src.crs
+
+            with rasterio.open(output_path, 'w', driver='GTiff', height=src.height, width=src.width, count=3, dtype=rgb_replaced.dtype, crs=crs, transform=transform) as dst:
+                dst.write(rgb_replaced)
+
+            print(f"Reconstructed image saved at: {output_path}")
+
+        # Save the clipped image with the name of the shapefile
+        clip_and_save_image(output_path,shapefile_path, output_folder, f"{os.path.splitext(os.path.basename(shapefile_path))[0]}_clipped.tiff")
+
+        total_water_area = water_pixel_areas(scl_clip, m2_to_hectares)
+        print(f"Total area covered by water: {total_water_area:.2f} square kilometers")
+
+```
