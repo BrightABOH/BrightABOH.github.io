@@ -240,7 +240,7 @@ def download_sentinel_images(api, shapefile_path, start_date, end_date, output_f
             print(f"Data saved successfully for polygon {idx}!")
         except Exception as e:
             print(f"Error saving data for polygon {idx}: {e}")
-    return total_area_shapefile_hectares
+    
 
 
 def download_landsat_images(api, shapefile_path, start_date, end_date, output_folder):
@@ -297,7 +297,7 @@ def download_landsat_images(api, shapefile_path, start_date, end_date, output_fo
             print(f"Data saved successfully for polygon {idx}!")
         except Exception as e:
             print(f"Error saving data for polygon {idx}: {e}")
-    return total_area_shapefile_hectares
+   
 ```
 
 We may want to create patches from very large shapes. To achieve this, the below code block is helpful
@@ -527,19 +527,19 @@ def clip_and_save_image(image_path, shapefile_path, output_folder, output_filena
 
 
 # Open the Sentinel-2 image
-with rasterio.open('/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_image/sentinel2/ad3a4dae56ed17f66fea0b29577c5423/response/RGB.tif') as src:
+with rasterio.open('path/to/sentinel2/RGB.tif') as src:
     # Read the RGB bands
     rgb = src.read([1,2,3], masked=True)
     show(rgb)
 
     # Open the Landsat 8 image
-    with rasterio.open('/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_image/landsat/758a36b5202c8e68195319eda01d39b6/response/rgb.tif') as l8_src:
+    with rasterio.open('path to /landsat 8/rgb.tif') as l8_src:
         # Read the Landsat 7 rgb band
         l8_rgb = l8_src.read([1,2,3], masked=True)
         show(l8_rgb)
 
         # Open the Sentinel-2 SCL band
-        with rasterio.open("/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_image/sentinel2/ad3a4dae56ed17f66fea0b29577c5423/response/SCL.tif") as scl_src:
+        with rasterio.open("/path/to/SCL.tif") as scl_src:
 
             gdf = gpd.read_file(shapefile_path)
             gdf = gdf.set_geometry('geometry')
