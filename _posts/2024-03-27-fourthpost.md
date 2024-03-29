@@ -485,7 +485,7 @@ As seen below, we are able to flag the clouds and their shadows. The red colors 
 
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/clody.jpg?raw=true)
 
-Next, we will replace these pixels in the same spots with near-clear pixels from the Landsat 8 image.
+Next, we will replace these pixels(cloudy and shadow pixels) in the sentinel 2 image with near-clear pixels from the Landsat 8 image.
 
 
 ## Pixel replacement
