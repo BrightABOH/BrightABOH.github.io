@@ -20,7 +20,7 @@ Despite the advantages of using Sentinel 2, this optical imagery suffers  in are
 ## Image acquisition 
 For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel 2 and Landsat 8 and(or) 9. To register for Sentinelhub, head over [here](https://www.sentinel-hub.com), and create a client ID and client secret for your account.  
 
-Now, the code environment, import the necessary modules. 
+Now, in the code environment, import the necessary modules. 
 ```
 from sentinelsat import SentinelAPI
 from datetime import date
@@ -322,4 +322,67 @@ def extract_tar(tar_path, extract_path):
     with tarfile.open(tar_path, 'r') as tar:
         tar.extractall(extract_path)
 ```
+
+We may want to create patches from very large shapes. To achieve this, the below code block is helpful
+
+```
+def preprocess_patch(patch):
+    # Convert to RGB format
+    patch_rgb = np.transpose(patch, (1, 2, 0))
+    # Convert to PIL Image
+    patch_image = Image.fromarray((patch_rgb * 255).astype(np.uint8))
+    # Resize the image to match the model's input size
+    patch_image = patch_image.resize((512, 512))
+    # Apply transformations
+    transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean, std)
+    ])
+    # Convert to PyTorch tensor
+    patch_tensor = transform(patch_image)
+    # Add a batch dimension
+    patch_tensor = patch_tensor.unsqueeze(0)
+    return patch_tensor
+
+def create_patches_from_single_image(image_path, patch_size=512):
+    num_patches_total = 0
+    total_predictions = np.zeros((1, 1, 512, 512))
+
+    try:
+        with rasterio.open(image_path) as src:
+            num_patches = 0
+
+            for i in range(0, src.width, patch_size):
+                for j in range(0, src.height, patch_size):
+                    window = rasterio.windows.Window(i, j, patch_size, patch_size)
+                    patch = src.read(window=window)
+
+                    # TODO: Process the patch as needed (e.g., save it to disk)
+                    processed_patch = preprocess_patch(patch)
+
+                    # Make predictions on the processed patch
+                    with torch.no_grad():
+                        predictions_patch = loaded_model(processed_patch.to(device))
+                        predictions_patch = torch.sigmoid(predictions_patch)
+                        predictions_patch = predictions_patch.cpu().numpy()
+
+                        # Accumulate the predictions
+                        total_predictions += predictions_patch
+
+                    # For now, just print the patch information
+                    print(f"Patch {num_patches + 1}: {window}")
+
+                    num_patches += 1
+                    num_patches_total += 1
+
+            print(f"Number of patches created: {num_patches}")
+
+    except rasterio.errors.RasterioIOError as e:
+        print(f"Error opening the image at {image_path}: {e}")
+
+    return num_patches_total, total_predictions
+# Function to visualize pixel distributions
+```
+At
+
 ## Pixel replacement
