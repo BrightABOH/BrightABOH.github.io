@@ -481,7 +481,7 @@ with rasterio.open('sentinel2RGB.tif') as src:
         plt.show()
 
 ```
-
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/clody.jpg?raw=true)
 
 
 ## Pixel replacement
