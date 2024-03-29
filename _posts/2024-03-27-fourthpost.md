@@ -481,6 +481,7 @@ with rasterio.open('sentinel2RGB.tif') as src:
         plt.show()
 
 ```
+As seen below, we are able to flag the clouds and their shadows. Next, we will replace these pixels in the exact same spots with near- clear pixels from the Landsat 8 image. 
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/clody.jpg?raw=true)
 
 
