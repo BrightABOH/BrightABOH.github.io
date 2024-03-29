@@ -598,3 +598,4 @@ with rasterio.open('/Users/brightabohsilasedem/Desktop/NSIR_Project/downloaded_i
 
 
 ```
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sentinel2landsat.jpg?raw=true)
