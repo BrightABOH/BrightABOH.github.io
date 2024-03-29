@@ -380,8 +380,8 @@ def create_patches_from_single_image(image_path, patch_size=512):
     except rasterio.errors.RasterioIOError as e:
         print(f"Error opening the image at {image_path}: {e}")
 
-    return num_patches_total, total_predictions
-# Function to visualize pixel distributions
+    return num_patches_total
+
 ```
 At
 
