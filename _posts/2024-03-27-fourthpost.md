@@ -39,7 +39,7 @@ config = SHConfig()
 config.sh_client_id = 'Add your Sentinel Hub instance ID'
 config.sh_client_secret = 'Add your Sentinel Hub client secret'
 ```
-Next, we set the date range for which the images will be downloaded, and the location over which the image will be downloaded. We set the cloud_cover to 0.25. In general, this value ensures we retain only images having with cloud cover less than or equal to 0.25 
+Next, we set the date range for which the images will be downloaded, and the location over which the image will be downloaded. We set the cloud_cover to 0.25. In general, this value ensures we retain only images having 0.25 as maximum cloud cover.
 ```
 Set the path to your shapefile
 shapefile_path = "/path/to/shapefile.shp/"
@@ -221,7 +221,7 @@ def download_sentinel_images(api, shapefile_path, start_date, end_date, output_f
                     data_collection=DataCollection.SENTINEL2_L2A,
                     time_interval=(start_date, end_date),
                     mosaicking_order='mostRecent',
-                    maxcc=0.25
+                    maxcc=max_cloud_cover
                 )
             ],
             responses=[
@@ -294,7 +294,7 @@ def download_landsat_images(api, shapefile_path, start_date, end_date, output_fo
                     data_collection=DataCollection.LANDSAT_OT_L1,
                     time_interval=(start_date, end_date),
                     mosaicking_order='mostRecent',
-                    maxcc=0.25
+                    maxcc=max_cloud_cover
 
                 )
             ],
@@ -389,6 +389,99 @@ Executing the above blocks of  code will give us the most recent Sentinel 2 imag
 
 ## Goal
 Having the two images, we are ready to 
-As a reminder, we are using Sentinel 2 image as a base due to its advantages over Landsat 8 previously described. The next step is to identify or flag all the cloudy pixels 
+As a reminder, we are using Sentinel 2 image as a base due to its advantages over Landsat 8 previously described. The next step is to identify or flag all the cloudy pixels. To do this, the Scene Classification Layer (SCL) of the Sentinel 2 will come in very handy. SCL  is a raster layer included in Sentinel-2 Level-2A products, providing  information about the classification of each pixel in the image, indicating the dominant type of surface or material present in that pixel.  Use the code block below to read and access the SCL. 
+```
+# Open the Sentinel-2 image
+import rasterio
+import numpy as np
+import matplotlib.pyplot as plt
+from rasterio.plot import show
+from matplotlib.patches import Patch
+
+# Function to create colored RGB image with clouds and shadows
+def color_clouds_and_shadows(rgb, cloud_mask,shadow_mask):
+    colored_rgb = rgb.copy()
+
+    # Define colors for clouds and shadows
+    cloud_color = np.array([255, 0, 0])  # Red for clouds
+    shadow_color = np.array([0, 128, 128])  # Gray for shadows
+    water_color = np.array([0,0,255])
+    forest_color = np.array([0,255,0])
+
+
+    # Use np.where to assign colors based on boolean masks
+    colored_rgb[:, cloud_mask] = cloud_color[:, np.newaxis]
+    colored_rgb[:, shadow_mask] = shadow_color[:, np.newaxis]
+    return colored_rgb
+
+
+#Read the Sentinel 2 image previously downloaded
+with rasterio.open('sentinel2RGB.tif') as src:
+    # Read the RGB bands
+    rgb = src.read([1,2,3], masked=True)
+
+    # Read the corresponding SCL band
+    with rasterio.open("SCL.tif") as scl_src:
+        # Read the SCL band
+        scl_band = scl_src.read(1, masked=True)
+   
+        # Define thresholds for all pixels including cloud and shadow pixels
+        '''
+        Pixel dictionary for SCL:
+        0:No Data (Missing data)
+        1:Saturated or defective pixel
+        2:Dark features / Shadows
+        3:Cloud shadows
+        4:Vegetation
+        5:Not-vegetated
+        6:Water
+        7:Unclassified
+        8: Cloud medium probability
+        9: Cloud high probability
+        10: Thin cirrus
+        11: Snow or ice
+        
+        '''
+        cloud_threshold = [8,9]
+        shadow_threshold = [3]
+
+        # Define colors for clouds and shadows
+        cloud_color = np.array([255, 0, 0])  # Red for clouds
+        shadow_color = np.array([0, 128, 128])  # Gray for shadows
+
+
+        # Create a cloud and shadow mask
+        cloud_mask = np.isin(scl_band, cloud_threshold)
+        shadow_mask = np.isin(scl_band, shadow_threshold)
+
+        # Visualize pixel distributions of the masks
+        plot_pixel_distribution(cloud_mask, 'Cloud Mask Distribution')
+        plot_pixel_distribution(shadow_mask, 'Shadow Mask Distribution')
+
+        # Apply the masks to RGB bands using the color_clouds_and_shadows function
+        rgb_colored = color_clouds_and_shadows(rgb, cloud_mask,shadow_mask)
+
+        # Visualize the original and colored RGB images
+        fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+        axes[0].imshow(rgb.transpose(1, 2, 0))
+        axes[0].set_title('Original RGB Image')
+        #axes[0].legend(["Clouds"])
+
+
+        axes[1].imshow(rgb_colored.transpose(1, 2, 0))
+        axes[1].set_title('RGB Image with Colored Clouds and Shadows')
+        axes[1].legend(['Cloud shadows'])
+
+        # Add custom legend
+        cloud_patch = Patch(color=cloud_color / 255, label='Clouds')
+        shadow_patch = Patch(color=shadow_color / 255, label='Shadows')
+        #axes[0].legend(handles=[cloud_patch, shadow_patch])
+        axes[1].legend(handles=[cloud_patch, shadow_patch])
+
+        plt.show()
+
+```
+
+
 
 ## Pixel replacement
