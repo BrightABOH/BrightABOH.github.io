@@ -383,6 +383,7 @@ def create_patches_from_single_image(image_path, patch_size=512):
     return num_patches_total
 
 ```
-At
+
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/pm.jpeg?raw=true)
 
 ## Pixel replacement
