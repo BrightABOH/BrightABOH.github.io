@@ -260,23 +260,6 @@ def download_landsat_images(api, shapefile_path, start_date, end_date, output_fo
 
     gdf['area_m2'] = gdf['geometry'].area
 
-    # Sum the areas to get the total area of the shapefile
-    total_area_shapefile_m2 = gdf['area_m2'].sum()
-    # Convert total area to hectares
-    total_area_shapefile_hectares = total_area_shapefile_m2 / 10000
-
-    # Convert total area to square kilometers
-    total_area_shapefile_square_km = total_area_shapefile_hectares / 1000
-    print("projection information")
-    # Print the total area in square kilometers
-    print(f"Total area of the shapefile: {total_area_shapefile_square_km:.2f} square kilometers")
-
-
-
-    # Print the total area
-    #print(f"Total area of the shapefile: {total_area_shapefile_m2:.2f} square meters")
-    #print(f"Total area of the shapefile: {total_area_shapefile_hectares:.2f} square hectares")
-
     # Calculate the bounding box of the union of all geometries in the shapefile
     shapefile_union = unary_union(gdf['geometry'])
     bbox = BBox(bbox=shape(shapefile_union).bounds, crs=CRS(common_crs))
@@ -315,13 +298,6 @@ def download_landsat_images(api, shapefile_path, start_date, end_date, output_fo
         except Exception as e:
             print(f"Error saving data for polygon {idx}: {e}")
     return total_area_shapefile_hectares
-    #def shapefile_wihtout_water():
-      #  Land_without_water = total_area_shapefile_square_km - total_water_area
-      #  return Land_without_water
-
-def extract_tar(tar_path, extract_path):
-    with tarfile.open(tar_path, 'r') as tar:
-        tar.extractall(extract_path)
 ```
 
 We may want to create patches from very large shapes. To achieve this, the below code block is helpful
@@ -376,7 +352,7 @@ def create_patches_from_single_image(image_path, patch_size=512):
                     num_patches += 1
                     num_patches_total += 1
 
-            print(f"Number of patches created: {num_patches}")
+            
 
     except rasterio.errors.RasterioIOError as e:
         print(f"Error opening the image at {image_path}: {e}")
