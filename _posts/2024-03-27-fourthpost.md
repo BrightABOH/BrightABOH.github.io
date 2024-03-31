@@ -334,7 +334,6 @@ def create_patches_from_single_image(image_path, patch_size=512):
                     window = rasterio.windows.Window(i, j, patch_size, patch_size)
                     patch = src.read(window=window)
 
-                    # TODO: Process the patch as needed (e.g., save it to disk)
                     processed_patch = preprocess_patch(patch)
 
                     # Make predictions on the processed patch
