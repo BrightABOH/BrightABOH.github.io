@@ -27,10 +27,19 @@ from datetime import date
 
 from shapely.ops import unary_union
 
-import rasterio
 import geopandas as gpd
 from shapely.geometry import shape
 from sentinelhub import BBox, CRS, DataCollection, SentinelHubRequest, MimeType, SHConfig
+import rasterio
+import numpy as np
+import matplotlib.pyplot as plt
+from rasterio.plot import show
+from matplotlib.patches import Patch
+from rasterio.plot import show
+import os
+import fiona
+from rasterio import mask
+
 ```
 
 Set your Sentinel Hub credentials
@@ -367,11 +376,7 @@ Having the two images, we are ready to
 As a reminder, we are using Sentinel 2 image as a base due to its advantages over Landsat 8 previously described. The next step is to identify or flag all the cloudy pixels. To do this, the Scene Classification Layer (SCL) of the Sentinel 2 will come in very handy. SCL  is a raster layer included in Sentinel-2 Level-2A products, providing  information about the classification of each pixel in the image, indicating the dominant type of surface or material present in that pixel.  Use the code block below to read and access the SCL. 
 ```
 # Open the Sentinel-2 image
-import rasterio
-import numpy as np
-import matplotlib.pyplot as plt
-from rasterio.plot import show
-from matplotlib.patches import Patch
+
 
 # Function to create colored RGB image with clouds and shadows
 def color_clouds_and_shadows(rgb, cloud_mask,shadow_mask):
@@ -465,15 +470,6 @@ Next, we will replace these pixels(cloudy and shadow pixels) in the sentinel 2 i
 
 ## Pixel replacement
 ```
-import rasterio
-import numpy as np
-import matplotlib.pyplot as plt
-from rasterio.plot import show
-import os
-import fiona
-import geopandas as gpd
-from rasterio import mask
-from sentinelhub import CRS
 
 # Set the output folder for downloaded images
 output_folder = "downloaded_images"
