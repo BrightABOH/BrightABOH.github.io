@@ -609,3 +609,4 @@ Next, we try the approach again on the same location with different timestamps t
 
 
 Finally, we clip the reconstructed image to the shapefile. This is done to ensure that  neighbouring pixels are not included in the final image for further predictions and(or) calculations. 
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/Bugesera.jpg?raw=true)
