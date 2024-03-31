@@ -607,5 +607,5 @@ Next, we try the approach again on the same location with different timestamps t
 
 Finally, we clip the reconstructed image to the location shapefile. This is done to ensure that  neighboring pixels are not included in the final image for further predictions and(or) calculations. 
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/Bugesera.jpg?raw=true)
-
+## Conclusion
 To conclude, this tutorial demonstrates the technique of infusing different satellite images into a single one. This is especially useful in areas with limited imagery with extremely high cloudy pixels. Another area worth investigating is the possibility of infusing different types of satellite images, i.e optical and SAR image types. If you find this tutorial useful, please leave a comment. Thank you
