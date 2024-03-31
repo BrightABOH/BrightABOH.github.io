@@ -600,6 +600,6 @@ with rasterio.open('path/to/sentinel2/RGB.tif') as src:
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sentinel2landsat.jpg?raw=true)
 It's important to note that when performing such replacements, you'll need to ensure that the Landsat 8 data is properly aligned and resampled to match the resolution and spatial characteristics of the Sentinel-2 imagery. This is achieved by using the georeferencing information from the original Sentinel 2 imagery. 
 
-![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/replace2.png?raw=true)
-
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/example2.png?raw=true)
+
+![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/replace2.png?raw=true)
