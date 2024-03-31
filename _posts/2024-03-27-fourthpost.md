@@ -605,3 +605,4 @@ It's important to note that when performing such replacements, you'll need to en
 Next, we try the approach again on the same location with different timestamps to demonstrate the reproducibility of the technique. Below are the results.
 
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/example2.png?raw=true)
+Finally, we clip the reconstructed image to the shapefile. This is done to ensure that  neighbouring pixels are not included in the final image for further predictions and(or) calculations. 
