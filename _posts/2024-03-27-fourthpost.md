@@ -6,19 +6,19 @@ categories: Deep learning prediction
 permalink: /posts/Cloudy Pixel Replacement
 ---
 ## Introduction
-Remember the pain you go through working with very cloudy satellite images? Where lowering the cloud percentage would mean that you will have little or no images to work with? Moreso painful and frustrating when you build a very good deep-learning model only to realize that the inference component is extra challenging because the single image to predict with is almost always cloudy. This is even more prevalent when you are working with optical imageries such as Sentinel 2.
+Remember the pain you go through working with very cloudy satellite images? Where lowering the cloud percentage would mean that you will have little or no images to work with? Moreso painful and frustrating when you build a very good deep-learning model only to realize that the inference component is extra challenging because the single image to predict with is almost always cloudy. This is even more prevalent when you are working with optical imageries such as Sentinel-2.
 
 A recent project to develop a deep learning model to predict and estimate cropland area from freely available optical satellites further  highlighted the need to design a solution.  
 
 In this blog post, I will share with you how to identify cloudy pixels and replace them with alternative satellite images.
 Overall, the combination of high spatial resolution, multi-spectral capabilities, frequent coverage, open data access, and cloud cover monitoring makes Sentinel-2 a preferred choice for agriculture and land use applications, facilitating more informed decision-making and sustainable land management practices.
-Despite the advantages of using Sentinel 2, this optical imagery suffers  in areas (locations) where there are a lot of cloud covers.
+Despite the advantages of using Sentinel-2, this optical imagery suffers  in areas (locations) where there are a lot of cloud covers.
 
 
 
 
 ## Image acquisition 
-For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel 2 and Landsat 8 and(or) 9. To register for Sentinelhub, head over [here](https://www.sentinel-hub.com), and create a client ID and client secret for your account.  
+For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel-2 and Landsat 8 and(or) 9. To register for Sentinelhub, head over [here](https://www.sentinel-hub.com), and create a client ID and client secret for your account.  
 
 Now, in the code environment, import the necessary modules. 
 ```
@@ -373,7 +373,7 @@ Executing the above blocks of  code will give us the most recent Sentinel 2 imag
 
 ## Goal
 Having the two images, we are ready to 
-As a reminder, we are using Sentinel 2 image as a base due to its advantages over Landsat 8 previously described. The next step is to identify or flag all the cloudy pixels. To do this, the Scene Classification Layer (SCL) of the Sentinel 2 will come in very handy. SCL  is a raster layer included in Sentinel-2 Level-2A products, providing  information about the classification of each pixel in the image, indicating the dominant type of surface or material present in that pixel.  Use the code block below to read and access the SCL. 
+As a reminder, we are using Sentinel-2 image as a base due to its advantages over Landsat 8 previously described. The next step is to identify or flag all the cloudy pixels. To do this, the Scene Classification Layer (SCL) of the Sentinel-2 will come in very handy. SCL  is a raster layer included in Sentinel-2 Level-2A products, providing  information about the classification of each pixel in the image, indicating the dominant type of surface or material present in that pixel.  Use the code block below to read and access the SCL. 
 ```
 # Open the Sentinel-2 image
 
@@ -465,7 +465,7 @@ As seen below, we can flag the clouds and their shadows. The red colors show clo
 
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/clody.jpg?raw=true)
 
-Next, we will replace these pixels(cloudy and shadow pixels) in the sentinel 2 image with near-clear pixels from the Landsat 8 image. 
+Next, we will replace these pixels(cloudy and shadow pixels) in the sentinel-2 image with near-clear pixels from the Landsat 8 image. 
 
 
 ## Pixel replacement
@@ -593,7 +593,7 @@ with rasterio.open('path/to/sentinel2/RGB.tif') as src:
 
 ```
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sentinel2landsat.jpg?raw=true)
-It's important to note that when performing such replacements, you'll need to ensure that the Landsat 8 data is properly aligned and resampled to match the resolution and spatial characteristics of the Sentinel-2 imagery. This is achieved by using the georeferencing information from the original Sentinel 2 imagery. 
+It's important to note that when performing such replacements, you'll need to ensure that the Landsat 8 data is properly aligned and resampled to match the resolution and spatial characteristics of the Sentinel-2 imagery. This is achieved by using the georeferencing information from the original Sentinel-2 imagery. 
 
 Next, we try the approach again on the same location with different timestamps to demonstrate the reproducibility of the technique. Below are the results.
 ![Particle size](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/example2.png?raw=true)
