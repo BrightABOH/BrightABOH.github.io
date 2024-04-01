@@ -18,7 +18,7 @@ Despite the advantages of using Sentinel-2, this optical imagery suffers  in are
 
 
 ## Image acquisition 
-For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the ITCZ, seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel-2 and Landsat 8 and(or) 9. To register for Sentinelhub, head over [here](https://www.sentinel-hub.com), and create a client ID and client secret for your account.  
+For this tutorial, the ROI will be located in Rwanda. Rwanda's tropical climate, topography, proximity to the Intertropical Convergence Zone(ITCZ), seasonal variation, and potential impacts of climate change contribute to the prevalence of cloud cover in the region making it ideal for this tutorial. We use Sentinelhub to access freely available Sentinel-2 and Landsat 8 and(or) 9. To register for Sentinelhub, head over [here](https://www.sentinel-hub.com), and create a client ID and client secret for your account.  
 
 Now, in the code environment, import the necessary modules. 
 ```
@@ -309,7 +309,7 @@ def download_landsat_images(api, shapefile_path, start_date, end_date, output_fo
    
 ```
 
-We may want to create patches from very large shapes. To achieve this, the below code block is helpful
+We may want to create patches from very large shapefiles. To achieve this, the below code block is helpful
 
 ```
 def preprocess_patch(patch):
