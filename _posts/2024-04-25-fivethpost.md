@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Fraud detection in insurance claims with deep learning"
+title: "Predicting Fraudulent Claims from Accidents using Deep Learning"
 date: 2024-04-25 22:01:18
 categories: Deep learning prediction
 permalink: /posts/Cloudy Pixel Replacement
 ---
 ## Introduction
+In today's fast-paced world, insurance fraud has become a significant concern for insurance companies globally. Fraudulent claims not only lead to financial losses but also tarnish the reputation of insurers and increase premiums for honest policyholders. Among various types of insurance fraud, detecting fraudulent claims stemming from accidents poses a unique challenge due to the intricate nature of accidents and the diverse factors involved.
