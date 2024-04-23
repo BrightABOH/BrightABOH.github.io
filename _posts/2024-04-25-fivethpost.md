@@ -11,3 +11,4 @@ In today's fast-paced world, insurance fraud has become a significant concern fo
 Traditional methods of fraud detection often rely on manual investigation and rule-based systems, which are time-consuming, labor-intensive, and may not be effective in uncovering sophisticated fraud schemes. However, with advancements in technology, particularly in the field of artificial intelligence and machine learning, insurers now have powerful tools at their disposal to combat insurance fraud more effectively
 
 ## Goal
+## Data description
