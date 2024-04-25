@@ -35,29 +35,54 @@ WeekOfMonthClaimed: Week number within the month when the claim was reported.
 Sex: Gender of the policyholder.
 
 MaritalStatus: Marital status of the policyholder.
+
 Age: Age of the policyholder.
+
 Fault: Fault attribution for the accident (e.g., policyholder, third party).
+
 PolicyType: Type of insurance policy.
+
 VehicleCategory: Category of the vehicle involved in the accident.
+
 VehiclePrice: Price range of the vehicle.
+
 FraudFound_P: Binary indicator for whether fraud was found in the claim.
+
 PolicyNumber: Unique identifier for the insurance policy.
+
 RepNumber: Representative number associated with the claim.
+
 Deductible: Deductible amount for the claim.
+
 DriverRating: Rating assigned to the driver involved in the accident.
+
 Days_Policy_Accident: Number of days the policy has been active at the time of the accident.
+
 Days_Policy_Claim: Number of days the policy has been active at the time of the claim.
+
 PastNumberOfClaims: Number of claims filed in the past by the policyholder.
+
 AgeOfVehicle: Age of the vehicle involved in the accident.
+
 AgeOfPolicyHolder: Age of the policyholder.
+
 PoliceReportFiled: Binary indicator for whether a police report was filed for the accident.
+
 WitnessPresent: Binary indicator for whether a witness was present at the accident.
+
 AgentType: Type of agent handling the claim.
+
 NumberOfSuppliments: Number of supplementary items included in the claim.
+
 AddressChange_Claim: Binary indicator for whether there was a change of address associated with the claim.
+
 NumberOfCars: Number of cars involved in the accident.
+
 Year: Year in which the claim was filed.
+
 BasePolicy: Base policy associated with the claim.
+
 ClaimSize: Size of the insurance claim.
+
 ## Initial EDA
 Lets know our data by performing some explorations 
