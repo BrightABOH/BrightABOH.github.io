@@ -17,14 +17,23 @@ Traditional methods of fraud detection often rely on manual investigation and ru
 The insurance claim dataset contains information related to various insurance claims filed by policyholders. It includes details such as policyholder demographics, accident details, policy information, and claim outcomes. The dataset comprises the following columns:
 
 Month: Month in which the claim was filed.
+
 WeekOfMonth: Week number within the month when the claim was filed.
+
 DayOfWeek: Day of the week when the claim was filed.
+
 Make: Make of the vehicle involved in the accident.
+
 AccidentArea: Area where the accident occurred.
+
 DayOfWeekClaimed: Day of the week when the claim was reported.
+
 MonthClaimed: Month when the claim was reported.
+
 WeekOfMonthClaimed: Week number within the month when the claim was reported.
+
 Sex: Gender of the policyholder.
+
 MaritalStatus: Marital status of the policyholder.
 Age: Age of the policyholder.
 Fault: Fault attribution for the accident (e.g., policyholder, third party).
