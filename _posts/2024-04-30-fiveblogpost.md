@@ -51,4 +51,4 @@ Year: Year in which the claim was filed.
 BasePolicy: Base policy associated with the claim.
 ClaimSize: Size of the insurance claim.
 ## Initial EDA
-
+Lets know our data by performing some explorations 
