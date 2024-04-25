@@ -3,8 +3,10 @@ layout: post
 title: "Predicting Fraudulent Claims from Accidents using Deep Learning - Part 1"
 date: 2024-04-25 22:01:18
 categories: Fraud Claim Prediction
-permalink: /posts/Predicting fraudulent claims with Deep learning 
+permalink: /posts/Predicting-fraudulent-claims-with-Deep-learning 
 ---
+
+
 ## Introduction
 In today's fast-paced world, insurance fraud has become a significant concern for insurance companies globally. Fraudulent claims not only lead to financial losses but also tarnish the reputation of insurers and increase premiums for honest policyholders. Among various types of insurance fraud, detecting fraudulent claims stemming from accidents poses a unique challenge due to the intricate nature of accidents and the diverse factors involved.
 
