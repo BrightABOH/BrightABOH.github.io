@@ -1,51 +1,22 @@
 ---
 layout: post
-title: "Predicting Fraudulent Claims from Accidents using Deep Learning - Part 1"
-date: 2024-04-25 22:01:18
-categories: Fraud Claim Prediction
-permalink: /posts/Predicting fraudulent claims with Deep learning 
+title: "Data Science and remote sensing: "
+date: 2021-10-31 22:01:18
+categories: water detection 1
+permalink: /posts/Data-Science-and-remote-sensing
 ---
 ## Introduction
-In today's fast-paced world, insurance fraud has become a significant concern for insurance companies globally. Fraudulent claims not only lead to financial losses but also tarnish the reputation of insurers and increase premiums for honest policyholders. Among various types of insurance fraud, detecting fraudulent claims stemming from accidents poses a unique challenge due to the intricate nature of accidents and the diverse factors involved.
 
-Traditional methods of fraud detection often rely on manual investigation and rule-based systems, which are time-consuming, labor-intensive, and may not be effective in uncovering sophisticated fraud schemes. However, with advancements in technology, particularly in the field of artificial intelligence and machine learning, insurers now have powerful tools at their disposal to combat insurance fraud more effectively. This blog post is divided into 2 parts, in Part 1, we experimnent with different algorithms and Part 2 will developing and deploying a web based App based on the results obtained in Part 1 
+Having worked in the intersection of this space(data science and remote sensing) for a while, I wish to bring to the limelight the amazing benefits shrouded in the unison of these two fields. I am writting series of blog posts focusing on the intersections of these feilds, real world applications, tutorials etc.
+To start with, let’s begin with an understanding of the two fields separately; Remote sensing and Data Science. I will describe Remote sensing as the study of the physical constituents of nature without having to make any physical contact with the objects. Therefore the needed information about these objects is collected from a distance e.g from a satellite, from an airplane, etc. Some of the information collected on these Earth objects includes vegetation, air, ocean, open water, oil reservoirs, etc. Data Science is an interdisciplinary field comprising domain knowledge, programming skills, and knowledge of mathematics and statistics to extract and identify hidden patterns within data sets including those collected through remote sensing.
+Now that we have a firm understanding of what remote sensing and data science are, we will explore the interplay of the two. Our focus will be on how to identify groundwater from satellite images using Google Earth Engine and its Python API. For easy content absorption, this blog is divided into two parts; the first part is dedicated to understanding the underlying concepts and the second part is the practical session.   The data used in this blog is Copernicus Sentinel 1 Synthetic Aperture Radar(SAR) obtained through Google Earth Engine(GEE) platform; a platform for the analysis and visualization of a large volume of geospatial datasets. A major challenge usually encountered working with satellite images is the computation requirements to process such data. To leverage the computational powers and the readily available satellite data, we use the GEE platform. Next, we define the location to collect data on. Our interest is in the Volta region of Ghana, please feel free to use any region of interest. In addition, you will need to create an account with GEE to have access to the platform. 
 
+## Data Description
 
-## Data description
-The insurance claim dataset contains information related to various insurance claims filed by policyholders. It includes details such as policyholder demographics, accident details, policy information, and claim outcomes. The dataset comprises the following columns:
+Launched in 2014, Sentinel 1 is equipped with a constellation of two polar-orbiting satellites, operating all day and all night irrespective of the weather to provide a large amount of data suitable for environmental and security monitoring globally.  The Radar imaging technology onboard the SAR Sentinel 1 allows data acquisitions even in very hazy regions due to its ability to penetrate clouds. 
 
-Month: Month in which the claim was filed.
-WeekOfMonth: Week number within the month when the claim was filed.
-DayOfWeek: Day of the week when the claim was filed.
-Make: Make of the vehicle involved in the accident.
-AccidentArea: Area where the accident occurred.
-DayOfWeekClaimed: Day of the week when the claim was reported.
-MonthClaimed: Month when the claim was reported.
-WeekOfMonthClaimed: Week number within the month when the claim was reported.
-Sex: Gender of the policyholder.
-MaritalStatus: Marital status of the policyholder.
-Age: Age of the policyholder.
-Fault: Fault attribution for the accident (e.g., policyholder, third party).
-PolicyType: Type of insurance policy.
-VehicleCategory: Category of the vehicle involved in the accident.
-VehiclePrice: Price range of the vehicle.
-FraudFound_P: Binary indicator for whether fraud was found in the claim.
-PolicyNumber: Unique identifier for the insurance policy.
-RepNumber: Representative number associated with the claim.
-Deductible: Deductible amount for the claim.
-DriverRating: Rating assigned to the driver involved in the accident.
-Days_Policy_Accident: Number of days the policy has been active at the time of the accident.
-Days_Policy_Claim: Number of days the policy has been active at the time of the claim.
-PastNumberOfClaims: Number of claims filed in the past by the policyholder.
-AgeOfVehicle: Age of the vehicle involved in the accident.
-AgeOfPolicyHolder: Age of the policyholder.
-PoliceReportFiled: Binary indicator for whether a police report was filed for the accident.
-WitnessPresent: Binary indicator for whether a witness was present at the accident.
-AgentType: Type of agent handling the claim.
-NumberOfSuppliments: Number of supplementary items included in the claim.
-AddressChange_Claim: Binary indicator for whether there was a change of address associated with the claim.
-NumberOfCars: Number of cars involved in the accident.
-Year: Year in which the claim was filed.
-BasePolicy: Base policy associated with the claim.
-ClaimSize: Size of the insurance claim.
-## Initial EDA
+## Tools
+
+Python 3.9 is used as the main programming language to process and extract the dataset. Google Earth Engine platform through its Python API is used for accessing satellite images and for further analysis. 
+Kindly follow through with the concluding part.
+
