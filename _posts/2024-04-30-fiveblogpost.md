@@ -93,7 +93,7 @@ Data.head()
 This operation gives us the first 10 rows of the data(Mostly there is little to see at this point). Next, the ``` data.info() ``` gives us an overview of the data as seen below
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/datainfo.png?raw=true)
 
-Looking at the result of the operation ```data.info```,  we can tell that there are 11565 data points with 34 columns. Out of these columns, 3 of them are of float type, 7 are integers and the rest 24 are objects. Furthermore, we can observe some missing values in some columns, specifically, there are  missing values in Age and DriverRating. How many missing values are in these columns ? we can find them out by this operation ``` data.isnull().sum()``` 
+Looking at the result of the operation ```data.info```,  we can tell that there are 11565 data points with 34 columns. Out of these columns, 3 of them are of float type, 7 are integers and the rest 24 are objects. Furthermore, we can observe some missing values in some columns, specifically, there are  missing values in Age and DriverRating. How many missing values are in these columns? we can find them out by this operation ``` data.isnull().sum()``` 
 
-
-As we can see there are 
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/missin.png?raw=true)
+As we can see there are 5 missing values in Age and 6 missing values in DriverRating. It is a good thing that there are only few missing values in the dataset). However, irrespective of this small number of missing values, we cannot proceed with our modeling without addressing this issue. We have to decide whether we are going to keep these data points or drop them(we will come back to this later). 
