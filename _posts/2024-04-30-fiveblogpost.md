@@ -113,3 +113,4 @@ def convert_to_numerical(data):
         value_map = {value: i+0 for i, value in enumerate(unique_values)}
         data[col] = data[col].map(value_map)
 ```
+Calling the function convert_to_numerical on our data like this convert_to_numerical(data) will ensure that all non-numerical columns have been assigned their numerical representation.  ```data["Sex"]``` will now give us 1,0,0 as desired. 
