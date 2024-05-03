@@ -91,5 +91,6 @@ Assuming you read and save your data in a variable called Data, we can peek into
 Data.head()
 ```
 This operation gives us the first 10 rows of the data(Mostly there is little to see at this point). Next, this ``` data.info() ``` gives us an overview of the data. 
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/datainfo.png?raw=true)
 
 Looking at the operation of ``data.info``` we can tell that there are 11565 data points with 34 columns. Out of these columns, 3 of them are of float type, 7 are integers and the rest 24 are objects. Furthermore, we can observe some missing values in some columns, specifically, there are  missing values in Age and DriverRating.  
