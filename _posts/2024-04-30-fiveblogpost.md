@@ -103,5 +103,6 @@ As you've already seen, a data imbalance is a classification problem where there
 As you will later see in this tutorial, we must handle the case of imbalances in the data. In the next section, we prepare our data for modeling including fixing the missing values, handling the class imbalance, converting column types into the appropriate types for the chosen algorithms etc
 
 ### Data preparation and pre-processing
-
+The first thing we want to address is that of the missing values. I have decided to keep these records, hence I need to choose an appropriate method to fill in these missing values (in the Age and DriverRating columns). I can impute these missing values using the mean, mode, or median values of the variable. I can also forward-fill or backward-fill with the last known or next value in that column.
+This snippet ``` data = data.fillna(method='ffill') ``` shows that I've decided to forward-fill the missing values in my dataset. 
 
