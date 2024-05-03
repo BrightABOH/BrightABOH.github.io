@@ -88,5 +88,7 @@ ClaimSize: Size of the insurance claim.
 Let's know our data by performing some explorations. We start by looking at the general overview of the data; the dimension of the data, the data types of the various columns, missing values, etc. This gives us an idea of what to expect and the necessary pre-processing.
 Assuming you read and save your data in a variable called Data, we can peek into the first few rows by doing this in Python
 ```
-data.head()
+Data.head()
 ```
+This operation gives us the first 10 rows of the data(Mostly there is little to see at this point). Next, this ``` data.info() ``` gives us an overview of the data. 
+
