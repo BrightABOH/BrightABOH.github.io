@@ -85,4 +85,8 @@ BasePolicy: Base policy associated with the claim.
 ClaimSize: Size of the insurance claim.
 
 ## Initial EDA
-Lets know our data by performing some explorations 
+Let's know our data by performing some explorations. We start by looking at the general overview of the data; the dimension of the data, the data types of the various columns, missing values, etc. This gives us an idea of what to expect and the necessary pre-processing.
+Assuming you read and save your data in a variable called Data, we can peek into the first few rows by doing this in Python
+```
+data.head()
+```
