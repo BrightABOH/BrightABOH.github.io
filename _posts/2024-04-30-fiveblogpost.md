@@ -117,8 +117,8 @@ Calling the function convert_to_numerical on our data like this convert_to_numer
 On the issue of class imbalance, we can address it by either of the following; oversample the minority class, undersample the majority class, cost-sensitive learning, etc. Now will be a good time to handle the class imbalance, on second thought however, to understand the effect of the class imbalance in the dataset, we will continue to train and fit our model without addressing the imbalance constraint for now. 
 
 ### Model training 
-We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we needed to understand how each of the features will contribute to our final model
-
+We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we need to understand how each of the features will contribute to our final model
+We start with a simple logistic regression(with the class imbalance) as  below;
 ```
 #Logistic regression
 from sklearn.model_selection import train_test_split
