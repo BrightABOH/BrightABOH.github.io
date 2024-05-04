@@ -168,5 +168,5 @@ plt.xticks(ticks=np.arange(2) + 0.5, labels=class_names)
 plt.yticks(ticks=np.arange(2) + 0.5, labels=class_names)
 plt.show()
 ```
-![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/missin.png?raw=true)
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusionmatrix.png?raw=true)
 
