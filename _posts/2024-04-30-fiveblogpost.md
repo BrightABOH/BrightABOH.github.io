@@ -105,7 +105,7 @@ As you will later see in this tutorial, we must handle the case of imbalances in
 ### Data preparation and pre-processing
 The first thing we want to address is that of the missing values. I have decided to keep these records, hence I need to choose an appropriate method to fill in these missing values (in the Age and DriverRating columns). I can impute these missing values using the mean, mode, or median values of the variable. I can also forward-fill or backward-fill with the last known or next value in that column.
 This snippet ``` data = data.fillna(method='ffill') ``` shows that I've decided to forward-fill the missing values in my dataset. 
-Next, I want to change non-numerical datatypes to their  numerical numerical representation.  For instance, this  ```data["Sex"]``` will give us Male, Female, Female kinda response. What I want is to have them as binary responses 1 for male and 0 for female, you get the idea. The function below will help us achieve our desire results;
+Next, I want to change non-numerical datatypes to their  numerical numerical representation.  For instance, this  ```data["Sex"]``` will give us a Male, Female, Female kinda response. What I want is to have them as binary responses 1 for male and 0 for female, you get the idea. The function below will help us achieve our desired results;
 ```
 def convert_to_numerical(data):
     for col in data.select_dtypes(include=['object']).columns:  
@@ -114,10 +114,10 @@ def convert_to_numerical(data):
         data[col] = data[col].map(value_map)
 ```
 Calling the function convert_to_numerical on our data like this convert_to_numerical(data) will ensure that all non-numerical columns have been assigned their numerical representation.  Doing this ```data["Sex"]``` will now give us 1,0,0 as desired. 
-On the issue of class imbalance, we can address it by either of the following; oversample the minority class, undersample the majority class, cost sensitive learning etc. Now will be a good time to handle the class imbalance, on a second thought however, in order to understand the effect of the class imbalance in the dataset, we will continue to train and fit our model without addressing the imbalance constraint for now. 
+On the issue of class imbalance, we can address it by either of the following; oversample the minority class, undersample the majority class, cost-sensitive learning, etc. Now will be a good time to handle the class imbalance, on second thought however, to understand the effect of the class imbalance in the dataset, we will continue to train and fit our model without addressing the imbalance constraint for now. 
 
 ### Model training 
-We start with a simple logistic model, where FraudFound_P is our target variable and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the possible dimension
+We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and 
 ```
 ```
 
