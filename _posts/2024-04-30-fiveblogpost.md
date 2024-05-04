@@ -154,7 +154,6 @@ print(accuracy)
 The model has an accuracy of 94.07%. Not to be too happy, we inspect the class performance. We compute the confusion matrix to understand the performance of the model beyond the high accuracy
 ```
 # Calculate confusion matrix
-# Calculate confusion matrix
 cm = confusion_matrix(y_test, y_pred)
 class_names = ['Legit', 'Fraud']
 # Plot confusion matrix
@@ -169,4 +168,6 @@ plt.yticks(ticks=np.arange(2) + 0.5, labels=class_names)
 plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion.png?raw=true)
-Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is clearly skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task.  
+Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task.  
+
+
