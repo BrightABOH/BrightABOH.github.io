@@ -118,25 +118,37 @@ On the issue of class imbalance, we can address it by either of the following; o
 
 ### Model training 
 We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we need to understand how each of the features will contribute to our final model
-We start with a simple logistic regression(with the class imbalance) as  below;
+We start with a simple logistic regression(with the class imbalance), as  below;
 ```
 #Logistic regression
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix, accuracy_score
 
-# Assuming X_train, X_test, y_train, y_test are your training and test data
+# Define features and target variable
+X = data.drop(columns=['FraudFound_P'])
+y = data['FraudFound_P']
+
+
+# Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+# Standardize features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
 # Train logistic regression model with class weights
 model = LogisticRegression()
-model.fit(X_train, y_train)
+model.fit(X_train_scaled, y_train)
 
 # Make predictions on test data
-y_pred = model.predict(X_test)
+y_pred = model.predict(X_test_scaled)
 
 # Evaluate model performance
-print(classification_report(y_test, y_pred))
+# Accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print(accuracy)
+
 ```
 
