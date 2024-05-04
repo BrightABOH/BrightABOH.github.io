@@ -10,7 +10,7 @@ permalink: /posts/Predicting-fraudulent-claims-with-Deep-learning
 ## Introduction
 In today's fast-paced world, insurance fraud has become a significant concern for insurance companies globally. Fraudulent claims not only lead to financial losses but also tarnish the reputation of insurers and increase premiums for honest policyholders. Among various types of insurance fraud, detecting fraudulent claims stemming from accidents poses a unique challenge due to the intricate nature of accidents and the diverse factors involved.
 
-Traditional methods of fraud detection often rely on manual investigation and rule-based systems, which are time-consuming, labor-intensive, and may not be effective in uncovering sophisticated fraud schemes. However, with advancements in technology, particularly in the field of artificial intelligence and machine learning, insurers now have powerful tools at their disposal to combat insurance fraud more effectively. This blog post is divided into 2 parts, in Part 1, we experimnent with different algorithms and Part 2 will developing and deploying a web based App based on the results obtained in Part 1 
+Traditional methods of fraud detection often rely on manual investigation and rule-based systems, which are time-consuming, labor-intensive, and may not be effective in uncovering sophisticated fraud schemes. However, with advancements in technology, particularly in the field of artificial intelligence and machine learning, insurers now have powerful tools at their disposal to combat insurance fraud more effectively. This blog post is divided into 2 parts, in Part 1, we experiment with different algorithms, and in Part 2 will develop and deploy a web-based App based on the results obtained in Part 1 
 
 
 ## Data description
@@ -117,7 +117,26 @@ Calling the function convert_to_numerical on our data like this convert_to_numer
 On the issue of class imbalance, we can address it by either of the following; oversample the minority class, undersample the majority class, cost-sensitive learning, etc. Now will be a good time to handle the class imbalance, on second thought however, to understand the effect of the class imbalance in the dataset, we will continue to train and fit our model without addressing the imbalance constraint for now. 
 
 ### Model training 
-We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and 
+We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we needed to understand how each of the features will contribute to our final model
+
 ```
+#Logistic regression
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+
+# Assuming X_train, X_test, y_train, y_test are your training and test data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+# Train logistic regression model with class weights
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Make predictions on test data
+y_pred = model.predict(X_test)
+
+# Evaluate model performance
+print(classification_report(y_test, y_pred))
 ```
 
