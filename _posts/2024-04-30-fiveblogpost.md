@@ -169,7 +169,7 @@ plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion.png?raw=true)
 Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task. To address this is to address the imbalance problem in the dataset, to do this we will experiment with oversamplling the minority class, and adding class weights to the different classes accordingly. 
-We start with SMOTE which creates synthetic samples for the minority class. This way, we will increase the number of minority class thereby solving the class imbalance issue
+We start with SMOTE which creates synthetic samples for the minority class. This way, we will increase the number of minority classes thereby solving the class imbalance issue
 ```
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
@@ -187,3 +187,35 @@ accuracy = accuracy_score(y_test, y_pred)
 print(accuracy)
 
 ```
+The model has an accuracy of 61%. As with the first model, we inspect the class performance with the confusion matrix to understand the performance of the model beyond the accuracy 
+
+```
+# Calculate confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+class_names = ['Legit', 'Fraud']
+# Plot confusion matrix
+plt.figure(figsize=(8, 6))
+# Calculate class percentages
+class_percentages = cm / cm.sum(axis=1)[:, np.newaxis]
+# Plot confusion matrix with counts
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.xlabel('Predicted labels')
+plt.ylabel('True labels')
+plt.title('Confusion Matrix (Class Counts and Percentages)')
+plt.xticks(ticks=np.arange(2) + 0.5, labels=class_names)
+plt.yticks(ticks=np.arange(2) + 0.5, labels=class_names)
+
+# Add text annotations for class percentages
+for i in range(cm.shape[0]):
+    for j in range(cm.shape[1]):
+        # Compute percentage if count is not zero
+        if cm[i, j] != 0:
+            percentage = class_percentages[i, j]
+            plt.text(j + 0.5, i + 0.2, f'{percentage:.2%}', 
+                     horizontalalignment='center', verticalalignment='center', color='green')
+
+plt.show()
+
+```
+
+
