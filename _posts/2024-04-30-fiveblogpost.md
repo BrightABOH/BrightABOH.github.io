@@ -217,5 +217,5 @@ for i in range(cm.shape[0]):
 plt.show()
 
 ```
-
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion2.png?raw=true)
 
