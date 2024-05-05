@@ -168,6 +168,22 @@ plt.yticks(ticks=np.arange(2) + 0.5, labels=class_names)
 plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion.png?raw=true)
-Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task.  
-To 
+Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task. To address this is to address the imbalance problem in the dataset, to do this we will experiment with oversamplling the minority class, and adding class weights to the different classes accordingly. 
+We start with SMOTE which creates synthetic samples for the minority class. This way, we will increase the number of minority class thereby solving the class imbalance issue
+```
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report,accuracy_score,confusion_matrix
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+smote = SMOTE(random_state=42)
+X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+model = LogisticRegression()
+model.fit(X_train_resampled, y_train_resampled)
+y_pred = model.predict(X_test)
+print(classification_report(y_test, y_pred))
+# Metrics
+accuracy = accuracy_score(y_test, y_pred)
+print(accuracy)
 
+```
