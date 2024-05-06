@@ -244,9 +244,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 
 
-# Calculate class weights
-#class_weight = {0: 1, 1: 10}  # Adjust weights based on the class imbalance
-
 # Train logistic regression model with class weights
 model = LogisticRegression(class_weight=class_weight)
 model.fit(X_train_scaled, y_train)
@@ -256,8 +253,9 @@ y_pred = model.predict(X_test_scaled)
 
 # Evaluate model performance
 print(classification_report(y_test, y_pred))
+# Metrics
+print(accuracy_score(y_test, y_pred))
 ```
+When these blocks of code are executed, the first thing we notice about this approach to handling class imbalance is an improvement in the model performance from 61% to 67% overall accuracy. What about improvement in predicting fraudulent claims correctly? Well, that has improved significantly as well as observed from the confusion matrix below;
 
 
-
-This helps in mitigating the bias towards the majority class and improves the model's ability to correctly classify instances from the minority clas
