@@ -116,7 +116,7 @@ def convert_to_numerical(data):
 Calling the function convert_to_numerical on our data like this convert_to_numerical(data) will ensure that all non-numerical columns have been assigned their numerical representation.  Doing this ```data["Sex"]``` will now give us 1,0,0 as desired. 
 On the issue of class imbalance, we can address it by either of the following; oversample the minority class, undersample the majority class, cost-sensitive learning, etc. Now will be a good time to handle the class imbalance, on second thought however, to understand the effect of the class imbalance in the dataset, we will continue to train and fit our model without addressing the imbalance constraint for now. 
 
-### Model training 
+## Model training 
 We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we need to understand how each of the features will contribute to our final model
 We start with a simple logistic regression(with the class imbalance), as  below;
 ```
@@ -221,5 +221,5 @@ plt.show()
 The first thing we observe here is the drop in the overall accuracy from 94% to 61% just after solving the imbalance problem. Does this help solve our problem? Yes!, from not being able to predict any fraudulent claims in the previous model, we can predict 65 fraudulent claims as true fraudulent(True negatives). That notwithstanding, our model is still predicting some 71 fraudulent claims as legit (False negative). Our objective hereafter is to increase the number of fraudulent claims that are indeed predicted as fraudulent by reducing the number of false negative claims(reduce the 71 as low as possible) even if it means increasing the number of legit claims as fraudulent (False positive; 820 in our case). Think about it, it is better to predict legit claims as fraudulent which may turn out not to be fraudulent upon investigation rather than predicting a fraudulent claim as legit which could cause us to lose millions.  
 Now that we can deal with the class imbalance, we experiment with other models to reduce the false negatives. 
 
-### Improving performance 
+## Improving performance 
 
