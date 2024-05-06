@@ -90,8 +90,7 @@ BasePolicy: Base policy associated with the claim.
 ClaimSize: Size of the insurance claim.
 
 ## Initial EDA
-Let's know our data by performing some explorations. We start by looking at the general overview of the data; the dimension of the data, the data types of the various columns, missing values, etc. This gives us an idea of what to expect and the necessary pre-processing.
-Assuming you read and save your data in a variable called Data, we can peek into the first few rows by doing this in Python
+Let's know our data by performing some explorations. We start by looking at the general overview of the data; the dimension of the data, the data types of the various columns, missing values, etc. This gives us an idea of what to expect and the necessary pre-processing, we can peek into the first few rows by doing this in Python
 ```
 Data.head()
 ```
@@ -264,5 +263,5 @@ print(accuracy_score(y_test, y_pred))
 When these blocks of code are executed, the first thing we notice about this approach to handling class imbalance is an improvement in the model performance from 61% to 67% overall accuracy. What about improvement in predicting fraudulent claims correctly? Well, that has improved significantly as well as observed from the confusion matrix below;
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion3.png?raw=true)
-
+In predicting fraudulent claims correctly, the new model has now predicted 105 claims correctly as fraudulent, which is an improvement over the previous 65 claims. This directly reduces the number of fraud claims misclassified as legit from 71 claims to 31 claims 
 
