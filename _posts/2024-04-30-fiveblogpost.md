@@ -263,5 +263,5 @@ print(accuracy_score(y_test, y_pred))
 When these blocks of code are executed, the first thing we notice about this approach to handling class imbalance is an improvement in the model performance from 61% to 67% overall accuracy. What about improvement in predicting fraudulent claims correctly? Well, that has improved significantly as well as observed from the confusion matrix below;
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion3.png?raw=true)
-In predicting fraudulent claims correctly, the new model has now predicted 105 claims correctly as fraudulent, which is an improvement over the previous 65 claims. This directly reduces the number of fraud claims misclassified as legit from 71 claims to 31 claims 
+In predicting fraudulent claims correctly, the new model has now predicted 105 claims correctly as fraudulent, which is an improvement over the previous 65 claims. This directly reduces the number of fraud claims misclassified as legit from 71 claims to 31 claims which is what we want. However, 31 misclassified claims could still be high when we consider the monetary values (say a fraud classified as legit could result in thousands of dollars). 
 
