@@ -218,4 +218,6 @@ plt.show()
 
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion2.png?raw=true)
+The first thing we observe here is the drop in the overall accuracy from 94% to 61% just after solving the imbalance problem. Does this help solve our problem? Yes!, from not being able to predict any fraudulent claims in the previous model, we can predict 65 fraudulent claims as true fraudulent(True negatives). That notwithstanding, our model is still predicting some 71 fraudulent claims as legit (False negative). Our objective hereafter is to increase the number of fraudulent claims that are indeed predicted as fraudulent by reducing the number of false negative claims(reduce the 71 as low as possible) even if it means increasing the number of legit claims as fraudulent(False positive). Think about it, it is better to predict legit claims as fraudulent rather than predicting a fraudulent claim as legit.  
+
 
