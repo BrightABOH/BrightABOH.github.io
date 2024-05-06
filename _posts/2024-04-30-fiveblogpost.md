@@ -266,5 +266,8 @@ When these blocks of code are executed, the first thing we notice about this app
 In predicting fraudulent claims correctly, the new model has now predicted 105 claims correctly as fraudulent, which is an improvement over the previous 65 claims. This directly reduces the number of fraud claims misclassified as legit from 71 claims to 31 claims which is what we want. In general, there is an overall improvement in the performance of the class classification as observed from the previous confusion matrices. 
 
 However, 31 misclassified claims could still be high when we consider the monetary values (say a fraud classified as legit could result in thousands of dollars).  
-In the last sessions of this tutorial, we will take advantage of the time component of the dataset and  experiment with a deep-learning sequential model to see if we can further reduce the number of false negatives  and improve the perf
+In the last sessions of this tutorial, we will take advantage of the time component of the dataset and  experiment with a deep-learning sequential model to see if we can further reduce the number of false negatives  and improve the general performance of the model. Additionally, we introduce different  metrics such as recall, precision, and support which help us to determine how certain we are about our predictions 
+
+
+
 
