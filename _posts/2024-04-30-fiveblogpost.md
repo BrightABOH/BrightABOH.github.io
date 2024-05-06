@@ -222,8 +222,7 @@ The first thing we observe here is the drop in the overall accuracy from 94% to 
 Now that we can deal with the class imbalance, we experiment with other models to reduce the false negatives. 
 
 ## Improving performance 
-We experiment with a different approach to handle class imbalance and observe the performance of the mode. We introduce the notion of class weights. In this approach, we assign weights to the Legit and Fraud classes; by assigning higher weights to the minority class(Fraud) and lower weights to the majority class(Legit), the model is trained to pay more attention to the minority class samples during the optimization process. In determining how to assign the weights, 
-
+We experiment with a different approach to handle class imbalance and observe the performance of the mode. We introduce the notion of class weights. In this approach, we assign weights to the Legit and Fraud classes; by assigning higher weights to the minority class(Fraud) and lower weights to the majority class(Legit), the model is trained to pay more attention to the minority class samples during the optimization process. In determining how to assign these weights, we use sklearn.utils to help compute them  as below
 
 
 ```
@@ -236,6 +235,29 @@ class_weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y
 class_weight = dict(zip(np.unique(y_train), class_weights))
 print(class_weight)
 ```
+Next, we add these class weights during the training of our model. To compare the performance, we add this class weights back to the logistic regression model as below and observe its performance thereafter. 
+```
+#Logistic regression with weights
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+
+
+# Calculate class weights
+#class_weight = {0: 1, 1: 10}  # Adjust weights based on the class imbalance
+
+# Train logistic regression model with class weights
+model = LogisticRegression(class_weight=class_weight)
+model.fit(X_train_scaled, y_train)
+
+# Make predictions on test data
+y_pred = model.predict(X_test_scaled)
+
+# Evaluate model performance
+print(classification_report(y_test, y_pred))
+```
+
 
 
 This helps in mitigating the bias towards the majority class and improves the model's ability to correctly classify instances from the minority clas
