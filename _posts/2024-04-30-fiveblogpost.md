@@ -258,4 +258,6 @@ print(accuracy_score(y_test, y_pred))
 ```
 When these blocks of code are executed, the first thing we notice about this approach to handling class imbalance is an improvement in the model performance from 61% to 67% overall accuracy. What about improvement in predicting fraudulent claims correctly? Well, that has improved significantly as well as observed from the confusion matrix below;
 
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion3.png?raw=true)
+
 
