@@ -222,4 +222,20 @@ The first thing we observe here is the drop in the overall accuracy from 94% to 
 Now that we can deal with the class imbalance, we experiment with other models to reduce the false negatives. 
 
 ## Improving performance 
+We experiment with a different approach to handle class imbalance and observe the performance of the mode. We introduce the notion of class weights. In this approach, we assign weights to the Legit and Fraud classes; by assigning higher weights to the minority class(Fraud) and lower weights to the majority class(Legit), the model is trained to pay more attention to the minority class samples during the optimization process. In determining how to assign the weights, 
 
+
+
+```
+from sklearn.utils.class_weight import compute_class_weight
+
+# Calculate class weights
+class_weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
+
+# Convert to dictionary format
+class_weight = dict(zip(np.unique(y_train), class_weights))
+print(class_weight)
+```
+
+
+This helps in mitigating the bias towards the majority class and improves the model's ability to correctly classify instances from the minority clas
