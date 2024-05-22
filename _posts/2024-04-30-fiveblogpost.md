@@ -268,7 +268,7 @@ In predicting fraudulent claims correctly, the new model has now predicted 105 c
 However, 31 misclassified claims could still be high when we consider the monetary values (say a fraud classified as legit could result in thousands of dollars).  
 
 
-Next on the agenda is to experiment with XGBoost (Extreme Gradient Boosting). XXGBoost's ability to handle imbalanced datasets, its high accuracy and robustness, speed, interpretability, flexibility, and scalability make it an excellent choice for fraud detection tasks. In handling the class imbalance for this setup, I use the imbalance module. This model allows us to either oversample the minority class(fraud cases) or underrsample the majority class(legit claims). I experiment with both and found the undersampling technique to work better. Note that the previous strategy of assigning wait classes could still suffice for XGBoost too.  The complete setup is below;
+Next on the agenda is to experiment with XGBoost (Extreme Gradient Boosting). XGBoost's ability to handle imbalanced datasets, its high accuracy and robustness, speed, interpretability, flexibility, and scalability make it an excellent choice for fraud detection tasks. In handling the class imbalance for this setup, I use the imbalance module. This model allows us to either oversample the minority class(fraud cases) or underrsample the majority class(legit claims). I experiment with both and found the undersampling technique to work better. Note that the previous strategy of assigning wait classes could still suffice for XGBoost too.  The complete setup is below;
 
 ```
 import numpy as np
