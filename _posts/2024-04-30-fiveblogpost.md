@@ -270,8 +270,69 @@ However, 31 misclassified claims could still be high when we consider the moneta
 
 Next on the agenda is to experiment with XGBoost (Extreme Gradient Boosting). XXGBoost's ability to handle imbalanced datasets, its high accuracy and robustness, speed, interpretability, flexibility, and scalability make it an excellent choice for fraud detection tasks. In handling the class imbalance for this setup, I use the imbalance module. This model allows us to either oversample the minority class(fraud cases) or underrsample the majority class(legit claims). I experiment with both and found the undersampling technique to work better. Note that the previous strategy of assigning wait classes could still suffice for XGBoost too.  The complete setup is below;
 
+```
+import numpy as np
+from sklearn.model_selection import train_test_split, GridSearchCV
+from xgboost import XGBClassifier, plot_importance
+from sklearn.utils import class_weight
+from sklearn.metrics import classification_report, make_scorer, f1_score
+from sklearn.preprocessing import StandardScaler
+from imblearn.under_sampling import RandomUnderSampler
+import matplotlib.pyplot as plt
+
+# Assuming you have already loaded and preprocessed your data into X and y
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+
+# Perform undersampling on the training data
+undersampler = RandomUnderSampler(random_state=42)
+X_train_resampled, y_train_resampled = undersampler.fit_resample(X_train, y_train)
+
+# Scale the features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train_resampled)
+X_test_scaled = scaler.transform(X_test)
+
+# Define the parameter grid for GridSearchCV
+param_grid = {
+    'max_depth': [5, 10, 15, 25],
+    'learning_rate': [0.1, 0.01, 0.001, 0.0001],
+    'n_estimators': [10, 20, 40, 60]
+} 
+
+# Initialize XGBoost classifier
+xgb = XGBClassifier()
+
+# Custom scorer for GridSearchCV
+custom_scorer = make_scorer(f1_score, pos_label=1)
+
+# Initialize GridSearchCV
+grid_search = GridSearchCV(estimator=xgb, param_grid=param_grid, scoring=custom_scorer, cv=5)
+
+# Perform GridSearchCV
+grid_search.fit(X_train_scaled, y_train_resampled)
+
+# Get the best parameters found
+best_params = grid_search.best_params_
+
+# Print the best parameters found by GridSearchCV
+print("Best Parameters:", best_params)
 
 
+# Initialize XGBoost classifier with the best parameters and class weights
+xgb_best = XGBClassifier(**best_params)
+
+# Train the classifier on the entire training data
+xgb_best.fit(X_train_scaled, y_train_resampled)
+
+# Predict on the test set
+y_pred = xgb_best.predict(X_test_scaled)
+
+# Evaluate the model
+print(classification_report(y_test, y_pred))
+
+```
 
 
 
