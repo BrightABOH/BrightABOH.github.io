@@ -333,6 +333,7 @@ y_pred = xgb_best.predict(X_test_scaled)
 print(classification_report(y_test, y_pred))
 
 ```
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/report.png?raw=true)
 
 
 ```
