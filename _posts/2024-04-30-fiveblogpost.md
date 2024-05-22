@@ -367,4 +367,4 @@ plt.show()
 ```
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusionF.png?raw=true)
-The results from the confusion matrix indicates predictions are doing better as compared to the previous results from the other algorithms. We are currently misclassifying 17 fraud claims as legit (even though still high)  is a huge reduction from the 31 previously. In addition, the we predicted 119 fraud claims as against 
+The results from the confusion matrix indicates predictions are doing better as compared to the previous results from the other algorithms. We are currently misclassifying 17 fraud claims as legit (even though still high)  is a huge reduction from the 31 previously. In addition, the we predicted 119 fraud claims correctly, which is an increase from the previous 105. Overall, we see an improvement in the model performance across different metrics measured.
