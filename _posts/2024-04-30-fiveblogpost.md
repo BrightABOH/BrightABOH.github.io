@@ -267,6 +267,9 @@ In predicting fraudulent claims correctly, the new model has now predicted 105 c
 
 However, 31 misclassified claims could still be high when we consider the monetary values (say a fraud classified as legit could result in thousands of dollars).  
 
+
+Next on the agenda is to experiment with Xtra Gradient Boost(XGBoost). XGBoost has been linked to perform well on such activites as fraud detection where there is the class imbalance problem 
+
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusionF.png?raw=true)
 
 
