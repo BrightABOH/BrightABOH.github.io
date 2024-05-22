@@ -367,5 +367,4 @@ plt.show()
 ```
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusionF.png?raw=true)
-
-
+The results from the confusion matrix indicates predictions are doing better as compared to the previous results from the other algorithms.  
