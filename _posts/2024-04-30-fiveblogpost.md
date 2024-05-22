@@ -335,6 +335,35 @@ print(classification_report(y_test, y_pred))
 ```
 
 
+```
+# Calculate confusion matrix
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
+cm = confusion_matrix(y_test, y_pred)
+class_names = ['Legit', 'Fraud']
+# Plot confusion matrix
+plt.figure(figsize=(8, 6))
+# Calculate class percentages
+class_percentages = cm / cm.sum(axis=1)[:, np.newaxis]
+# Plot confusion matrix with counts
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.xlabel('Predicted labels')
+plt.ylabel('True labels')
+plt.title('Confusion Matrix (Class Counts and Percentages)')
+plt.xticks(ticks=np.arange(2) + 0.5, labels=class_names)
+plt.yticks(ticks=np.arange(2) + 0.5, labels=class_names)
+
+# Add text annotations for class percentages
+for i in range(cm.shape[0]):
+    for j in range(cm.shape[1]):
+        # Compute percentage if count is not zero
+        if cm[i, j] != 0:
+            percentage = class_percentages[i, j]
+            plt.text(j + 0.5, i + 0.2, f'{percentage:.2%}', 
+                     horizontalalignment='center', verticalalignment='center', color='green')
+
+plt.show()
+```
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusionF.png?raw=true)
 
