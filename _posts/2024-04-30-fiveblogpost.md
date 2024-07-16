@@ -330,7 +330,7 @@ plt.show()
 
 ```
 What we observe is that there are a lot more fraudulent claimers who are males. Without looking at the sex distribution within the dataset as a whole, one may be tempted to say that male drivers are more likely to commit fraudulent claims than their female counterparts. If we look at the sex distribution, we see that male drivers outnumber female drivers hence the possibility to find  more fraudulent claims in the male category.
-![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sex.png?raw=true)
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sex_fraud.png?raw=true)
 
 
 
