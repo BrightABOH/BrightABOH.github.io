@@ -301,7 +301,7 @@ for i, line in enumerate(ax.get_lines()):
 plt.show()
 
 ```
-![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/age_distribution2.png?raw=true)
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/kde.png?raw=true)
 
 The results show that most of the fraudulent claims are around the 30-40 year brackets. This makes sense since the age of most of the drivers in this dataset are in this age group.
 
