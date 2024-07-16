@@ -248,7 +248,9 @@ plt.yticks(fontsize=12)
 # Show the plot
 plt.show()
 ```
-
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/age_distribution.png?raw=true)
+From the graph above, see close to 300 claims with 0 years which doesnt make sense, as babies dont drive. We replace the these records with the mean age within the dataset.
+ 
 
 
 
