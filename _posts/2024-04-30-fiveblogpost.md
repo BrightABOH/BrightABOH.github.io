@@ -249,10 +249,16 @@ plt.yticks(fontsize=12)
 plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/age_distribution.png?raw=true)
-From the graph above, see close to 300 claims with 0 years which doesn't make sense, as babies don't drive. We replace these records with the mean age within the dataset.
-
+From the graph above, see close to 300 claims with 0 years which doesn't make sense, as babies don't drive. We replace these records with the mean age within the dataset by the following snippet of code;
 
 ```
+##Drop age 0 as babies dont drive
+# Calculate the median age of the drivers
+median_age = df_processed[df_processed['Age'] != 0]['Age'].median()
+median_rate = df_processed[df_processed['']]
+
+# Replace the age values that are 0 with the median age
+df_processed['Age'] = df_processed['Age'].replace(0, median_age)
 ```
  
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/age_distribution2.png?raw=true)
