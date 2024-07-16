@@ -334,6 +334,11 @@ What we observe is that there are a lot more fraudulent claimers who are males. 
 
 
 
+
+
+
+
+
 ## Model training 
 
 We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we need to understand how each of the features will contribute to our final model
