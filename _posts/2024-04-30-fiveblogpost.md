@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Predicting Fraudulent Accident Claims   - Part 1"
-date: 2024-04-25 22:01:18
+date: 2024-07-18 22:01:18
 categories: Fraud Claim Prediction
 permalink: /posts/Predicting-fraudulent-claims 
 ---
