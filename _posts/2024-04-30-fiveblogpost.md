@@ -304,10 +304,38 @@ plt.show()
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/kde.png?raw=true)
 
 The results show that most of the fraudulent claims are around the 30-40 year brackets. This makes sense since the age of most of the drivers in this dataset are in this age group.
+Another interesting insight we could drive is to investigate the distribution of fraudulent claims across the sex of the drivers. 
+```
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Assuming 'data' is your DataFrame and 'Sex' and 'FraudFound_P' are columns in it
+plt.figure(figsize=(10, 6))
+sns.countplot(x='Sex', hue='FraudFound_P', data=df_processed, palette='viridis')
+
+# Add title and labels
+plt.title('Sex Distribution of Fraud Found', fontsize=20)
+plt.xlabel('Sex', fontsize=15)
+plt.ylabel('Count', fontsize=15)
+
+# Customize ticks and labels
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+
+# Add legend
+plt.legend(title='Fraud Found')
+
+# Show the plot
+plt.show()
+
+```
+What we observe is that there are a lot more fraudulent claimers who are males. Without looking at the sex distribution within the dataset as a whole, one may be tempted to say that male drivers are more likely to commit fraudulent claims than their female counterparts. If we look at the sex distribution, we see that male drivers outnumber female drivers hence the possibility to find  more fraudulent claims in the male category.
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sex.png?raw=true)
 
 
 
 ## Model training 
+
 We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we need to understand how each of the features will contribute to our final model
 We start with a simple logistic regression(with the class imbalance), as  below;
 ```
