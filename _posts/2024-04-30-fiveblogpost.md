@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Predicting Fraudulent Claims from Accidents using Deep Learning - Part 1"
+title: "Predicting Fraudulent Accident Claims   - Part 1"
 date: 2024-04-25 22:01:18
 categories: Fraud Claim Prediction
-permalink: /posts/Predicting-fraudulent-claims-with-Deep-learning 
+permalink: /posts/Predicting-fraudulent-claims 
 ---
 
 
@@ -89,7 +89,10 @@ BasePolicy: Base policy associated with the claim.
 
 ClaimSize: Size of the insurance claim.
 
-## Initial EDA
+
+
+
+## Data intro
 Let's know our data by performing some explorations. We start by looking at the general overview of the data; the dimension of the data, the data types of the various columns, missing values, etc. This gives us an idea of what to expect and the necessary pre-processing, we can peek into the first few rows by doing this in Python
 ```
 Data.head()
@@ -107,18 +110,147 @@ As you've already seen, a data imbalance is a classification problem where there
 As you will later see in this tutorial, we must handle the case of imbalances in the data. In the next section, we prepare our data for modeling including fixing the missing values, handling the class imbalance, converting column types into the appropriate types for the chosen algorithms etc
 
 ### Data preparation and pre-processing
-The first thing we want to address is that of the missing values. I have decided to keep these records, hence I need to choose an appropriate method to fill in these missing values (in the Age and DriverRating columns). I can impute these missing values using the mean, mode, or median values of the variable. I can also forward-fill or backward-fill with the last known or next value in that column.
-This snippet ``` data = data.fillna(method='ffill') ``` shows that I've decided to forward-fill the missing values in my dataset. 
-Next, I want to change non-numerical datatypes to their  numerical numerical representation.  For instance, this  ```data["Sex"]``` will give us a Male, Female, Female kinda response. What I want is to have them as binary responses 1 for male and 0 for female, you get the idea. The function below will help us achieve our desired results;
+
+The first thing we want to address is that of the missing values. I have decided to keep these records, hence I need to choose an appropriate method to fill in these missing values (in the Age and DriverRating columns). I can impute these missing values using the mean, mode, or median values of the variable. I can also forward-fill or backward-fill with the last known or next value in that column. Additionally, the functions below also process the object type data(e.g assigning numerical values to months of the year) by assigning numerical values to the non-numerical and categorical data.
+
+
 ```
-def convert_to_numerical(data):
-    for col in data.select_dtypes(include=['object']).columns:  
-        unique_values = data[col].unique()
-        value_map = {value: i+0 for i, value in enumerate(unique_values)}
-        data[col] = data[col].map(value_map)
+#Preprocessing functions
+import pandas as pd
+
+# Load your dataset
+def load_data(file_path):
+    data = pd.read_excel(file_path)
+    return data.copy()
+
+# Function to process month columns
+def process_months(df, month_columns):
+    months = {
+        'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+        'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+    }
+    month_proc = lambda x: months.get(x, 0)
+    
+    for col in month_columns:
+        df[col] = df[col].apply(month_proc)
+    return df
+
+# Function to process day of week columns
+def process_days_of_week(df, day_columns):
+    days = {
+        'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
+        'Thursday': 4, 'Friday': 5, 'Saturday': 6, 'Sunday': 7
+    }
+    day_proc = lambda x: days.get(x, 0)
+    
+    for col in day_columns:
+        df[col] = df[col].apply(day_proc)
+    return df
+
+# Function to process vehicle price
+def process_vehicle_price(df, vehicle_price_column):
+    vehicle_prices = {
+        'less than 20000': 1, '20000 to 29000': 2, '30000 to 39000': 3,
+        '40000 to 59000': 4, '60000 to 69000': 5, 'more than 69000': 6,
+    }
+    vehicle_price_proc = lambda x: vehicle_prices.get(x, 0)
+    
+    df[vehicle_price_column] = df[vehicle_price_column].apply(vehicle_price_proc)
+    return df
+
+# Function to process vehicle age
+def process_vehicle_age(df, vehicle_age_column):
+    AgeOfVehicle_variants = {
+        'new': 0.5, '2 years': 2, '3 years': 3, '4 years': 4,
+        '5 years': 5, '6 years': 6, '7 years': 7, 'more than 7': 8.5,
+    }
+    vehicle_age_proc = lambda x: AgeOfVehicle_variants[x]
+    
+    df[vehicle_age_column] = df[vehicle_age_column].apply(vehicle_age_proc)
+    return df
+
+# Function to process policy holder age
+def process_policy_holder_age(df, age_column):
+    age_variants = {
+        '16 to 17': 1, '18 to 20': 2, '21 to 25': 3, '26 to 30': 4,
+        '31 to 35': 5, '36 to 40': 6, '41 to 50': 7, '51 to 65': 8, 'over 65': 9,
+    }
+    age_proc = lambda x: age_variants[x]
+    
+    df[age_column] = df[age_column].apply(age_proc)
+    return df
+
+# Function to fill missing values
+def fill_missing_values(df, columns_with_default_values):
+    for column, default_value in columns_with_default_values.items():
+        df[column] = df[column].fillna(default_value)
+    return df
+
+# Main processing function
+def process_data(file_path):
+    df = load_data(file_path)
+    
+    df = process_months(df, ['Month', 'MonthClaimed'])
+    df = process_days_of_week(df, ['DayOfWeek', 'DayOfWeekClaimed'])
+    df = process_vehicle_price(df, 'VehiclePrice')
+    df = process_vehicle_age(df, 'AgeOfVehicle')
+    df = process_policy_holder_age(df, 'AgeOfPolicyHolder')
+    
+    df = fill_missing_values(df, {'Age': df['Age'].mean(), 'DriverRating': df['DriverRating'].mean()})
+    
+    return df
+
+# File path to the dataset
+file_path = "/Users/brightabohsilasedem/Downloads/Dataset-2.xlsx"
+
+# Process the data
+df_processed = process_data(file_path)
 ```
-Calling the function convert_to_numerical on our data like this convert_to_numerical(data) will ensure that all non-numerical columns have been assigned their numerical representation.  Doing this ```data["Sex"]``` will now give us 1,0,0 as desired. 
-On the issue of class imbalance, we can address it by either of the following; oversample the minority class, undersample the majority class, cost-sensitive learning, etc. Now will be a good time to handle the class imbalance, on second thought however, to understand the effect of the class imbalance in the dataset, we will continue to train and fit our model without addressing the imbalance constraint for now. 
+Calling the main processing function convert_to_numerical on our data like this convert_to_numerical(data) will ensure that all non-numerical columns have been assigned their numerical representation.  Doing this ```data["Sex"]``` will now give us 1,0,0 as desired. 
+
+## Initial Data Exploratory Analysis(DEA)
+
+Next, we look at how the distribution of some of the columns and their relationship with the target variable(FraudFound_P).
+First of all, we look at the age distribution within the dataset with the following snippet;
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sample data
+
+# Set the style
+sns.set(style="whitegrid")
+
+# Create figure and axis
+plt.figure(figsize=(14, 8))
+
+# Plot histogram
+n, bins, patches = plt.hist(df_processed['Age'], bins=40, edgecolor='black', alpha=0.7)
+
+# Add colors
+for i in range(len(patches)):
+    patches[i].set_facecolor(plt.cm.viridis(i / len(patches)))
+
+# Add title and labels
+plt.title('Age Distribution', fontsize=20)
+plt.xlabel('Age', fontsize=15)
+plt.ylabel('Frequency', fontsize=15)
+
+# Add grid
+plt.grid(True, linestyle='--', alpha=0.7)
+
+# Customize ticks
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+
+# Show the plot
+plt.show()
+```
+
+
+
 
 ## Model training 
 We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. Note that if we so desire, we can start with a simple confusion matrix to understand the relationship among the predictor variables and possible dimension reduction to include only needed features. However, this approach is not so necessary in our case as we will be employing deep learning for feature engineering, and we need to understand how each of the features will contribute to our final model
