@@ -255,13 +255,56 @@ From the graph above, see close to 300 claims with 0 years which doesn't make se
 ##Drop age 0 as babies dont drive
 # Calculate the median age of the drivers
 median_age = df_processed[df_processed['Age'] != 0]['Age'].median()
-median_rate = df_processed[df_processed['']]
 
 # Replace the age values that are 0 with the median age
 df_processed['Age'] = df_processed['Age'].replace(0, median_age)
 ```
  
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/age_distribution2.png?raw=true)
+The result shows 0 years replaced with the mean of the ages. 
+
+Secondly, we can have an insight into the age distribution with fraudulent claims. The snippet code below shows which ages are more likely to have a fraudulent claim. To achieve this, we plot the Kernel Density Estimation graph as follows;
+```
+# Set the style
+sns.set(style="whitegrid")
+
+# Create FacetGrid
+g = sns.FacetGrid(df_processed, hue='FraudFound_P', height=7, aspect=2, palette='viridis')
+
+# Map the KDE plot to the grid
+g.map(sns.kdeplot, 'Age', shade=True)
+
+# Add a title
+plt.title('Age Distribution for Fraud and No Fraud Claims', fontsize=20)
+
+# Add legend
+g.add_legend(title="Fraud Found")
+
+# Customize ticks and labels
+plt.xlabel('Age', fontsize=15)
+plt.ylabel('Density', fontsize=15)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+
+
+ax = plt.gca()
+for i, line in enumerate(ax.get_lines()):
+    x_data = line_get_xdata()
+    y_data = line_get_ydata()
+    peak_index = np.argmax(ydata)
+    peak_x = x_data[peak_index]
+    peak_y = y_data[peak_index]
+    ax.fill_between(x_data, 0, y_data, where = (x_data<=peak_x), colors = 'red', alpha = 0.3)
+    
+
+# Show the plot
+plt.show()
+
+```
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/age_distribution2.png?raw=true)
+
+The results show that most of the fraudulent claims are around the 30-40 year brackets. This makes sense since the age of most of the drivers in this dataset are in this age group.
+
 
 
 ## Model training 
