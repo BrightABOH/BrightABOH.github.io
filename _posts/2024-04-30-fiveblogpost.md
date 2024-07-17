@@ -451,7 +451,9 @@ plt.legend()
 # Show the plot
 plt.show()
 ```
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/claimsize.png?raw=true)
 
+The results indicate that fraudulent claims involve higher dollar amounts compared to legitimate claims. This suggests a significant disparity in the financial impacts of fraudulent versus legitimate claims.
 
 ## Model training 
 
