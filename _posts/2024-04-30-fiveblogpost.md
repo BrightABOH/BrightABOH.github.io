@@ -369,9 +369,48 @@ plt.show()
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/make.png?raw=true)
 The result shows that 33.30% of all the fraudulent claims recorded involved a Mercedes car, followed by Accura at 12.70%.
 
+Another aspect to consider is analyzing the WitnessPresent column to gain insights into how the presence of a witness contributes to fraud cases. To achieve this; we use this block of codes
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
 
 
 
+# Filter data where FraudFound_P is 1
+df_fraud = df_processed[df_processed['FraudFound_P'] == 1]
+
+# Group data by 'WitnessPresent' and count the number of policies
+count_rep_wit = df_fraud.groupby('WitnessPresent').agg({
+    "PolicyNumber": 'count'
+}).reset_index()
+
+# Rename columns
+count_rep_wit.columns = ['WitnessPresent', 'Count']
+
+# Plot the bar graph
+plt.figure(figsize=(10, 6))
+sns.barplot(x='WitnessPresent', y='Count', data=count_rep_wit, palette='viridis')
+
+# Add labels to each bar
+for index, row in count_rep_wit.iterrows():
+    plt.text(row.name, row['Count'], row['Count'], color='black', ha="center", va="bottom")
+
+# Add title and labels
+plt.title('Count of Policies by Witness Presence in Fraud Cases', fontsize=20)
+plt.xlabel('Witness Present', fontsize=15)
+plt.ylabel('Count of Policies', fontsize=15)
+
+# Customize ticks and labels
+plt.xticks(ticks=[0, 1], labels=['No', 'Yes'], fontsize=12)
+plt.yticks(fontsize=12)
+
+# Show the plot
+plt.show()
+
+```
+
+
+We observe an interesting trend: out of 685 fraudulent claims, 683 (representing 99.7%) occurred at locations where no witnesses were present. This suggests that, in the absence of witnesses at the accident scene, a claim is highly likely to be fraudulent.
 
 
 ## Model training 
