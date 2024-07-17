@@ -13,7 +13,7 @@ In today's fast-paced world, insurance fraud has become a significant concern fo
 Traditional methods of fraud detection often rely on manual investigation and rule-based systems, which are time-consuming, labor-intensive, and may not be effective in uncovering sophisticated fraud schemes. However, with advancements in technology, particularly in the field of artificial intelligence and machine learning, insurers now have powerful tools at their disposal to combat insurance fraud more effectively. This blog post is divided into 2 parts, in Part 1, we experiment with different algorithms, and in Part 2 will develop and deploy a web-based App based on the results obtained in Part 1 
 ## Data loading
 We begin by reading the insurance claims data as follows
-```
+```python
 # Load the data
 data = pd.read_excel("claims.xlsx")
 ```
@@ -94,7 +94,7 @@ ClaimSize: Size of the insurance claim.
 
 ## Data intro
 Let's know our data by performing some explorations. We start by looking at the general overview of the data; the dimension of the data, the data types of the various columns, missing values, etc. This gives us an idea of what to expect and the necessary pre-processing, we can peek into the first few rows by doing this in Python
-```
+```python
 Data.head()
 ```
 This operation gives us the first 10 rows of the data(Mostly there is little to see at this point). Next, the ``` data.info() ``` gives us an overview of the data as seen below
@@ -114,7 +114,7 @@ As you will later see in this tutorial, we must handle the case of imbalances in
 The first thing we want to address is that of the missing values. I have decided to keep these records, hence I need to choose an appropriate method to fill in these missing values (in the Age and DriverRating columns). I can impute these missing values using the mean, mode, or median values of the variable. I can also forward-fill or backward-fill with the last known or next value in that column. Additionally, the functions below also process the object type data(e.g assigning numerical values to months of the year) by assigning numerical values to the non-numerical and categorical data.
 
 
-```
+```python
 #Preprocessing functions
 import pandas as pd
 
@@ -201,7 +201,7 @@ def process_data(file_path):
     return df
 
 # File path to the dataset
-file_path = "/Users/brightabohsilasedem/Downloads/Dataset-2.xlsx"
+file_path = "claims.xlsx"
 
 # Process the data
 df_processed = process_data(file_path)
@@ -332,6 +332,40 @@ plt.show()
 What we observe is that there are a lot more fraudulent claimers who are males. Without looking at the sex distribution within the dataset as a whole, one may be tempted to say that male drivers are more likely to commit fraudulent claims than their female counterparts. If we look at the sex distribution, we see that male drivers outnumber female drivers hence the possibility to find  more fraudulent claims in the male category.
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sex_fraud.png?raw=true)
 
+What about the car makes that are frequently involved in fraudulent claims? Can that be established? The snippet of code below provides an insight of the car makes which are frequently involved in fraudulent claims.
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+fraud_rate_make = df_processed.groupby('Make').agg({
+    "FraudFound_P": "mean", 
+    "PolicyNumber": 'count'
+})
+fraud_rate_make.columns = ['FraudRate', 'Count']
+fraud_rate_make = fraud_rate_make.apply(lambda x: round(x, 3))
+fraud_rate_make = fraud_rate_make.sort_values(by='FraudRate', ascending=False)
+
+# Reset index to turn 'Make' into a column for easier plotting
+fraud_rate_make.reset_index(inplace=True)
+
+# Plotting
+plt.figure(figsize=(12, 8))
+barplot = sns.barplot(x='FraudRate', y='Make', data=fraud_rate_make, palette='viridis')
+
+# Add counts to the bars
+for index, value in enumerate(fraud_rate_make['FraudRate']):
+    barplot.text(value, index, f'{value:.2%}', color='black', ha="left", va="center")
+
+# Add title and labels
+plt.title('Fraud Rate by Make', fontsize=20)
+plt.xlabel('Fraud Rate', fontsize=15)
+plt.ylabel('Make', fontsize=15)
+
+# Show the plot
+plt.show()
+```
 
 
 
