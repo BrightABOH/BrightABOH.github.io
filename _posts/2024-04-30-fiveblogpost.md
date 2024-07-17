@@ -367,7 +367,7 @@ plt.ylabel('Make', fontsize=15)
 plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/make.png?raw=true)
-The result shows that 33.30% of all the fraudulent claims recorded involved a Mercedes car, followed by Accura at 12.70%.
+The analysis reveals that Mercedes cars accounted for 33.30% of all fraudulent claims detected, making it the most implicated car make. Accura followed with 12.70% of fraudulent claims. This data underscores the importance of monitoring and investigating claims associated with these car makes to combat insurance fraud effectively.
 
 Another aspect to consider is analyzing the WitnessPresent column to gain insights into how the presence of a witness contributes to fraud cases. To achieve this; we use this block of codes
 ```python
