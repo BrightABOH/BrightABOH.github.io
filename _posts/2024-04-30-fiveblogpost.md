@@ -367,7 +367,7 @@ plt.ylabel('Make', fontsize=15)
 plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/make.png?raw=true)
-The result shows that 33% of all the fraudulent claims recorded involved a Mercedes car.
+The result shows that 33.30% of all the fraudulent claims recorded involved a Mercedes car, followed by Accura at 12.70%. 
 
 
 
