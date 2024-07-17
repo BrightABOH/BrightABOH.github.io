@@ -453,7 +453,7 @@ plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/claimsize.png?raw=true)
 
-The results indicate that fraudulent claims involve higher dollar amounts compared to legitimate claims. This suggests a significant disparity in the financial impacts of fraudulent versus legitimate claims.
+The findings reveal that legitimate claims surpass fraudulent ones in terms of dollar values. This suggests a notable disparity in financial magnitude between the two types of claims. Lower fraud claim sizes may also indicate that these claims could potentially go unnoticed.
 
 ## Model training 
 
