@@ -409,7 +409,7 @@ plt.show()
 
 ```
 
-
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/witness.png?raw=true)
 We observe an interesting trend: out of 685 fraudulent claims, 683 (representing 99.7%) occurred at locations where no witnesses were present. This suggests that, in the absence of witnesses at the accident scene, a claim is highly likely to be fraudulent.
 
 
