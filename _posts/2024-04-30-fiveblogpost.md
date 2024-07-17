@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Predicting Fraudulent Accident Claims   - Part 1"
-date: 2024-07-18 22:01:18
+date: 2024-07-16 22:01:18
 categories: Fraud Claim Prediction
 permalink: /posts/Predicting-fraudulent-claims 
 ---
@@ -367,7 +367,7 @@ plt.ylabel('Make', fontsize=15)
 plt.show()
 ```
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/sex_fraud.png?raw=true)
-The result shows that 33% of all the fraudulent claims recorded per this datasets 
+The result shows that 33% of all the fraudulent claims recorded involved a Mercedes car.
 
 
 
