@@ -410,7 +410,47 @@ plt.show()
 ```
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/witness.png?raw=true)
-We observe an interesting trend: out of 685 fraudulent claims, 683 (representing 99.7%) occurred at locations where no witnesses were present. This suggests that, in the absence of witnesses at the accident scene, a claim is highly likely to be fraudulent.
+We observe an interesting trend: out of 685 fraudulent claims, 683 (representing 99.7%) occurred at locations where no witnesses were present, and only 2 fraudulent claims had witnesses present. This suggests that, in the absence of witnesses at the accident scene, a claim is highly likely to be fraudulent.
+
+
+Next we analyze the claim size and its distribution to the fraudulent cases. Can we identify any trend with this? To answer this, we use this snippet
+```python
+# Replace negative claim sizes and zeros with NaN
+df_processed['ClaimSize'] = df_processed['ClaimSize'].apply(lambda x: np.nan if x <= 0 else x)
+
+# Calculate the mean claim size excluding NaN values
+mean_claim_size = df_processed['ClaimSize'].mean()
+
+# Replace NaN values with the mean claim size
+df_processed['ClaimSize'].fillna(mean_claim_size, inplace=True)
+
+
+# Create FacetGrid for visualization
+g = sns.FacetGrid(df_processed, hue='FraudFound_P', height=7, aspect=2, palette='viridis')
+
+# Map the KDE plot to the grid
+g.map(sns.kdeplot, 'ClaimSize', shade=True)
+
+# Add title
+plt.title('ClaimSize Distribution for Fraud and No Fraud Claims', fontsize=20)
+
+# Add legend
+g.add_legend(title='Fraud Found')
+
+# Customize ticks and labels
+plt.xlabel('Claim Size', fontsize=15)
+plt.ylabel('Density', fontsize=15)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+
+# Add vertical line for minimum claim size
+min_claim_size = df_processed['ClaimSize'].min()
+plt.axvline(x=min_claim_size, color='red', linestyle='--', label=f'Min Claim Size: {min_claim_size}')
+plt.legend()
+
+# Show the plot
+plt.show()
+```
 
 
 ## Model training 
