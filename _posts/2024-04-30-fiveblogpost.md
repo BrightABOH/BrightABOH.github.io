@@ -413,7 +413,7 @@ plt.show()
 We observe an interesting trend: out of 685 fraudulent claims, 683 (representing 99.7%) occurred at locations where no witnesses were present, and only 2 fraudulent claims had witnesses present. This suggests that, in the absence of witnesses at the accident scene, a claim is highly likely to be fraudulent.
 
 
-Next we analyze the claim size and its distribution to the fraudulent cases. Can we identify any trend with this? To answer this, we use this snippet
+Next, we examine the distribution of claim sizes in relation to fraudulent cases. Can we discern any patterns from this analysis? To explore this question, we'll utilize the following snippet.
 ```python
 # Replace negative claim sizes and zeros with NaN
 df_processed['ClaimSize'] = df_processed['ClaimSize'].apply(lambda x: np.nan if x <= 0 else x)
