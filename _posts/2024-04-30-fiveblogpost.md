@@ -915,7 +915,11 @@ The set of best features used and their result:
 
 
 
-![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion.png?raw=true)
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xgconf.png?raw=true)
+
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xgroc.png?raw=true)
+
+
 Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task. To address this is to address the imbalance problem in the dataset, to do this we will experiment with oversamplling the minority class, and adding class weights to the different classes accordingly. 
 We start with SMOTE which creates synthetic samples for the minority class. This way, we will increase the number of minority classes thereby solving the class imbalance issue
 ```
