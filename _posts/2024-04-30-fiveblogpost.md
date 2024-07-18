@@ -774,7 +774,8 @@ rf_param_grid = {
 # Evaluate Random Forest with stepwise feature selection
 evaluate_random_forest_with_stepwise_selection(rf_param_grid)
 ```
-
+The set of best features used and their result:
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/claimsize.png?raw=true)
 
 
 ### Xgboost
