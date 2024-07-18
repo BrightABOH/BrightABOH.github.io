@@ -615,6 +615,143 @@ for i in range(cm.shape[0]):
 plt.show()
 ```
 
+
+## Random forest
+
+
+
+## Xgboost
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import classification_report, roc_curve, auc
+from sklearn.model_selection import train_test_split, cross_val_predict, GridSearchCV
+from xgboost import XGBClassifier
+from imblearn.over_sampling import SMOTE
+
+
+
+# Assign unique integer values to all non-numeric values in the DataFrame
+for col in df_processed.select_dtypes(include=['object']).columns:
+    unique_values = df_processed[col].unique()
+    value_map = {value: i for i, value in enumerate(unique_values)}
+    df_processed[col] = df_processed[col].map(value_map)
+
+# Define features and target
+X = df_processed.drop('FraudFound_P', axis=1)
+y = df_processed['FraudFound_P']
+
+# Split the data into training and testing sets with stratify
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+
+
+# Calculate the scale_pos_weight dynamically
+neg_count = (y_train == 0).sum()
+pos_count = (y_train == 1).sum()
+scale_pos_weight = neg_count / pos_count
+print(f"Calculated scale_pos_weight: {scale_pos_weight}")
+
+# Initialize variables for the stepwise feature selection
+best_features = []
+best_score = 0
+threshold_score = 0.6
+
+# Define the XGBoost parameters for Grid Search
+param_grid = {
+    "classifier__n_estimators": [100, 200],
+    "classifier__learning_rate": [0.01, 0.1],
+    "classifier__max_depth": [3, 5]
+    
+}
+
+# Iterate over all features
+for feature in X.columns:
+    # Add the new feature to the list of best features
+    features_to_try = best_features + [feature]
+    
+    # Create a pipeline with the current set of features
+    current_pipeline = Pipeline(steps=[
+        ('preprocessor', ColumnTransformer(
+            transformers=[
+                ('num', Pipeline(steps=[
+                    ('imputer', SimpleImputer(strategy='median')),
+                    ('scaler', StandardScaler())
+                ]), X[features_to_try].select_dtypes(include=['float64', 'int64']).columns),
+                ('cat', Pipeline(steps=[
+                    ('imputer', SimpleImputer(strategy='constant', fill_value=0))
+                ]), X[features_to_try].select_dtypes(include=['int']).columns)
+            ]
+        )),
+        ('classifier', XGBClassifier(random_state=42, objective='binary:logistic', n_jobs=-1))
+    ])
+    
+    # Setup Grid Search with cross-validation
+    grid_search = GridSearchCV(current_pipeline, param_grid, cv=5, scoring='roc_auc', n_jobs=-1, verbose=0)
+    
+    # Fit the model
+    grid_search.fit(X_train[features_to_try], y_train)
+    
+    # Get the best score
+    score = grid_search.best_score_
+    
+    # If the performance improves and is above the threshold, keep the feature
+    if score > best_score and score >= threshold_score:
+        best_score = score
+        best_features.append(feature)
+        print(f"Added feature: {feature} - New best score: {best_score}")
+
+# Print the final set of best features
+print("Best set of features: ", best_features)
+
+# Create a final pipeline with the best features
+final_pipeline = Pipeline(steps=[
+    ('preprocessor', ColumnTransformer(
+        transformers=[
+            ('num', Pipeline(steps=[
+                ('imputer', SimpleImputer(strategy='median')),
+                ('scaler', StandardScaler())
+            ]), X[best_features].select_dtypes(include=['float64', 'int64']).columns),
+            ('cat', Pipeline(steps=[
+                ('imputer', SimpleImputer(strategy='constant', fill_value=0))
+            ]), X[best_features].select_dtypes(include=['int']).columns)
+        ]
+    )),
+    ('classifier', XGBClassifier(random_state=42, objective='binary:logistic', n_jobs=-1,scale_pos_weight=scale_pos_weight,))
+])
+
+# Fit the final pipeline with the best features
+final_pipeline.fit(X_train[best_features], y_train)
+
+# Predict and evaluate using the final model
+y_pred = final_pipeline.predict(X_test[best_features])
+print(classification_report(y_test, y_pred))
+
+# Generate cross-validated predictions for ROC AUC curve using the best model
+y_scores = cross_val_predict(final_pipeline, X_train[best_features], y_train, cv=5, method='predict_proba')[:, 1]
+
+# Compute ROC curve and ROC AUC
+fpr, tpr, thresholds = roc_curve(y_train, y_scores)
+roc_auc = auc(fpr, tpr)
+
+# Plot ROC AUC curve
+plt.figure()
+plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic (ROC) Curve')
+plt.legend(loc="lower right")
+plt.show()
+```
+
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion.png?raw=true)
 Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task. To address this is to address the imbalance problem in the dataset, to do this we will experiment with oversamplling the minority class, and adding class weights to the different classes accordingly. 
 We start with SMOTE which creates synthetic samples for the minority class. This way, we will increase the number of minority classes thereby solving the class imbalance issue
