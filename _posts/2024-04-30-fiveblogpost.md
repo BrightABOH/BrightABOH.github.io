@@ -775,7 +775,7 @@ rf_param_grid = {
 evaluate_random_forest_with_stepwise_selection(rf_param_grid)
 ```
 The set of best features used and their result:
-![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/claimsize.png?raw=true)
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/rf1.png?raw=true)
 
 
 ### Xgboost
@@ -909,6 +909,11 @@ plt.title('Receiver Operating Characteristic (ROC) Curve')
 plt.legend(loc="lower right")
 plt.show()
 ```
+The set of best features used and their result:
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xg1.png?raw=true)
+
+
+
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/confusion.png?raw=true)
 Observing the results of the confusion matrix from our model, it is clear that our model is doing well in predicting legitimate claims(99.9%) of the time. However this is not our task, our goal is to predict fraudulent claims which our model is so horrible at predicting (0.74%). The model is skewed toward the majority class, therefore despite the 94% accuracy recorded, our model has failed to solve the intended task. To address this is to address the imbalance problem in the dataset, to do this we will experiment with oversamplling the minority class, and adding class weights to the different classes accordingly. 
