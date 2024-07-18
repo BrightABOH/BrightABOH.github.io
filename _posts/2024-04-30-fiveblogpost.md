@@ -617,6 +617,12 @@ plt.show()
 The following shows the set of best features used and their results:
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/lr1.png?raw=true)
 
+Interpretation:
+Class 0 (Non-Fraudulent Claims):
+The model performs well in identifying non-fraudulent claims with high precision (0.96) and moderate recall (0.78), resulting in a relatively high F1-score (0.86). This suggests that it correctly identifies most non-fraudulent claims but misses some.
+
+Class 1 (Fraudulent Claims):
+The model's performance is poor for fraudulent claims, with low precision (0.12) and moderate recall (0.46), resulting in a low F1-score (0.19). This indicates that it incorrectly identifies many non-fraudulent claims as fraudulent.
 
 ### Random forest
 ```python
@@ -776,7 +782,17 @@ evaluate_random_forest_with_stepwise_selection(rf_param_grid)
 ```
 The set of best features used and their result:
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/rf1.png?raw=true)
+Interpretation
+Class 0 (Non-Fraudulent Claims):
+The model performs exceptionally well in identifying non-fraudulent claims with very high precision (0.99), but it has moderate recall (0.59). This means while most of the predicted non-fraudulent claims are indeed non-fraudulent, it misses a significant portion of actual non-fraudulent claims.
 
+Class 1 (Fraudulent Claims):
+The model has a low precision (0.12) for fraudulent claims, indicating a high number of false positives. However, it has a very high recall (0.91), meaning it successfully identifies most actual fraudulent claims. The F1-score (0.22) suggests a poor balance between precision and recall for fraudulent claims
+Balance Interpretation:
+The high recall (0.91) suggests that the model is effective in capturing a large portion of fraudulent activity. However, the low precision (0.12) indicates a high rate of false positives, where legitimate claims are misclassified as fraudulent.
+
+Implications:
+While the high recall is beneficial for identifying actual fraudulent claims, the low precision can lead to unnecessary investigations or denials for legitimate claims. Achieving a better balance between recall and precision for class 1 is essential to reduce false positives while maintaining a high capture rate of fraudulent activities.
 
 ### Xgboost
 ```python
