@@ -461,9 +461,9 @@ We are embarking on a critical investigation into whether we can develop a robus
 Our methodology involves a systematic approach where each dataset feature is sequentially added to the model. If a feature does not improve the model's performance, it is removed. Conversely, features that enhance overall model performance are retained. This iterative process continues until all 34 features have been evaluated, ensuring that only the most impactful features are selected for final model predictions.
 
 
-## Logistic model
+### Logistic model
 We start with a simple logistic model, where FraudFound_P is our target variable, and the rest of the columns as our predictor variables. 
-We start with a simple logistic regression(with the class imbalance), as  below;
+
 ```python
 import pandas as pd
 import numpy as np
@@ -616,11 +616,166 @@ plt.show()
 ```
 
 
-## Random forest
+### Random forest
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc
+from sklearn.model_selection import train_test_split, cross_val_predict, GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.utils.class_weight import compute_class_weight
 
 
 
-## Xgboost
+# Assign unique integer values to all non-numeric values in the DataFrame
+for col in df_processed.select_dtypes(include=['object']).columns:
+    unique_values = df_processed[col].unique()
+    value_map = {value: i for i, value in enumerate(unique_values)}
+    df_processed[col] = df_processed[col].map(value_map)
+
+# Define features and target
+X = df_processed.drop('FraudFound_P', axis=1)
+y = df_processed['FraudFound_P']
+
+# Split the data into training and testing sets with stratify
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+
+# Compute class weights based on the training set
+class_weights = compute_class_weight(class_weight='balanced', classes=np.unique(y_train), y=y_train)
+class_weights_dict = {i: class_weights[i] for i in range(len(class_weights))}
+
+# Function to perform stepwise feature selection and evaluation for Random Forest
+def evaluate_random_forest_with_stepwise_selection(param_grid):
+    # Initialize variables for the stepwise feature selection
+    best_features = []
+    best_score = 0
+    threshold_score = 0.6
+
+    # Iterate over all features
+    for feature in X.columns:
+        # Add the new feature to the list of best features
+        features_to_try = best_features + [feature]
+        
+        # Create a pipeline with the current set of features
+        current_pipeline = Pipeline(steps=[
+            ('preprocessor', ColumnTransformer(
+                transformers=[
+                    ('num', Pipeline(steps=[
+                        ('imputer', SimpleImputer(strategy='median')),
+                        ('scaler', StandardScaler())
+                    ]), X[features_to_try].select_dtypes(include=['float64', 'int64']).columns),
+                    ('cat', Pipeline(steps=[
+                        ('imputer', SimpleImputer(strategy='constant', fill_value=0))
+                    ]), X[features_to_try].select_dtypes(include=['int']).columns)
+                ]
+            )),
+            ('classifier', RandomForestClassifier(random_state=42, n_jobs=-1, class_weight=class_weights_dict))
+        ])
+        
+        # Setup Grid Search with cross-validation
+        grid_search = GridSearchCV(current_pipeline, param_grid, cv=5, scoring='roc_auc', n_jobs=-1, verbose=0)
+        
+        # Fit the model
+        grid_search.fit(X_train[features_to_try], y_train)
+        
+        # Get the best score
+        score = grid_search.best_score_
+        
+        # If the performance improves and is above the threshold, keep the feature
+        if score > best_score and score >= threshold_score:
+            best_score = score
+            best_features.append(feature)
+            print(f"Random Forest - Added feature: {feature} - New best score: {best_score}")
+
+    # Print the final set of best features
+    print("Random Forest - Best set of features: ", best_features)
+
+    # Create a final pipeline with the best features
+    final_pipeline = Pipeline(steps=[
+        ('preprocessor', ColumnTransformer(
+            transformers=[
+                ('num', Pipeline(steps=[
+                    ('imputer', SimpleImputer(strategy='median')),
+                    ('scaler', StandardScaler())
+                ]), X[best_features].select_dtypes(include=['float64', 'int64']).columns),
+                ('cat', Pipeline(steps=[
+                    ('imputer', SimpleImputer(strategy='constant', fill_value=0))
+                ]), X[best_features].select_dtypes(include=['int']).columns)
+            ]
+        )),
+        ('classifier', RandomForestClassifier(random_state=42, n_jobs=-1, class_weight=class_weights_dict))
+    ])
+
+    # Fit the final pipeline with the best features
+    final_pipeline.fit(X_train[best_features], y_train)
+
+    # Predict and evaluate using the final model
+    y_pred = final_pipeline.predict(X_test[best_features])
+    print(classification_report(y_test, y_pred))
+
+    # Generate cross-validated predictions for ROC AUC curve using the best model
+    y_scores = cross_val_predict(final_pipeline, X_train[best_features], y_train, cv=5, method='predict_proba')[:, 1]
+
+    # Compute ROC curve and ROC AUC
+    fpr, tpr, thresholds = roc_curve(y_train, y_scores)
+    roc_auc = auc(fpr, tpr)
+
+    # Plot ROC AUC curve
+    plt.figure()
+    plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
+    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver Operating Characteristic (ROC) Curve - Random Forest')
+    plt.legend(loc="lower right")
+    plt.show()
+
+    # Confusion matrix with labels and percentages
+    cm = confusion_matrix(y_test, y_pred)
+    class_names = ['Legit', 'Fraud']
+
+    # Plot confusion matrix with counts and percentages
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=class_names, yticklabels=class_names)
+    plt.xlabel('Predicted labels')
+    plt.ylabel('True labels')
+    plt.title('Confusion Matrix (Class Counts and Percentages) - Random Forest')
+
+    # Calculate class percentages
+    class_percentages = cm / cm.sum(axis=1)[:, np.newaxis]
+
+    # Add text annotations for class percentages
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            if cm[i, j] != 0:
+                percentage = class_percentages[i, j]
+                plt.text(j + 0.5, i + 0.2, f'{percentage:.2%}', 
+                         horizontalalignment='center', verticalalignment='center', color='green')
+
+    plt.show()
+
+# Random Forest parameters for Grid Search
+rf_param_grid = {
+    "classifier__n_estimators": [100, 200],
+    "classifier__max_depth": [None, 10, 20],
+    "classifier__min_samples_split": [2, 5, 10]
+}
+
+# Evaluate Random Forest with stepwise feature selection
+evaluate_random_forest_with_stepwise_selection(rf_param_grid)
+```
+
+
+
+### Xgboost
 ```python
 import pandas as pd
 import numpy as np
