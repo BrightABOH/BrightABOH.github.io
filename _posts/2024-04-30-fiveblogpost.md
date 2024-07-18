@@ -911,8 +911,18 @@ plt.show()
 ```
 The set of best features used and their result:
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xg1.png?raw=true)
+Interpretation
+Class 0 (Non-Fraudulent Claims):
 
+The model performs exceptionally well in identifying non-fraudulent claims, with very high precision (0.99) and recall (0.97). This results in a high F1-score (0.98), indicating a strong balance between precision and recall for non-fraudulent claims.
+Class 1 (Fraudulent Claims):
 
+The model has a moderate precision (0.59) for fraudulent claims, meaning that there are still some false positives. However, the recall (0.78) is relatively high, indicating that the model successfully identifies a significant portion of actual fraudulent claims. The F1-score (0.67) suggests a reasonable balance between precision and recall for fraudulent claims, though there is room for improvement, especially in reducing false positives.
+Overall Metrics:
+
+The accuracy (0.95) is very high, reflecting the model's strong overall performance.
+The macro average metrics provide a balanced view of the model's performance across both classes, indicating an overall good performance but highlighting that the model is slightly better at predicting non-fraudulent claims.
+The weighted average metrics, accounting for class imbalance, are also very high, showing that the model performs well overall.
 
 
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xgconf.png?raw=true)
