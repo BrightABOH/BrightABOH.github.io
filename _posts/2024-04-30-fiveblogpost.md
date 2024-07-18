@@ -614,6 +614,8 @@ for i in range(cm.shape[0]):
 
 plt.show()
 ```
+The following shows the set of best features used and their results:
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/lr1.png?raw=true)
 
 
 ### Random forest
