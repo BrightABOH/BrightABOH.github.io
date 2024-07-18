@@ -624,6 +624,9 @@ The model performs well in identifying non-fraudulent claims with high precision
 Class 1 (Fraudulent Claims):
 The model's performance is poor for fraudulent claims, with low precision (0.12) and moderate recall (0.46), resulting in a low F1-score (0.19). This indicates that it incorrectly identifies many non-fraudulent claims as fraudulent.
 
+Implication: 
+High false positive rates (predicting non-fraudulent claims as fraudulent) can lead to unnecessary investigations and strain on resources. Moreover, the model's inability to capture a substantial portion of fraudulent claims (low recall) suggests potential financial risks due to undetected fraudulent activities.
+
 ### Random forest
 ```python
 import pandas as pd
