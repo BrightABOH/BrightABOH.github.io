@@ -946,3 +946,20 @@ The weighted average metrics, accounting for class imbalance, are also very high
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xgroc.png?raw=true)
 An AUC (Area Under the ROC Curve) of 0.96 indicates that the model is highly effective at distinguishing between positive and negative classes. Practically, this means that if you randomly select one positive instance (such as a fraudulent claim) and one negative instance (such as a legitimate claim), the model has a 96% chance of correctly ranking the positive instance higher than the negative one. This level of performance suggests that the model is very reliable and can be trusted for practical applications in predicting fraudulent insurance claims.
 
+### Conclusion
+In conclusion, the XGBoost algorithm has proven to be highly effective at identifying potential fraudulent claims, as evidenced by the following:
+
+Superior Performance:
+
+The model achieves high precision, recall, and F1-scores for both non-fraudulent and fraudulent claims, indicating balanced performance.
+The high overall accuracy and weighted averages demonstrate the model's robustness and reliability.
+Enhanced Fraud Detection:
+
+The significant improvement in recall for fraudulent claims means that the model effectively captures more fraudulent activities, thereby reducing financial risks associated with undetected fraud.
+High AUC:
+
+The AUC of 0.96 confirms the model's outstanding ability to distinguish between fraudulent and non-fraudulent claims, making it highly suitable for real-world applications.
+Operational Efficiency:
+
+High precision for non-fraudulent claims ensures efficient processing of legitimate claims, minimizing unnecessary investigations and operational costs.
+In the next tutorial, we will develop a web-based application based on the XGBoost model. This application will enable users to determine whether a claim is legitimate or possibly fraudulent by either uploading an Excel sheet or entering a policy number. See you in the next one!
