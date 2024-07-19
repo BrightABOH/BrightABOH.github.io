@@ -264,7 +264,7 @@ df_processed['Age'] = df_processed['Age'].replace(0, median_age)
 The result shows 0 years replaced with the mean of the ages. 
 
 Secondly, we can have an insight into the age distribution with fraudulent claims. The snippet code below shows which ages are more likely to have a fraudulent claim. To achieve this, we plot the Kernel Density Estimation graph as follows;
-```
+```python
 # Set the style
 sns.set(style="whitegrid")
 
@@ -305,7 +305,7 @@ plt.show()
 
 The results show that most of the fraudulent claims are around the 30-40 year brackets. This makes sense since the age of most of the drivers in this dataset are in this age group.
 Another interesting insight we could drive is to investigate the distribution of fraudulent claims across the sex of the drivers. 
-```
+```python
 import seaborn as sns
 import matplotlib.pyplot as plt
 
