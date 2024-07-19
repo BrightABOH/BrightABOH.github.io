@@ -962,4 +962,4 @@ The AUC of 0.96 confirms the model's outstanding ability to distinguish between 
 Operational Efficiency:
 High precision for non-fraudulent claims ensures efficient processing of legitimate claims, minimizing unnecessary investigations and operational costs.
 
-In the next tutorial, we will develop a web-based application based on the XGBoost model. This application will enable users to determine whether a claim is legitimate or possibly fraudulent by either uploading an Excel sheet or entering a policy number. See you in the next one!!
+In the next tutorial, we will develop a web-based application based on the XGBoost model. This application will enable users to determine whether a claim is legitimate or possibly fraudulent by either uploading an Excel sheet or entering a policy number. See you in the next one!
