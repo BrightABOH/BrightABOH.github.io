@@ -627,7 +627,7 @@ The model's performance is poor for fraudulent claims, with low precision (0.12)
 Implication: 
 High false positive rates (predicting non-fraudulent claims as fraudulent) can lead to unnecessary investigations and strain on resources. Moreover, the model's inability to capture a substantial portion of fraudulent claims (low recall) suggests potential financial risks due to undetected fraudulent activities.
 
-### Random forest
+### Random forest 
 ```python
 import pandas as pd
 import numpy as np
@@ -911,6 +911,8 @@ print(classification_report(y_test, y_pred))
 
 # Generate cross-validated predictions for ROC AUC curve using the best model
 y_scores = cross_val_predict(final_pipeline, X_train[best_features], y_train, cv=5, method='predict_proba')[:, 1]
+# save the trained pipeline
+joblib.dump(final_pipeline, 'xgboost_model_pipeline.pkl')
 
 # Compute ROC curve and ROC AUC
 fpr, tpr, thresholds = roc_curve(y_train, y_scores)
@@ -946,6 +948,20 @@ The weighted average metrics, accounting for class imbalance, are also very high
 ![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xgroc.png?raw=true)
 An AUC (Area Under the ROC Curve) of 0.96 indicates that the model is highly effective at distinguishing between positive and negative classes. Practically, this means that if you randomly select one positive instance (such as a fraudulent claim) and one negative instance (such as a legitimate claim), the model has a 96% chance of correctly ranking the positive instance higher than the negative one. This level of performance suggests that the model is very reliable and can be trusted for practical applications in predicting fraudulent insurance claims.
 
+## Selecting the best algorithm
+When selecting an algorithm for the inference pipeline, it’s crucial to strike a balance between recall and precision, depending on the specific goals and constraints of the application. In practice, any of the following could arise;
+
+High precision - low recall: High precision means that the model is very accurate when it predicts a positive case (e.g., a fraudulent claim). However, low recall indicates that the model misses many actual positive cases. This scenario implies that the model is conservative in making positive predictions, which has both advantages and disadvantages.
+
+High precision and high recall: High precision and high recall together signify that the model is highly effective in predicting positive cases (e.g., fraudulent claims) and is also excellent at identifying almost all actual positive cases. Achieving both high precision and high recall is the ideal scenario in classification problems, though it is often challenging.
+
+Low precision - high recall: Low precision means that many of the cases predicted as positive (fraudulent claims) are actually negative (legitimate claims). High recall indicates that the model successfully identifies most of the actual positive cases. This scenario suggests the model is aggressive in flagging potential fraud. (Hint: Refer to the scores from the random forest and logistics models in this tutorial).
+
+Low Precision - Low Recall: Low precision and low recall together indicate that the model performs poorly in predicting positive cases (e.g., fraudulent claims) and fails to identify most of the actual positive cases. This is the least desirable scenario for any classification problem.
+
+A balanced precision-recall score: Achieving a balance between precision and recall means that the model effectively identifies a substantial portion of fraudulent claims while maintaining a reasonable number of false positives. This balance is often sought in practice to ensure both comprehensive detection and operational efficiency. (Hint: Refer to the scores from the xgboost model)
+
+
 ## Conclusion
 In conclusion, the XGBoost algorithm has proven to be highly effective at identifying potential fraudulent claims, as evidenced by the following:
 
@@ -959,7 +975,7 @@ The significant improvement in recall for fraudulent claims means that the model
 High AUC:
 The AUC of 0.96 confirms the model's outstanding ability to distinguish between fraudulent and non-fraudulent claims, making it highly suitable for real-world applications.
 
-Operational Efficiency:
+Operational Efficiency(balanced precision-recall tradeoff):
 High precision for non-fraudulent claims ensures efficient processing of legitimate claims, minimizing unnecessary investigations and operational costs.
 
 In the next tutorial, we will develop a web-based application based on the XGBoost model. This application will enable users to determine whether a claim is legitimate or possibly fraudulent by either uploading an Excel sheet or entering a policy number. See you in the next one!
