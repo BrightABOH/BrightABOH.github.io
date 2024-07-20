@@ -619,10 +619,10 @@ The following shows the set of best features used and their results:
 
 Interpretation:
 Class 0 (Non-Fraudulent Claims):
-The model performs well in identifying non-fraudulent claims with high precision (0.96) and moderate recall (0.78), resulting in a relatively high F1-score (0.86). This suggests that it correctly identifies most non-fraudulent claims but misses some.
+The model performs well in identifying non-fraudulent claims with high precision (0.99) and moderate recall (0.65), resulting in a relatively high F1-score (0.79). This suggests that it correctly identifies most non-fraudulent claims but misses some.
 
 Class 1 (Fraudulent Claims):
-The model's performance is poor for fraudulent claims, with low precision (0.12) and moderate recall (0.46), resulting in a low F1-score (0.19). This indicates that it incorrectly identifies many non-fraudulent claims as fraudulent.
+The model's performance is poor for fraudulent claims, with low precision (0.14) and a high recall (0.86), resulting in a low F1-score (0.23). This indicates that it incorrectly identifies many non-fraudulent claims as fraudulent.
 
 Implication: 
 High false positive rates (predicting non-fraudulent claims as fraudulent) can lead to unnecessary investigations and strain on resources. Moreover, the model's inability to capture a substantial portion of fraudulent claims (low recall) suggests potential financial risks due to undetected fraudulent activities.
