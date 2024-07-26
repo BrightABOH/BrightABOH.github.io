@@ -6,7 +6,7 @@ categories: Fraud Claim Prediction
 permalink: /posts/Predicting-fraudulent-claims 
 image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/master/photos/xgroc.png?raw=true"
 ---
-
+https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xgroc.png?raw=true
 "https://github.com/oliverangelil/oliverangelil.github.io/blob/master/photos/blog6_time_series.png?raw=true"
 ## Introduction
 In today's fast-paced world, insurance fraud has become a significant concern for insurance companies globally. Fraudulent claims not only lead to financial losses but also tarnish the reputation of insurers and increase premiums for honest policyholders. Among various types of insurance fraud, detecting fraudulent claims stemming from accidents poses a unique challenge due to the intricate nature of accidents and the diverse factors involved.
