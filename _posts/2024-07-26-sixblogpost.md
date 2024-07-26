@@ -9,17 +9,21 @@ image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/
 
 
 ## Introduction
-This is the concluding part of the tutorial on predicting auto insurance fraud from the claim dataset using Artificial Intelligence. Readers are encourage to read the first part of this tutorial [here](https://brightaboh.github.io/posts/Predicting-fraudulent-claims)
+This is the concluding part of the tutorial on predicting auto insurance fraud from the claim dataset using Artificial Intelligence. Readers are encouraged to read the first part of this tutorial [here](https://brightaboh.github.io/posts/Predicting-fraudulent-claims)
  where we defined the training pipeline and the xgboost model used in this inference section. 
 
 
 ## Inference
+In this section, we applied the model we developed to new datasets that were unseen by the model during the training phase. This allows us to predict which claims (in the real world) are likely to be fraudulent.  
+## Goal
+We want to enable auto insurance to be able to determine the legitimacy or otherwise of a claim. To achieve this, the inference pipeline is designed such that predictions are made by either entering an insurance policy number for single processing or uploading an entire Excel file for batch processing. The snippet of code below demonstrates how these were achieved
 
 ```python
 import joblib
 import pandas as pd
 import numpy as np
 
+#Process the new data as before
 class PreprocessingPipeline:
 
     def __init__(self, threshold=0.5):
