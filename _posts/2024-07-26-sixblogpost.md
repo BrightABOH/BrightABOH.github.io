@@ -222,7 +222,8 @@ result = main(file_path=file_path)
 ```
 single_policy_result = main(file_path=file_path, policy_number=policy_number)
 ```
-
+# Result
+![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/predict.png?raw=true)
 
 
 # Application Overview
