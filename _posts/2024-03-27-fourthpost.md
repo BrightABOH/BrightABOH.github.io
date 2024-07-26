@@ -4,6 +4,10 @@ title: "Satellite imagery processing for deep learning application"
 date: 2024-03-30 22:01:18
 categories: Deep learning prediction
 permalink: /posts/Cloudy Pixel Replacement
+image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/replace2.png?raw=true"
+---
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/replace2.png?raw=true)
+
 ---
 ## Introduction
 Remember the pain you go through working with very cloudy satellite images? Where lowering the cloud percentage would mean that you will have little or no images to work with? Moreso painful and frustrating when you build a very good deep-learning model only to realize that the inference component is extra challenging because the single image to predict with is almost always cloudy. This is even more prevalent when you are working with optical imageries such as Sentinel-2.
