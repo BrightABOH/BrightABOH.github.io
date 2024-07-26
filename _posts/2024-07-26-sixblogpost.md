@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Predicting Fraudulent Accident Claims   - Part 2"
+title: "Predicting Fraudulent Accident Claims - Part 2"
 date: 2024-07-27 22:01:18
-categories: Fraud Claim Prediction
-permalink: /posts/Predicting-fraudulent-claims 
+categories: Fraud Claim Prediction-concluding
+permalink: /posts/Predicting-fraudulent-claims-2 
 image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xgroc.png?raw=true"
 ---
 https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/stream_app.png?raw=true
