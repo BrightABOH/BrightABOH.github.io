@@ -6,7 +6,7 @@ categories: harmattan through satellite lense
 permalink: /posts/Data-Science-and-remote-sensing-3
 image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol1.png?raw=true"
 ---
-
+![data info](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/aerosol1.png?raw=true)
 
 
 
