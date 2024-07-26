@@ -224,7 +224,7 @@ single_policy_result = main(file_path=file_path, policy_number=policy_number)
 ```
 # Result
 ![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/predict.png?raw=true)
--The result for the single policy number 10520 shows that the policyholder is a female, aged 40, and this claim could be fraudulent, hence the need for further investigation.
+- The result for the single policy number 10520 shows that the policyholder is a female, aged 40, and this claim could be fraudulent, hence the need for further investigation.
 
 - The results from the  batch processing are saved at the predefined location and show similar predictions:
 ![batch](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/predict_batch.png?raw=true)
