@@ -236,25 +236,6 @@ The Intelligent Auto Insurance Fraud Detection System is a powerful AI-driven ap
 - Result Display: Results from the default dataset are displayed in the application interface, and users can view and download these predictions.
 
 
-# Installation
-- Clone the Repository
-```sh
-git clone https://github.com/BrightABOH/fraud-detection.git
-cd fraud-detection
-```
-- Install Dependencies
-```sh
-pip install -r requirements.txt
-```
-
-# Usage
-1. Run the Streamlit Application
-```sh
-streamlit run stream_app.py
-
-```
-2. Navigate to the Application
-- Open your web browser and go to http://localhost:8501
 3. Use the Application
 - Upload a Claim File: Use the sidebar to upload an Excel file containing insurance claim data.
 - Set Fraud Probability Threshold: Adjust the slider to set the threshold for fraud prediction.
