@@ -247,7 +247,7 @@ The Intelligent Auto Insurance Fraud Detection System is a powerful AI-driven ap
 - Interactive Visualization: Presents results in an easily interpretable format with options to download predictions.
 
 # Default Dataset
- If a user does not upload a claim dataset, the application will automatically use a pre-configured default dataset. This default dataset contains a representative sample of insurance claims, ensuring that fraud predictions can still be generated even without user-provided data. The default dataset is useful for:
+ For demonstration purposes, the application will automatically use a pre-configured default dataset that mimics a real-world claim dataset. This default dataset contains a representative sample of insurance claims, ensuring that fraud predictions can still be generated even without user-provided data. The default dataset is useful for:
 
 - Testing and Demonstration: Allows users to explore the functionality and capabilities of the application without needing their own data.
 - Benchmarking: Provides a baseline for evaluating the performance of the fraud detection system.
@@ -258,13 +258,15 @@ The Intelligent Auto Insurance Fraud Detection System is a powerful AI-driven ap
 - Processing and Prediction: The default dataset is processed using the same preprocessing pipeline as user-uploaded data, and predictions are made using the trained machine learning model.
 - Result Display: Results from the default dataset are displayed in the application interface, and users can view and download these predictions.
 
-
-3. Use the Application
+## Use the Application
 - Upload a Claim File: Use the sidebar to upload an Excel file containing insurance claim data.
 - Set Fraud Probability Threshold: Adjust the slider to set the threshold for fraud prediction.
 - Enter or Select a Policy Number: Enter a policy number manually or select from the dropdown list.
 - Submit for Analysis: Click the "Submit" button to process the data and view results.
 If no file is uploaded, the system will automatically use the default dataset for analysis.
+To predict using the system dataset:
+- Submit for Analysis: Click the "Submit" button to process the default data and view the results (batch processing)
+- Enter or Select a Policy Number: Enter a policy number manually or select from the dropdown list for single processing.
 
 # Application Interface
 
