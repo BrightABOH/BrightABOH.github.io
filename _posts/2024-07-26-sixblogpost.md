@@ -10,7 +10,7 @@ image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/
 
 ## Introduction
 This is the concluding part of the tutorial on predicting auto insurance fraud from the claim dataset using Artificial Intelligence. Readers are encourage to read the first part of this tutorial
-[here](https://brightaboh.github.io/posts/Predicting-fraudulent-claims) where we defined the training pipeline and the xgboost model used in this inference section. 
+[here](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/stream_app.png?raw=true) where we defined the training pipeline and the xgboost model used in this inference section. 
 
 ## Inference
 
