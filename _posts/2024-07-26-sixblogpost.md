@@ -222,7 +222,7 @@ result = main(file_path=file_path)
 ```
 single_policy_result = main(file_path=file_path, policy_number=policy_number)
 ```
-# Result
+## Result
 ![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/predict.png?raw=true)
 - The result for the single policy number 10520 shows that the policyholder is a female, aged 40, and this claim could be fraudulent, hence the need for further investigation.
 
@@ -231,14 +231,14 @@ single_policy_result = main(file_path=file_path, policy_number=policy_number)
 
 
 
-# Application Overview
+## Application Overview
 To enable the usability of the model, we developed a web application (**Intelligent Auto Insurance Fraud Detection System**) in Streamlit to handle all the processes and the User Interface(UI). This AI-powered application can be found [here](https://autofrauddetection.streamlit.app)
 
 ![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/stream_app.png?raw=true)
 The Intelligent Auto Insurance Fraud Detection System is a powerful AI-driven application designed to identify potential fraudulent insurance claims. By leveraging machine learning techniques and a robust preprocessing pipeline, this system provides accurate predictions to help mitigate fraud risks. Users can upload their own claim datasets or rely on a default dataset for fraud detection.
 
 
-# Features
+## Features
 - AI-Powered Fraud Detection: Utilizes advanced machine learning models to predict the likelihood of fraud in insurance claims.
 - Flexible Data Input: Accepts user-uploaded datasets or uses a built-in default dataset.
 - Policy Number Lookup: Allows for single claim analysis by entering or selecting a policy number.
@@ -246,14 +246,14 @@ The Intelligent Auto Insurance Fraud Detection System is a powerful AI-driven ap
 - Adjustable Threshold: Fine-tune the fraud probability threshold to control sensitivity.
 - Interactive Visualization: Presents results in an easily interpretable format with options to download predictions.
 
-# Default Dataset
+## Default Dataset
  For demonstration purposes, the application will automatically use a pre-configured default dataset that mimics a real-world claim dataset. This default dataset contains a representative sample of insurance claims, ensuring that fraud predictions can still be generated even without user-provided data. The default dataset is useful for:
 
 - Testing and Demonstration: Allows users to explore the functionality and capabilities of the application without needing their own data.
 - Benchmarking: Provides a baseline for evaluating the performance of the fraud detection system.
 - Backup Analysis: Ensures that fraud detection predictions can be made even if no user data is uploaded.
 
-# How It Works
+## How It Works
 - Default Dataset Handling: If no file is uploaded, the application uses a default dataset stored in the project directory.
 - Processing and Prediction: The default dataset is processed using the same preprocessing pipeline as user-uploaded data, and predictions are made using the trained machine learning model.
 - Result Display: Results from the default dataset are displayed in the application interface, and users can view and download these predictions.
@@ -268,7 +268,7 @@ To predict using the system dataset:
 - Submit for Analysis: Click the "Submit" button to process the default data and view the results (batch processing)
 - Enter or Select a Policy Number: Enter a policy number manually or select from the dropdown list for single processing.
 
-# Application Interface
+## Application Interface
 
 - About: Provides information about the application.
 - Upload File: Allows users to upload their claim datasets.
@@ -277,6 +277,13 @@ To predict using the system dataset:
 - Results Display: Shows predictions and probabilities for each claim.
 - Download Button: Exports the results to a CSV file.
 
+## Miscellaneous 
+To access the application: https://autofrauddetection.streamlit.app
+To access the data and scripts used: https://github.com/BrightABOH/fraud_detection
+To contact/follow: 
+- LinkedIn: https://www.linkedin.com/in/bright-aboh-b85932ba/
+- Email: bright.s.e.aboh@aims-senegal.org
+- website: https://brightaboh.github.io
 
 
 
