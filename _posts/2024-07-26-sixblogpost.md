@@ -279,7 +279,9 @@ To predict using the system dataset:
 
 ## Miscellaneous 
 To access the application: https://autofrauddetection.streamlit.app
+
 To access the data and scripts used: https://github.com/BrightABOH/fraud_detection
+
 To contact/follow: 
 - LinkedIn: https://www.linkedin.com/in/bright-aboh-b85932ba/
 - Email: bright.s.e.aboh@aims-senegal.org
