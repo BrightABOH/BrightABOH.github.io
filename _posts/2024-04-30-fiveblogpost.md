@@ -4,6 +4,7 @@ title: "Predicting Fraudulent Accident Claims   - Part 1"
 date: 2024-07-16 22:01:18
 categories: Fraud Claim Prediction
 permalink: /posts/Predicting-fraudulent-claims 
+image: https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/xg1.png?raw=true
 ---
 
 
