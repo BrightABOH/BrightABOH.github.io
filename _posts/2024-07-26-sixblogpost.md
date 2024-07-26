@@ -213,7 +213,10 @@ single_policy_result = main(file_path=file_path, policy_number=policy_number)
 ```
 # Application Overview
 
+![here](https://brightaboh.github.io/posts/Predicting-fraudulent-claims)
+
 The Intelligent Auto Insurance Fraud Detection System is a powerful AI-driven application designed to identify potential fraudulent insurance claims. By leveraging machine learning techniques and a robust preprocessing pipeline, this system provides accurate predictions to help mitigate fraud risks. Users can upload their own claim datasets or rely on a default dataset for fraud detection.
+
 
 # Features
 - AI-Powered Fraud Detection: Utilizes advanced machine learning models to predict the likelihood of fraud in insurance claims.
