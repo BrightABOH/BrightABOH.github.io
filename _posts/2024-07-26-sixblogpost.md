@@ -9,8 +9,8 @@ image: "https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/
 
 
 ## Introduction
-This is the concluding part of the tutorial on predicting auto insurance fraud from the claim dataset using Artificial Intelligence. Readers are encourage to read the first part of this tutorial
-![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/stream_app.png?raw=true) where we defined the training pipeline and the xgboost model used in this inference section. 
+This is the concluding part of the tutorial on predicting auto insurance fraud from the claim dataset using Artificial Intelligence. Readers are encourage to read the first part of this tutorial [here](https://brightaboh.github.io/posts/Predicting-fraudulent-claims)
+ where we defined the training pipeline and the xgboost model used in this inference section. 
 
 
 ## Inference
@@ -214,8 +214,8 @@ single_policy_result = main(file_path=file_path, policy_number=policy_number)
 ```
 # Application Overview
 
-![here](https://brightaboh.github.io/posts/Predicting-fraudulent-claims)
 
+![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/stream_app.png?raw=true)
 The Intelligent Auto Insurance Fraud Detection System is a powerful AI-driven application designed to identify potential fraudulent insurance claims. By leveraging machine learning techniques and a robust preprocessing pipeline, this system provides accurate predictions to help mitigate fraud risks. Users can upload their own claim datasets or rely on a default dataset for fraud detection.
 
 
