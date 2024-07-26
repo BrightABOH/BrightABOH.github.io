@@ -204,18 +204,27 @@ def main(file_path=None, policy_number=None, threshold=0.5):
 
 ```
 
- Example usage
+ The example below shows how the above code can be used:
+ - Uploading the claims file for batch processing 
 ```python
-
-file_path = '/Users/brightabohsilasedem/Downloads/Dataset-2-New-1.xlsx'
+file_path = '/Users/brightabohsilasedem/Downloads/claims.xlsx'
+```
+- Selecting a single policy number
+```python
 policy_number = 10520
-
-# Predict from CSV file
+```
+- Predict from CSV file
+ ```
 result = main(file_path=file_path)
+```
+- Predict from a single policy number
 
-# Predict from a single policy number
+```
 single_policy_result = main(file_path=file_path, policy_number=policy_number)
 ```
+
+
+
 # Application Overview
 
 
