@@ -200,7 +200,7 @@ def main(file_path=None, policy_number=None, threshold=0.5):
             return single_policy_result
         
         result = predict_from_csv(file_path, threshold)
-        result.to_csv('/Users/brightabohsilasedem/Downloads/claims_predictions_2.csv', index=False)
+        result.to_csv('path/to/save/prediction/claims_predictions_2.csv', index=False)
         print("Predictions saved to 'claims_predictions.csv'")
         return result
     
@@ -211,7 +211,7 @@ def main(file_path=None, policy_number=None, threshold=0.5):
  The example below shows how the above code can be used:
  - Uploading the claims file for batch processing 
 ```python
-file_path = '/Users/brightabohsilasedem/Downloads/claims.xlsx'
+file_path = 'path/to/claim file/claims.xlsx'
 ```
 - Selecting a single policy number
 ```python
