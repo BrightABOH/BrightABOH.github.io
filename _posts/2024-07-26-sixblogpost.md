@@ -236,7 +236,7 @@ single_policy_result = main(file_path=file_path, policy_number=policy_number)
 
 
 ## Application Overview
-To enable the usability of the model, we developed a web application (**AI Auto Insurance Fraud Detection System**) in Streamlit to handle all the processes and the User Interface(UI). This AI-powered application can be found [here](https://autofrauddetection.streamlit.app)
+To enable the usability of the model, we developed a web application (**AI Auto Insurance Fraud Detection System**) in **Streamlit** to handle all the processes and the User Interface(UI). This AI-powered application can be found [here](https://autofrauddetection.streamlit.app)
 
 ![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/stream_app.png?raw=true)
 The AI Auto Insurance Fraud Detection System is a powerful AI-driven application designed to identify potential fraudulent insurance claims. By leveraging machine learning techniques and a robust preprocessing pipeline, this system provides accurate predictions to help mitigate fraud risks. Users can upload their own claim datasets or rely on a default dataset for fraud detection.
