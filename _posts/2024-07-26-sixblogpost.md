@@ -17,6 +17,7 @@ This is the concluding part of the tutorial on predicting auto insurance fraud f
 In this section, we applied the model we developed to new datasets that were unseen by the model during the training phase. This allows us to predict which claims (in the real world) are likely to be fraudulent.  
 ## Goal
 We want to enable auto insurance to be able to determine the legitimacy or otherwise of a claim. To achieve this, the inference pipeline is designed such that predictions are made by either entering an insurance policy number for single processing or uploading an entire Excel file for batch processing. The snippet of code below demonstrates how these were achieved
+Pre-processing
 
 ```python
 import joblib
@@ -113,7 +114,10 @@ class PreprocessingPipeline:
         df = self.object_to_numerical(df)
         
         return df
+```
 
+Process and predict
+```python
 def get_claim_details_by_policy_number(dataframe, policy_number):
     claim_details = dataframe[dataframe['PolicyNumber'] == policy_number]
     if claim_details.empty:
@@ -278,13 +282,13 @@ To predict using the system dataset:
 - Download Button: Exports the results to a CSV file.
 
 ## Miscellaneous 
-To access the application: https://autofrauddetection.streamlit.app \
+To access the application: https://autofrauddetection.streamlit.app 
 
-To access the data and scripts used: https://github.com/BrightABOH/fraud_detection \
+To access the data and scripts used: https://github.com/BrightABOH/fraud_detection 
 
 To contact/follow: 
-- LinkedIn: https://www.linkedin.com/in/bright-aboh-b85932ba/ \
-- Email: bright.s.e.aboh@aims-senegal.org \
+- LinkedIn: https://www.linkedin.com/in/bright-aboh-b85932ba/ 
+- Email: bright.s.e.aboh@aims-senegal.org 
 - website: https://brightaboh.github.io
 
 Happy reading and see you in the next one!
