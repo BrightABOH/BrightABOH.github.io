@@ -31,7 +31,7 @@ We want to enable auto insurance to be able to determine the legitimacy or other
 To enable the usability of the model, we developed a web application (**AI Auto Insurance Fraud Detection System**) in **Streamlit** to handle all the processes and the User Interface(UI). This AI-powered application can be found [here](https://autofrauddetection.streamlit.app)
 
 
-https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/Screen%20Shot%202024-07-27%20at%202.43.22%20AM.png
+
 ![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/Screen%20Shot%202024-07-27%20at%202.43.22%20AM.png?raw=true)
 The AI Auto Insurance Fraud Detection System is a powerful AI-driven application designed to identify potential fraudulent insurance claims. By leveraging machine learning techniques and a robust preprocessing pipeline, this system provides accurate predictions to help mitigate fraud risks. Users can upload their own claim datasets or rely on a default dataset for fraud detection.
 
@@ -82,8 +82,9 @@ To access the [data and scripts used](https://github.com/BrightABOH/fraud_detect
 
 
 To contact/follow: 
-- [LinkedIn](https://www.linkedin.com/in/bright-aboh-b85932ba/) 
-- [Email](bright.s.e.aboh@aims-senegal.org)
+- LinkedIn: https://www.linkedin.com/in/bright-aboh-b85932ba/
+- Email: sbrightaboh@gmail.com
+  
   
 
 
