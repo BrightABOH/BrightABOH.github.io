@@ -282,9 +282,9 @@ To predict using the system dataset:
 - Download Button: Exports the results to a CSV file.
 
 ## Miscellaneous 
-[To access the application](https://autofrauddetection.streamlit.app) 
+To access the [application](https://autofrauddetection.streamlit.app) 
 
-[To access the data and scripts used](https://github.com/BrightABOH/fraud_detection) 
+To access the [data and scripts used](https://github.com/BrightABOH/fraud_detection) 
 
 To contact/follow: 
 - [LinkedIn](https://www.linkedin.com/in/bright-aboh-b85932ba/) 
