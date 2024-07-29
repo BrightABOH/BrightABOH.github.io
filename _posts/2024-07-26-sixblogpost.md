@@ -6,7 +6,7 @@ categories: Fraud Claim Prediction-concluding
 permalink: /posts/Predicting-fraudulent-claims-2 
 
 ---
-![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/predict.png?raw=true)
+![app](https://github.com/BrightABOH/BrightABOH.github.io/blob/gh-pages/photos/fraud_claud.png?raw=true)
 
 ## Introduction
 This is the concluding part of the tutorial on predicting auto insurance fraud from the claim dataset using Artificial Intelligence. Readers are encouraged to read the first part of this tutorial [here](https://brightaboh.github.io/posts/Predicting-fraudulent-claims)
