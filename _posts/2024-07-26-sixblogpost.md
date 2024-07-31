@@ -28,7 +28,7 @@ We want to enable auto insurance to be able to determine the legitimacy or other
 
 
 ## Application Overview
-To enable the usability of the model, we developed a web application (**AI Auto Insurance Fraud Detection System**) in **Streamlit** to handle all the processes and the User Interface(UI). This AI-powered application can be found [here](https://autofrauddetection.streamlit.app)
+To enable the usability of the model, we developed a web application (**The Intelligent Auto Insurance Fraud Detection System**) in **Streamlit** to handle all the processes and the User Interface(UI). This AI-powered application can be found [here](https://autofrauddetection.streamlit.app)
 
 
 
