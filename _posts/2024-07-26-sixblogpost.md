@@ -82,7 +82,7 @@ To access the [data and scripts used](https://github.com/BrightABOH/fraud_detect
 
 
 To contact/follow: 
-- LinkedIn: https://www.linkedin.com/in/bright-aboh-b85932ba/
+- [LinkedIn](https://www.linkedin.com/in/bright-aboh-b85932ba/)
 - Email: sbrightaboh@gmail.com
   
   
