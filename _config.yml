@@ -18,7 +18,7 @@ profile_links:
   GitHub: "https://github.com/BrightABOH"
   Linkedin: "https://www.linkedin.com/in/bright-aboh-b85932ba/"
   # CV : "../Documents/Bright-Aboh.pdf"
-  Data: "../Documents/Bright-Aboh.pdf"
+  Data: "../Documents/diet_trial.csv"
   # You can add more profile links above, or edit _includes/sidebar.html 
 
 # Comment Service (Disqus or 多说)
